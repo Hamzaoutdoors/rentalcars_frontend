@@ -1,70 +1,76 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+  <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB"/>   <img src="https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white"/> <img src="https://img.shields.io/badge/rails-%23CC0000.svg?style=for-the-badge&logo=ruby-on-rails&logoColor=white"/> <img src="https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white"/> <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white"/></div>
 
-## Available Scripts
 
-In the project directory, you can run:
+# Rental Cars App 
 
-### `npm start`
+ the Final Capstone Project is based on an app to book an appointment to try a fancy car, to resrve a car.
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Clone this repository by running git clone https://github.com/Hamzaoutdoors/rentalcars_frontend.git in your command line.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Navigate to the repository by running `cd rentalcars_frontend`.
 
-### `npm test`
+- Start the project by running `npm start`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Make sure the API is ready to serve your front end app! Go to https://github.com/Hamzaoutdoors/rentalcars_backend and start the back end by following the instructions.
 
-### `npm run build`
+- Navigate to the `greetings page` using the links in the website and click on the `Be greeted!` button to generate a new greet.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Finally, run `code .` to see the files in your default code editor.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Built With
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ - React & Redux
+ - Bootstrap 5
+ 
+</br>
 
-### `npm run eject`
+## Authors
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+👤 **Laylo Khodjeiva**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- GitHub: []()
+- LinkedIn : []()
+- Twitter: []()
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+👤 **Ellaouzi Hamza**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- GitHub: [hamzaoutdoors](https://github.com/Hamzaoutdoors)
+- LinkedIn : [Hamza Ellaouzi](https://www.linkedin.com/in/hamza-ellaouzi-137a45b8/)
+- Twitter: [Hamza Ellaouzi](https://twitter.com/EllaouziHamza)
 
-## Learn More
+👤 **Nelsino Francisco**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- GitHub: []()
+- LinkedIn : []()
+- Twitter: []()
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+👤 **Juan Luis Gonzalez**
 
-### Code Splitting
+- GitHub: []()
+- LinkedIn : []()
+- Twitter: []()
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🤝 Contributing
 
-### Analyzing the Bundle Size
+Contributions, issues, and feature requests are welcome!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Feel free to check the [issues page](https://github.com/Hamzaoutdoors/rentalcars_frontend/issues).
 
-### Making a Progressive Web App
+## Show your support
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Give a ⭐️ if you like this project!
 
-### Advanced Configuration
+## Acknowledgments
+- Inspiration 💘
+- Microverse program ⚡
+- My standup team 😍
+- My family's support 🙌
+- MicroBros 😜
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 📝 License
 
-### Deployment
+This project is [MIT](https://github.com/Hamzaoutdoors/hello-rails-front-end/blob/dev/LICENSE.md) licensed.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
