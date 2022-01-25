@@ -25,8 +25,6 @@
  - React & Redux
  - Bootstrap 5
  
-</br>
-
 ## Authors
 
 👤 **Laylo Khodjeiva**
