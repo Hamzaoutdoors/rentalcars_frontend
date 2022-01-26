@@ -1,9 +1,7 @@
 import CarDetails from '../components/cars/CarDetails';
 
 const DetailsPage = () => (
-  <div className="p-3">
-    <CarDetails />
-  </div>
+  <CarDetails />
 );
 
 export default DetailsPage;
