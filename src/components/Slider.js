@@ -7,9 +7,11 @@ import data from '../redux/cars/helpers/data';
 
 const Container = styled.div`
     display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    max-width: 100%;
     height: 60%;
+    width: 100%;
     overflow-x: hidden;
 `;
 
@@ -41,17 +43,11 @@ const Arrow = styled.div`
 
 const Wrapper = styled.div`
     display: flex;
-    transition: all 1.5s ease-in-out;
-    transform: translateX(${(props) => props.slideIndex * -100}vw);
-`;
-
-const Slide = styled.div`
-    display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: 100%;
-    padding-right: 6%;
+    min-width: 150vw;
+    transition: all 1.5s ease-in-out;
+    transform: translateX(${(props) => props.slideIndex * -250}px);
 `;
 
 const Slider = () => {
@@ -59,9 +55,9 @@ const Slider = () => {
 
   const handleNext = (direction) => {
     if (direction === 'left') {
-      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
+      setSlideIndex(slideIndex > 0 ? slideIndex - 2 : 0);
     } else {
-      setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
+      setSlideIndex(slideIndex < data.length - 1 ? slideIndex + 2 : data.length - 1);
     }
   };
 
@@ -71,15 +67,8 @@ const Slider = () => {
         <ArrowLeftOutlined style={{ fontSize: '3rem', color: '#e6e6e6' }} />
       </Arrow>
       <Wrapper slideIndex={slideIndex}>
-        <Slide>
-          {data.filter((car) => car.id % 2 !== 0).map((item) => (
-            <CarCard key={item.id} item={item} />))}
-        </Slide>
-        <Slide>
-          {data.filter((car) => car.id % 2 === 0).map((item) => (
-            <CarCard key={item.id} item={item} />))}
-        </Slide>
-        <Slide bgColor="green" />
+        {data.map((item) => (
+          <CarCard key={item.id} item={item} />))}
       </Wrapper>
       <Arrow direction="right" onClick={() => handleNext('right')}>
         <ArrowRightOutlined style={{ fontSize: '3rem', color: '#e6e6e6' }} />

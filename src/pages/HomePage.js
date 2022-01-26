@@ -15,7 +15,7 @@ const Container = styled.div`
   color: black;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  overflow-x: hidden;
 `;
 
 const Title = styled.h1`
