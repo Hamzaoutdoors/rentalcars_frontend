@@ -1,7 +1,7 @@
 import CarDetails from '../components/cars/CarDetails';
 
 const DetailsPage = () => (
-  <div>
+  <div className="p-3">
     <CarDetails />
   </div>
 );
