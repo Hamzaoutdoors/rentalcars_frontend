@@ -17,6 +17,18 @@ const Container = styled.div`
   overflow: scroll-initial;
   border-right: 1px solid #e6e6e6;
   color: black;
+  align-items: center;
+`;
+
+const Logo = styled.div`
+  height: 200px;
+  width: 200px;
+  margin-bottom: 10px;
+`;
+
+const LogoImage = styled.img`
+  width: 100%;
+  height: 100%;
 `;
 
 const Wrapper = styled.div`
@@ -87,6 +99,9 @@ const Signature = styled.span`
 
 const Sidebar = () => (
   <Container>
+    <Logo>
+      <LogoImage src="https://i.ibb.co/vxkd1PT/LOGO.png" />
+    </Logo>
     <Wrapper as={CDBSidebar}>
       <Header prefix={<i className="fa fa-bars fa-large fs-3" />} />
       <Content as={CDBSidebarContent} className="sidebar-content">
