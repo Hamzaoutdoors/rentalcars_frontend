@@ -7,11 +7,10 @@ import data from '../redux/cars/helpers/data';
 
 const Container = styled.div`
     display: flex;
-    justify-content: center;
-    align-items: center;
     position: relative;
+    max-width: 100%;
+    height: 60%;
     overflow-x: hidden;
-    width: 100%;
 `;
 
 const Arrow = styled.div`
@@ -38,26 +37,31 @@ const Arrow = styled.div`
       transform: translateX(${(props) => (props.direction === 'left' ? '-3px' : '3px')});
         opacity: 1;
     }
-}`;
+`;
 
 const Wrapper = styled.div`
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    transition: all 1.5s ease-in-out;
+    transform: translateX(${(props) => props.slideIndex * -100}vw);
+`;
+
+const Slide = styled.div`
+    display: flex;
     justify-content: center;
     align-items: center;
+    width: 100vw;
     height: 100%;
-    width: 100%;
-}`;
+    padding-right: 6%;
+`;
 
 const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
 
   const handleNext = (direction) => {
     if (direction === 'left') {
-      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : data.length - 1);
+      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
     } else {
-      setSlideIndex(slideIndex < data.length - 1 ? slideIndex + 1 : 0);
+      setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
     }
   };
 
@@ -66,10 +70,16 @@ const Slider = () => {
       <Arrow direction="left" onClick={() => handleNext('left')}>
         <ArrowLeftOutlined style={{ fontSize: '3rem', color: '#e6e6e6' }} />
       </Arrow>
-      <Wrapper>
-        {data.map((item) => (
-          <CarCard key={item.id} item={item} />
-        ))}
+      <Wrapper slideIndex={slideIndex}>
+        <Slide>
+          {data.filter((car) => car.id % 2 !== 0).map((item) => (
+            <CarCard key={item.id} item={item} />))}
+        </Slide>
+        <Slide>
+          {data.filter((car) => car.id % 2 === 0).map((item) => (
+            <CarCard key={item.id} item={item} />))}
+        </Slide>
+        <Slide bgColor="green" />
       </Wrapper>
       <Arrow direction="right" onClick={() => handleNext('right')}>
         <ArrowRightOutlined style={{ fontSize: '3rem', color: '#e6e6e6' }} />

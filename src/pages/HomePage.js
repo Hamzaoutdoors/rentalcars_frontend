@@ -10,11 +10,12 @@ import Slider from '../components/Slider';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   color: black;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 `;
 
 const Title = styled.h1`
