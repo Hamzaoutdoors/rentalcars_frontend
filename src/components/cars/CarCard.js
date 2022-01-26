@@ -1,8 +1,8 @@
-/* eslint-disable camelcase */
 /* eslint-disable react/forbid-prop-types */
+
 import styled from 'styled-components';
-// import { NavLink } from 'react-router-dom';
-import { FavoriteBorderOutlined, SearchOutlined, ShoppingCartOutlined } from '@material-ui/icons';
+import { NavLink } from 'react-router-dom';
+import { FavoriteBorderOutlined, ShoppingCartOutlined } from '@material-ui/icons';
 import PropTypes from 'prop-types';
 // import { mobile } from '../../responsive';
 
@@ -28,7 +28,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     margin: 20px;
-    min-width: 300px;
+    max-width: 300px;
     height: 350px;
     display: flex;
     justify-content: center;
@@ -101,19 +101,18 @@ const Detail = styled.div`
 
 const CarCard = ({ item }) => {
   const {
-    image_url, name, brand, color,
+    imageUrl, name, brand, color,
   } = item;
   return (
     <Container>
       <Circle bgColor={color} />
-      <Image src={image_url} />
+      <Image src={imageUrl} />
       <Info>
-        <Icon>
-          <ShoppingCartOutlined />
-        </Icon>
-        <Icon>
-          <SearchOutlined />
-        </Icon>
+        <NavLink to={`/cars/${item.id}`}>
+          <Icon>
+            <ShoppingCartOutlined />
+          </Icon>
+        </NavLink>
         <Icon>
           <FavoriteBorderOutlined />
         </Icon>
@@ -131,7 +130,7 @@ const CarCard = ({ item }) => {
 export default CarCard;
 
 CarCard.propTypes = {
-  image_url: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   brand: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,

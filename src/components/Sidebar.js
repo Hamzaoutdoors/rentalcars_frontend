@@ -24,6 +24,9 @@ const Logo = styled.div`
   height: 200px;
   width: 200px;
   margin-bottom: 10px;
+  ${mobile({
+    display: 'none',
+  })};
 `;
 
 const LogoImage = styled.img`
