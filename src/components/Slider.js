@@ -17,6 +17,7 @@ const Container = styled.div`
 
 const Arrow = styled.div`
     position: absolute;
+    pointer-events: ${(props) => (((props.slideIndex === 0 && props.direction === 'left') || ((props.slideIndex === data.length - 3) && props.direction === 'right')) && 'none')};
     width: 80px;
     height: 50px;
     border-top-${(props) => (props.direction === 'left' ? 'right' : 'left')}-radius: 180px;
@@ -45,32 +46,30 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: 150vw;
+    width: 100%;
     transition: all 1.5s ease-in-out;
-    transform: translateX(${(props) => props.slideIndex * -250}px);
 `;
 
 const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
 
-  const handleNext = (direction) => {
-    if (direction === 'left') {
-      setSlideIndex(slideIndex > 0 ? slideIndex - 2 : 0);
+  const handleNext = () => {
+    if (slideIndex === data.length - 3) {
+      setSlideIndex(0);
     } else {
-      setSlideIndex(slideIndex < data.length - 1 ? slideIndex + 2 : data.length - 1);
+      setSlideIndex(slideIndex + 1);
     }
   };
-
   return (
     <Container>
-      <Arrow direction="left" onClick={() => handleNext('left')}>
+      <Arrow direction="left" onClick={() => handleNext()} slideIndex={slideIndex}>
         <ArrowLeftOutlined style={{ fontSize: '3rem', color: '#e6e6e6' }} />
       </Arrow>
       <Wrapper slideIndex={slideIndex}>
-        {data.map((item) => (
+        {data.slice(slideIndex, slideIndex + 3).map((item) => (
           <CarCard key={item.id} item={item} />))}
       </Wrapper>
-      <Arrow direction="right" onClick={() => handleNext('right')}>
+      <Arrow direction="right" onClick={() => handleNext()} slideIndex={slideIndex}>
         <ArrowRightOutlined style={{ fontSize: '3rem', color: '#e6e6e6' }} />
       </Arrow>
     </Container>

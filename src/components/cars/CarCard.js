@@ -2,6 +2,7 @@
 
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { FavoriteBorderOutlined, ShoppingCartOutlined } from '@material-ui/icons';
 import PropTypes from 'prop-types';
 // import { mobile } from '../../responsive';
@@ -104,7 +105,23 @@ const CarCard = ({ item }) => {
     imageUrl, name, brand, color,
   } = item;
   return (
-    <Container>
+    <Container
+      as={motion.div}
+      initial={{
+        opacity: 0,
+        translateX: 50,
+      }}
+      animate={{
+        opacity: 1,
+        translateX: 0,
+        translateY: 0,
+      }}
+      transition={{
+        duration: 0.2,
+        delay: 0.3,
+      }}
+      style={{ maxWidth: '300px' }}
+    >
       <Circle bgColor={color} />
       <Image src={imageUrl} />
       <Info>
