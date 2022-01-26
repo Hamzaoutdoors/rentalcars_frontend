@@ -1,33 +1,45 @@
 const data = [
   {
+    id: 1,
     name: 'renegade',
     brand: 'jeep',
-    image_url: 'https://i.ibb.co/M6DqDcJ/2.png',
+    color: '#ffcccb',
+    image_url: 'https://i.ibb.co/TPSp6yR/9.png',
   },
   {
+    id: 2,
     name: 'escort',
     brand: 'ford',
-    image_url: 'https://i.ibb.co/Hpq2DCn/4.png',
+    color: '#ffcccb',
+    image_url: 'https://i.ibb.co/44HhvH9/5.png',
   },
   {
+    id: 3,
     name: 'palio',
     brand: 'fiat',
-    image_url: 'https://i.ibb.co/bvyvCC0/1.png',
+    color: '#ffcccb',
+    image_url: 'https://i.ibb.co/hgqn1y6/4.png',
   },
   {
+    id: 4,
     name: 'golf',
     brand: 'vw',
-    image_url: 'https://i.ibb.co/bvyvCC0/1.png',
+    color: '#ffcccb',
+    image_url: 'https://i.ibb.co/Fqd9Z73/3.png',
   },
   {
+    id: 5,
     name: 'clio',
     brand: 'renault',
-    image_url: 'https://i.ibb.co/bvyvCC0/4.png',
+    color: '#D3D3D3',
+    image_url: 'https://i.ibb.co/0BM7Pnd/2.png',
   },
   {
+    id: 6,
     name: 'civic',
     brand: 'honda',
-    image_url: 'https://i.ibb.co/bvyvCC0/2.png',
+    color: '#ffcccb',
+    image_url: 'https://i.ibb.co/hdWCftm/1.png',
   },
 ];
 
