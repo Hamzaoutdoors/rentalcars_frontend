@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FavoriteBorderOutlined, ShoppingCartOutlined } from '@material-ui/icons';
 import PropTypes from 'prop-types';
-// import { mobile } from '../../responsive';
+import { mobile } from '../../responsive';
 
 const Info = styled.div`
    opacity: 0;
@@ -39,6 +39,10 @@ const Container = styled.div`
     &:hover ${Info}{
         opacity: 1;
     }
+    ${mobile({
+    maxWidth: '250px !important',
+    height: 'auto',
+  })};
 `;
 
 const Image = styled.img`
@@ -55,6 +59,10 @@ const Circle = styled.div`
     background-color: ${(props) => props.bgColor};
     position: absolute;
     margin: -50px -30px 0 0;
+    ${mobile({
+    width: '200px',
+    height: '200px',
+  })};
 `;
 
 const Icon = styled.div`

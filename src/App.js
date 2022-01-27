@@ -11,8 +11,9 @@ import DetailsPage from './pages/DetailsPage';
 // import { getCars } from './redux/cars/carsSlice';
 // import { getCities, getReservations } from './redux/reservations/reservationsSlice';
 import Announcement from './components/Announcement';
-// import Sidebar from './components/Sidebar';
+import Sidebar from './components/Sidebar';
 import HomePage from './pages/HomePage';
+import LifeStyle from './pages/LifeStyle';
 
 const Container = styled.div`
   display: flex;
@@ -29,10 +30,11 @@ const App = () =>
     <Router>
       <Announcement />
       <Container>
-        {/* <Sidebar /> */}
+        <Sidebar />
         <Routes>
           <Route exact path="/" element={<HomePage />} />
           <Route path="/:car_id/details" element={<DetailsPage />} />
+          <Route path="/lifestyle" element={<LifeStyle />} />
         </Routes>
       </Container>
     </Router>

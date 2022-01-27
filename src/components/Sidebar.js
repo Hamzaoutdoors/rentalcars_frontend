@@ -117,7 +117,7 @@ const Sidebar = () => (
               Models
             </SidebarItem>
           </LinkElem>
-          <LinkElem exact to="/dashboard" activeClassName="activeClicked">
+          <LinkElem exact to="/lifestyle" activeClassName="activeClicked">
             <SidebarItem icon="table">
               LIFESTYLE
             </SidebarItem>
