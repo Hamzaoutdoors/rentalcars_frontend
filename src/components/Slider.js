@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@material-ui/icons';
 import CarCard from './cars/CarCard';
 import data from '../redux/cars/helpers/data';
-// import { mobile } from '../responsive';
+import { mobile } from '../responsive';
 
 const Container = styled.div`
     display: flex;
@@ -17,7 +17,8 @@ const Container = styled.div`
 
 const Arrow = styled.div`
     position: absolute;
-    pointer-events: ${(props) => (((props.slideIndex === 0 && props.direction === 'left') || ((props.slideIndex === data.length - 3) && props.direction === 'right')) && 'none')};
+    pointer-events: ${(props) => (((props.slideIndex === 0 && props.direction === 'left')
+     || ((props.slideIndex === data.length - 3) && props.direction === 'right')) && 'none')};
     width: 80px;
     height: 50px;
     border-top-${(props) => (props.direction === 'left' ? 'right' : 'left')}-radius: 180px;
@@ -40,6 +41,9 @@ const Arrow = styled.div`
       transform: translateX(${(props) => (props.direction === 'left' ? '-3px' : '3px')});
         opacity: 1;
     }
+    ${mobile({
+    pointerEvents: 'visible',
+  })};
 `;
 
 const Wrapper = styled.div`
@@ -53,23 +57,34 @@ const Wrapper = styled.div`
 const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
 
-  const handleNext = () => {
-    if (slideIndex === data.length - 3) {
-      setSlideIndex(0);
+  const itemsPerPage = () => {
+    if (window.innerWidth > 1000) {
+      return 3;
+    }
+    if (window.innerWidth > 700) {
+      return 2;
+    }
+    return 1;
+  };
+
+  const handleNext = (direction) => {
+    if (direction === 'left' || slideIndex === data.length - itemsPerPage()) {
+      setSlideIndex(slideIndex - 1);
     } else {
       setSlideIndex(slideIndex + 1);
     }
   };
+
   return (
     <Container>
-      <Arrow direction="left" onClick={() => handleNext()} slideIndex={slideIndex}>
+      <Arrow direction="left" onClick={() => handleNext('left')} slideIndex={slideIndex}>
         <ArrowLeftOutlined style={{ fontSize: '3rem', color: '#e6e6e6' }} />
       </Arrow>
       <Wrapper slideIndex={slideIndex}>
-        {data.slice(slideIndex, slideIndex + 3).map((item) => (
+        {data.slice(slideIndex, slideIndex + itemsPerPage()).map((item) => (
           <CarCard key={item.id} item={item} />))}
       </Wrapper>
-      <Arrow direction="right" onClick={() => handleNext()} slideIndex={slideIndex}>
+      <Arrow direction="right" onClick={() => handleNext('right')} slideIndex={slideIndex}>
         <ArrowRightOutlined style={{ fontSize: '3rem', color: '#e6e6e6' }} />
       </Arrow>
     </Container>

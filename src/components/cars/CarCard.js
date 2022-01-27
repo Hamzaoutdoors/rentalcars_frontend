@@ -118,7 +118,7 @@ const CarCard = ({ item }) => {
       }}
       transition={{
         duration: 0.2,
-        delay: 0.3,
+        delay: 0.2,
       }}
       style={{ maxWidth: '300px' }}
     >
