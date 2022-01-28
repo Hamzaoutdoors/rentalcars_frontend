@@ -5,7 +5,6 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
-// import store from './redux/configureStore';
 import styled from 'styled-components';
 import DetailsPage from './pages/DetailsPage';
 // import { getCars } from './redux/cars/carsSlice';
@@ -14,10 +13,12 @@ import DetailsPage from './pages/DetailsPage';
 import Sidebar from './components/Sidebar';
 import HomePage from './pages/HomePage';
 import AddCar from './pages/AddCar';
+import './App.css';
 
 const Container = styled.div`
   display: flex;
-  `;
+  max-width: 100vw;
+`;
 
 const App = () =>
   // useEffect(() => {
