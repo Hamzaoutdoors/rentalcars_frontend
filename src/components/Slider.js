@@ -58,15 +58,20 @@ const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
   const [size, setSize] = useState(3);
 
+  const handleResize = () => {
+    if (window.innerWidth > 1000) {
+      setSize(3);
+    } else if (window.innerWidth > 700) {
+      setSize(2);
+    } else {
+      setSize(1);
+    }
+  };
+
   useEffect(() => {
+    handleResize();
     window.addEventListener('resize', () => {
-      if (window.innerWidth > 1000) {
-        setSize(3);
-      } else if (window.innerWidth > 700) {
-        setSize(2);
-      } else {
-        setSize(1);
-      }
+      handleResize();
     });
   }, []);
 
