@@ -13,6 +13,7 @@ import DetailsPage from './pages/DetailsPage';
 import Announcement from './components/Announcement';
 import Sidebar from './components/Sidebar';
 import HomePage from './pages/HomePage';
+import LifeStyle from './pages/LifeStyle';
 
 const Container = styled.div`
   display: flex;
@@ -33,6 +34,7 @@ const App = () =>
         <Routes>
           <Route exact path="/" element={<HomePage />} />
           <Route path="/:car_id/details" element={<DetailsPage />} />
+          <Route path="/lifestyle" element={<LifeStyle />} />
         </Routes>
       </Container>
     </Router>
