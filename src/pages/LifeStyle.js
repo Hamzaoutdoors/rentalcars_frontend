@@ -7,7 +7,7 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-height: 100%;
+    height: 100vh;
     width: 100%;
     overflow-x: hidden;
     background-image: url("https://i.ibb.co/H7p4vLV/Car-Showroom-Promotion-Facebook-Post-2.png");
@@ -17,40 +17,36 @@ const Container = styled.div`
     padding: 20px;
     ${mobile({
     minHeight: '100vh',
-    width: '80%',
   })};
 `;
 
 const ImageContainer = styled.div`
-    height: 600px;
-    width: 600px;
-    flex: 1;
+    height: 80vh;
+    width: 50vw;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex: 1;
+    justify-self: right;
+    align-self: center;
     transition: all 0.5s ease;
     position: absolute;
     margin: -50px -30px 0 0;
-    ${mobile({
-    width: '100%',
-    height: '100%',
-  })};
-`;
+    background-color: rgba(0, 0, 0, 0.2);
+    background-image: url("https://i.ibb.co/j5Hys60/lifestyle.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
 
-const Image = styled.img`
-    width: 100%;
-    height: 100%;
     ${mobile({
-    transform: 'scale(0.8)',
-    objectFit: 'contain',
+    width: '80%',
+    height: '80%',
+    transform: 'translate(-10px, 30px)',
+    backgroundImage: 'url("https://i.ibb.co/hBLvjmq/lifestyle-mobile.png")',
   })};
 `;
 
 const LifeStyle = () => (
   <Container>
-    <ImageContainer>
-      <Image src="https://i.ibb.co/LPvxHkj/lifestyle.png" />
-    </ImageContainer>
+    <ImageContainer />
   </Container>
 );
 
