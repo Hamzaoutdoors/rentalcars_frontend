@@ -6,7 +6,7 @@
   - [ ] - 1 - Make a custom select Option using a Js file, 
   where we'll hide the original select/option and create our own list of items;
 
-## 2 - Redux Slices
+## 3 - Redux Slices
 
 - Cars:
   - [ ] - 1 - Add Extra-Reducers to connect with the Api;
