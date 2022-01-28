@@ -5,11 +5,13 @@ import { v4 as uuidv4 } from 'uuid';
 const Select = styled.select`
   background-color: white;
   padding: 0.5rem;
-  align-self: flex-start;
+  border: 1px solid grey;
   border-radius: 5px;
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-size: 18px;
+  font-weight: 300;
   color: grey;
-  border: 2px solid grey;
-  margin-bottom: 0.5rem;
+  box-shadow: 0px 3px 7px -2px rgba(79,79,79,0.64);
 `;
 
 const CityOption = () => {
