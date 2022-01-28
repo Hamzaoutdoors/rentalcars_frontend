@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
-import { uuid as uuidv4 } from 'uuidv4';
+import { v4 as uuidv4 } from 'uuid';
 
 const Select = styled.select`
   background-color: white;
@@ -18,7 +18,7 @@ const CityOption = () => {
   return (
     <Select>
       { cities.map((city) => (
-        <option key={() => uuidv4()} value={city.id}>
+        <option key={uuidv4()} value={city.id}>
           { city.name }
         </option>
       ))}
