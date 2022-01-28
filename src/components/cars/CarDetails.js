@@ -2,10 +2,9 @@
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import ChangeCircleOutlinedIcon from '@mui/icons-material/ChangeCircleOutlined';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import ChevronRightOutlinedIcon from '@mui/icons-material/ChevronRightOutlined';
-import HowToRegOutlinedIcon from '@mui/icons-material/HowToRegOutlined';
+import {
+  ArrowBackIos, CachedOutlined, ChevronRightOutlined, HowToRegOutlined,
+} from '@material-ui/icons';
 
 const CarImg = styled.img.attrs((props) => ({
   src: props.src,
@@ -143,17 +142,19 @@ const findCarById = (id, state) => {
 const CarDetails = () => {
   const state = useSelector((state) => state.cars.data);
   const { car_id } = useParams();
+  const car = findCarById(car_id, state);
+
   return (
     <div className="container" style={{ margin: 0 }}>
       <div className="row">
         <div className="d-flex flex-column align-items-center col-12 col-md-8" style={{ padding: 0 }}>
-          <CarImg src={findCarById(car_id, state).image_url} />
+          <CarImg src={car.image_url} />
           <div className="d-flex p-relative align-items-end w-100">
             <ReturnButton href="/">
-              <ArrowBackIosIcon />
+              <ArrowBackIos />
             </ReturnButton>
             <div className="mx-auto text-center">
-              <ChangeCircleOutlinedIcon sx={{ fontSize: '40px', marginBottom: '0.5rem' }} />
+              <CachedOutlined sx={{ fontSize: '40px', marginBottom: '0.5rem' }} />
               <h2 style={{ fontSize: '14px', margin: '0' }}>
                 Rotate
               </h2>
@@ -167,8 +168,8 @@ const CarDetails = () => {
         <div className="d-flex flex-column justify-content-center align-items-end col-12 col-md-4" style={{ maxHeight: '90%', padding: '0 2.3rem' }}>
           <div className="text-end">
             <CarTitle>
-              { state[car_id].name.charAt(0).toUpperCase()
-              + state[car_id].name.slice(1) }
+              { car.name.charAt(0).toUpperCase()
+              + car.name.slice(1) }
             </CarTitle>
             <SubTitle>
               Rent this car for a week and receive 1 extra day!
@@ -218,12 +219,12 @@ const CarDetails = () => {
             <DiscoverMore>
               DISCOVER MORE MODELS
               {' '}
-              <ChevronRightOutlinedIcon />
+              <ChevronRightOutlined />
             </DiscoverMore>
           </div>
           <ColorWheel />
           <ReserveButton>
-            <HowToRegOutlinedIcon />
+            <HowToRegOutlined />
             {'   '}
             Reserve
           </ReserveButton>
