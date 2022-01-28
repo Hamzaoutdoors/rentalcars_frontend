@@ -1,5 +1,3 @@
-// import React, { useEffect } from 'react';
-import React from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -13,6 +11,7 @@ import DetailsPage from './pages/DetailsPage';
 import Sidebar from './components/Sidebar';
 import HomePage from './pages/HomePage';
 import AddCar from './pages/AddCar';
+import LifeStyle from './pages/LifeStyle';
 import './App.css';
 
 const Container = styled.div`
@@ -36,6 +35,7 @@ const App = () =>
           <Route exact path="/" element={<HomePage />} />
           <Route path="/cars/:car_id/details" element={<DetailsPage />} />
           <Route path="/cars/new" element={<AddCar />} />
+          <Route path="/lifestyle" element={<LifeStyle />} />
         </Routes>
       </Container>
     </Router>

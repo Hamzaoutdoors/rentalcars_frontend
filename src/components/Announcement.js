@@ -13,7 +13,7 @@ const Container = styled.div`
 
 const Announcement = () => (
   <Container>
-    Super Deal! Free rental day after one week of rent.
+    Super Deal! One extra day after a Week of Rent.
     {' '}
   </Container>
 );

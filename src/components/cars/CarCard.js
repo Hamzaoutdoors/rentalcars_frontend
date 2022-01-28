@@ -1,10 +1,11 @@
-/* eslint-disable camelcase */
 /* eslint-disable react/forbid-prop-types */
+
 import styled from 'styled-components';
-// import { NavLink } from 'react-router-dom';
-import { FavoriteBorderOutlined, SearchOutlined, ShoppingCartOutlined } from '@material-ui/icons';
+import { NavLink } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { FavoriteBorderOutlined, ShoppingCartOutlined } from '@material-ui/icons';
 import PropTypes from 'prop-types';
-// import { mobile } from '../../responsive';
+import { mobile } from '../../responsive';
 
 const Info = styled.div`
    opacity: 0;
@@ -28,7 +29,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     margin: 20px;
-    min-width: 300px;
+    max-width: 300px;
     height: 350px;
     display: flex;
     justify-content: center;
@@ -38,6 +39,10 @@ const Container = styled.div`
     &:hover ${Info}{
         opacity: 1;
     }
+    ${mobile({
+    maxWidth: '250px !important',
+    height: 'auto',
+  })};
 `;
 
 const Image = styled.img`
@@ -54,6 +59,10 @@ const Circle = styled.div`
     background-color: ${(props) => props.bgColor};
     position: absolute;
     margin: -50px -30px 0 0;
+    ${mobile({
+    width: '200px',
+    height: '200px',
+  })};
 `;
 
 const Icon = styled.div`
@@ -101,22 +110,40 @@ const Detail = styled.div`
 
 const CarCard = ({ item }) => {
   const {
-    image_url, name, brand, color,
+    imageUrl, name, brand, color,
   } = item;
   return (
-    <Container>
+    <Container
+      as={motion.div}
+      initial={{
+        opacity: 0,
+        translateX: 50,
+      }}
+      animate={{
+        opacity: 1,
+        translateX: 0,
+        translateY: 0,
+      }}
+      transition={{
+        duration: 0.2,
+        delay: 0.2,
+      }}
+      style={{ maxWidth: '300px' }}
+    >
       <Circle bgColor={color} />
-      <Image src={image_url} />
+      <Image src={imageUrl} />
       <Info>
-        <Icon>
-          <ShoppingCartOutlined />
-        </Icon>
-        <Icon>
-          <SearchOutlined />
-        </Icon>
+        <NavLink to={`/cars/${item.id}/details`}>
+          <Icon>
+            <ShoppingCartOutlined />
+          </Icon>
+        </NavLink>
         <Icon>
           <FavoriteBorderOutlined />
         </Icon>
+        {/* <Icon>
+          <DeleteOutlined />
+        </Icon> */}
       </Info>
       <Detail>
         <h3>{name}</h3>
@@ -131,7 +158,7 @@ const CarCard = ({ item }) => {
 export default CarCard;
 
 CarCard.propTypes = {
-  image_url: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   brand: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,

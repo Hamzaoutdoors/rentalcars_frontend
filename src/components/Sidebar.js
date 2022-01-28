@@ -24,6 +24,9 @@ const Logo = styled.div`
   height: 200px;
   width: 200px;
   margin-bottom: 10px;
+  ${mobile({
+    display: 'none',
+  })};
 `;
 
 const LogoImage = styled.img`
@@ -114,7 +117,7 @@ const Sidebar = () => (
               Models
             </SidebarItem>
           </LinkElem>
-          <LinkElem exact to="/dashboard" activeClassName="activeClicked">
+          <LinkElem exact to="/lifestyle" activeClassName="activeClicked">
             <SidebarItem icon="table">
               LIFESTYLE
             </SidebarItem>
