@@ -10,9 +10,10 @@ import styled from 'styled-components';
 import DetailsPage from './pages/DetailsPage';
 // import { getCars } from './redux/cars/carsSlice';
 // import { getCities, getReservations } from './redux/reservations/reservationsSlice';
-import Announcement from './components/Announcement';
+// import Announcement from './components/Announcement';
 import Sidebar from './components/Sidebar';
 import HomePage from './pages/HomePage';
+import AddCar from './pages/AddCar';
 
 const Container = styled.div`
   display: flex;
@@ -27,12 +28,13 @@ const App = () =>
   // eslint-disable-next-line implicit-arrow-linebreak
   (
     <Router>
-      <Announcement />
+      {/* <Announcement /> */}
       <Container>
         <Sidebar />
         <Routes>
           <Route exact path="/" element={<HomePage />} />
-          <Route path="/:car_id/details" element={<DetailsPage />} />
+          <Route path="/cars/:car_id/details" element={<DetailsPage />} />
+          <Route path="/cars/new" element={<AddCar />} />
         </Routes>
       </Container>
     </Router>
