@@ -12,6 +12,7 @@ import Announcement from './components/Announcement';
 import Sidebar from './components/Sidebar';
 import HomePage from './pages/HomePage';
 import LifeStyle from './pages/LifeStyle';
+import CarsHome from './components/cars/CarsHome';
 
 const Container = styled.div`
   display: flex;
@@ -29,6 +30,7 @@ const App = () => (
       <Sidebar />
       <Routes>
         <Route exact path="/" element={<HomePage />} />
+        <Route exact path="/cars" element={<CarsHome />} />
         <Route path="/:car_id/details" element={<DetailsPage />} />
         <Route path="/lifestyle" element={<LifeStyle />} />
       </Routes>

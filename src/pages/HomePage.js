@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Slider from '../components/Slider';
+import { NavLink } from 'react-router-dom';
 // import Categories from '../components/Categories';
 // import Products from '../components/Products';
 // import Newsletter from '../components/Newsletter';
@@ -16,30 +16,38 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   overflow-x: hidden;
+  background-image: url('https://media.giphy.com/media/YC4SNe6t0Sbg8hH3Gt/giphy.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
 `;
 
-const Title = styled.h1`
-  font-size: 2.2em;
-  text-align: center;
-  font-weight: bold;
-`;
-
-const SubTitle = styled.h2`
-  font-size: 0.8em;
-  text-align: center;
-  letter-spacing: 1px;
-  padding-bottom: 20px;
-  font-weight: bold;
-  color: gray;
-  border-bottom: 2px dotted #D3D3D3;
-
-`;
+const Button = styled(NavLink)`
+padding: 0.5rem;
+border-radius: 15px;
+width: 250px;
+font-size: 1.2em;
+background-color: #97BF11 !important;
+text-decoration: none !important;
+text-align: center !important;
+color: white !important;
+cursor: pointer;
+border: 2px solid #f6a40e;
+text-transform: uppercase;
+transition: all 0.5s ease-in-out;
+transform: translateY(120px);
+&:hover {
+  color: white !important;
+  background-color: #9fcf01 !important;
+} 
+ `;
 
 const HomePage = () => (
   <Container>
-    <Title> LATEST MODELS</Title>
-    <SubTitle>Please select your car</SubTitle>
-    <Slider />
+    <Button to="/cars">
+      Start your journey
+    </Button>
   </Container>
 );
 

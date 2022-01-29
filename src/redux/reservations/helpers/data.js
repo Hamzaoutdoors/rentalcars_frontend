@@ -21,7 +21,7 @@ const data = {
       name: 'Belo Horizonte',
     },
     {
-      name: 'Fuck society',
+      name: 'New York',
     },
   ],
 };
