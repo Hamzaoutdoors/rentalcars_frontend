@@ -20,10 +20,11 @@ const Container = styled.div`
   align-items: center;
 `;
 
-const Logo = styled.div`
+const Logo = styled(NavLink)`
   height: 200px;
   width: 200px;
   margin-bottom: 10px;
+  text-decoration: none !important;
   ${mobile({
     display: 'none',
   })};
@@ -47,6 +48,7 @@ const Header = styled(CDBSidebarHeader)`
     display: 'none',
   })};
 `;
+
 const Content = styled.div`
     padding: 0px;
     margin: 0px;
@@ -102,7 +104,7 @@ const Signature = styled.span`
 
 const Sidebar = () => (
   <Container>
-    <Logo>
+    <Logo to="/">
       <LogoImage src="https://i.ibb.co/vxkd1PT/LOGO.png" />
     </Logo>
     <Wrapper as={CDBSidebar}>
@@ -111,7 +113,7 @@ const Sidebar = () => (
         <CDBSidebarMenu>
           <LinkElem
             exact
-            to="/"
+            to="/cars"
           >
             <SidebarItem icon="columns" ac>
               Models
@@ -122,7 +124,7 @@ const Sidebar = () => (
               LIFESTYLE
             </SidebarItem>
           </LinkElem>
-          <LinkElem exact to="/dashboard" activeClassName="activeClicked">
+          <LinkElem exact to="/" activeClassName="activeClicked">
             <SidebarItem icon="shopping-cart">
               shop
             </SidebarItem>

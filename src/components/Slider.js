@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@material-ui/icons';
+import { useSelector } from 'react-redux';
 import CarCard from './cars/CarCard';
-import data from '../redux/cars/helpers/data';
 import { mobile } from '../responsive';
 
 const Container = styled.div`
@@ -18,7 +18,7 @@ const Container = styled.div`
 const Arrow = styled.div`
     position: absolute;
     pointer-events: ${(props) => (((props.slideIndex === 0 && props.direction === 'left')
-     || ((props.slideIndex === data.length - props.size) && props.direction === 'right')) && 'none')};
+     || ((props.slideIndex === props.carsLength - props.size) && props.direction === 'right')) && 'none')};
     width: 80px;
     height: 50px;
     border-top-${(props) => (props.direction === 'left' ? 'right' : 'left')}-radius: 180px;
@@ -57,6 +57,7 @@ const Wrapper = styled.div`
 const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
   const [size, setSize] = useState(3);
+  const cars = useSelector((state) => state.cars.data);
 
   const handleResize = () => {
     if (window.innerWidth > 1000) {
@@ -76,7 +77,7 @@ const Slider = () => {
   }, []);
 
   const handleNext = (direction) => {
-    if (direction === 'left' || slideIndex === data.length - size) {
+    if (direction === 'left' || slideIndex === cars.length - size) {
       setSlideIndex(slideIndex - 1);
     } else {
       setSlideIndex(slideIndex + 1);
@@ -85,14 +86,14 @@ const Slider = () => {
 
   return (
     <Container>
-      <Arrow direction="left" size={size} onClick={() => handleNext('left')} slideIndex={slideIndex}>
+      <Arrow direction="left" size={size} onClick={() => handleNext('left')} slideIndex={slideIndex} carsLength={cars.length}>
         <ArrowLeftOutlined style={{ fontSize: '3rem', color: '#e6e6e6' }} />
       </Arrow>
       <Wrapper slideIndex={slideIndex}>
-        {data.slice(slideIndex, slideIndex + size).map((item) => (
+        {cars.slice(slideIndex, slideIndex + size).map((item) => (
           <CarCard key={item.id} item={item} />))}
       </Wrapper>
-      <Arrow direction="right" size={size} onClick={() => handleNext('right')} slideIndex={slideIndex}>
+      <Arrow direction="right" size={size} onClick={() => handleNext('right')} slideIndex={slideIndex} carsLength={cars.length}>
         <ArrowRightOutlined style={{ fontSize: '3rem', color: '#e6e6e6' }} />
       </Arrow>
     </Container>
