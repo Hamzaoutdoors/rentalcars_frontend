@@ -1,11 +1,13 @@
 /* eslint-disable camelcase */
+
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import ChangeCircleOutlinedIcon from '@mui/icons-material/ChangeCircleOutlined';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+// import HowToRegOutlinedIcon from '@mui/icons-material/HowToRegOutlined';
 import ChevronRightOutlinedIcon from '@mui/icons-material/ChevronRightOutlined';
-import HowToRegOutlinedIcon from '@mui/icons-material/HowToRegOutlined';
+import ReserveModal from '../reservations/ReserveModal';
 
 const CarImg = styled.img.attrs((props) => ({
   src: props.src,
@@ -30,22 +32,6 @@ const ReturnButton = styled.a.attrs((props) => ({
   color: white;
   &:hover {
     color: white;
-  } 
-`;
-
-const ReserveButton = styled.a.attrs((props) => ({
-  href: props.href,
-}))`
-  padding: 0.5rem;
-  border-radius: 20px;
-  width: 150px;
-  background-color: #97BF11;
-  text-decoration: none;
-  text-align: center !important;
-  color: white !important;
-  &:hover {
-    color: white !important;
-    cursor: pointer;
   } 
 `;
 
@@ -143,11 +129,13 @@ const findCarById = (id, state) => {
 const CarDetails = () => {
   const state = useSelector((state) => state.cars.data);
   const { car_id } = useParams();
+  const car = findCarById(car_id, state);
+
   return (
     <div className="container" style={{ margin: 0 }}>
       <div className="row">
         <div className="d-flex flex-column align-items-center col-12 col-md-8" style={{ padding: 0 }}>
-          <CarImg src={findCarById(car_id, state).image_url} />
+          <CarImg src={car.imageUrl} />
           <div className="d-flex p-relative align-items-end w-100">
             <ReturnButton href="/">
               <ArrowBackIosIcon />
@@ -167,8 +155,8 @@ const CarDetails = () => {
         <div className="d-flex flex-column justify-content-center align-items-end col-12 col-md-4" style={{ maxHeight: '90%', padding: '0 2.3rem' }}>
           <div className="text-end">
             <CarTitle>
-              { state[car_id].name.charAt(0).toUpperCase()
-              + state[car_id].name.slice(1) }
+              { car.name.charAt(0).toUpperCase()
+              + car.name.slice(1) }
             </CarTitle>
             <SubTitle>
               Rent this car for a week and receive 1 extra day!
@@ -222,11 +210,7 @@ const CarDetails = () => {
             </DiscoverMore>
           </div>
           <ColorWheel />
-          <ReserveButton>
-            <HowToRegOutlinedIcon />
-            {'   '}
-            Reserve
-          </ReserveButton>
+          <ReserveModal />
         </div>
       </div>
     </div>
