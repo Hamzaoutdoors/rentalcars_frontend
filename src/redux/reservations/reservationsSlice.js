@@ -74,7 +74,7 @@ const reservationsSlicer = createSlice({
   initialState,
   reducers: {
     expandModal: (state, action) => {
-      const reservations = { ...state };
+      const reservations = state;
       reservations.utils.openModal = action.payload;
       return reservations;
     },
