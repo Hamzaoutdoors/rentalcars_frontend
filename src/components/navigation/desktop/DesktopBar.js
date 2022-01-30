@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import {
   Facebook, Instagram, Pinterest, Twitter,
 } from '@material-ui/icons';
 import styled from 'styled-components';
-import LinkActive from './links/LinkActive';
+import LinkActive from '../links/LinkActive';
 
 const Container = styled.div`
   display: flex;
@@ -75,7 +75,14 @@ const Footer = styled.footer`
 `;
 
 const DesktopBar = () => {
-  const [active, setActive] = useState(null);
+  const [active, setActive] = useState('/');
+  const location = useLocation();
+
+  useEffect(() => {
+    window.addEventListener('locationchange', () => {
+      setActive(location.pathname);
+    });
+  }, []);
 
   return (
     <Container>
