@@ -17,9 +17,16 @@ import CarsHome from './components/cars/CarsHome';
 import MyReservations from './pages/MyReservations';
 import './App.css';
 
-const Container = styled.div`
+const PageContainer = styled.div`
   display: flex;
+  justify-content: center;
   max-width: 100vw;
+`;
+
+const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
 `;
 
 const App = () =>
@@ -31,18 +38,20 @@ const App = () =>
   // eslint-disable-next-line implicit-arrow-linebreak
   (
     <Router>
-      <Announcement />
-      <Container>
-        <Sidebar />
-        <Routes>
-          <Route exact path="/" element={<HomePage />} />
-          <Route path="/cars/:car_id/details" element={<DetailsPage />} />
-          <Route path="/cars/new" element={<AddCar />} />
-          <Route path="/cars" element={<CarsHome />} />
-          <Route path="/myreservations" element={<MyReservations />} />
-          <Route path="/lifestyle" element={<LifeStyle />} />
-        </Routes>
-      </Container>
+      <AppContainer>
+        <Announcement />
+        <PageContainer>
+          <Sidebar />
+          <Routes>
+            <Route exact path="/" element={<HomePage />} />
+            <Route path="/cars/:car_id/details" element={<DetailsPage />} />
+            <Route path="/cars/new" element={<AddCar />} />
+            <Route path="/cars" element={<CarsHome />} />
+            <Route path="/myreservations" element={<MyReservations />} />
+            <Route path="/lifestyle" element={<LifeStyle />} />
+          </Routes>
+        </PageContainer>
+      </AppContainer>
     </Router>
   );
 
