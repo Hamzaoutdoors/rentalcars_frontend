@@ -15,14 +15,22 @@ const initialState = {
 const utilReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_ITEM_SIZE: {
-      const newState = { ...state };
-      newState.slider.slideIndex = action.payload;
-      return { ...newState };
+      return {
+        ...state,
+        slider: {
+          ...state.slider,
+          itemsSize: action.payload,
+        },
+      };
     }
     case SET_SLIDER_INDEX: {
-      const newState = { ...state };
-      newState.slider.itemsSize = action.payload;
-      return { ...newState };
+      return {
+        ...state,
+        slider: {
+          ...state.slider,
+          slideIndex: action.payload,
+        },
+      };
     }
     default:
       return state;
