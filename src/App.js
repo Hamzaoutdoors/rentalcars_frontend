@@ -34,11 +34,11 @@ const App = () =>
       <Container>
         <Sidebar />
         <Routes>
-          <Route exact path="/cars" element={<CarsHome />} />
-          <Route exact path="/myreservations" element={<MyReservations />} />
+          <Route path="/cars" element={<CarsHome />} />
+          <Route path="/myreservations" element={<MyReservations />} />
           <Route path="/:car_id/details" element={<DetailsPage />} />
           <Route path="/lifestyle" element={<LifeStyle />} />
-          <Route exact path="/" element={<HomePage />} />
+          <Route path="/" exact element={<HomePage />} />
           <Route path="/cars/new" element={<AddCar />} />
         </Routes>
       </Container>
