@@ -8,7 +8,7 @@ import DetailsPage from './pages/DetailsPage';
 // import { getCars } from './redux/cars/carsSlice';
 // import { getCities, getReservations } from './redux/reservations/reservationsSlice';
 // import Announcement from './components/Announcement';
-import Sidebar from './components/Sidebar';
+import Sidebar from './components/navigation/Sidebar';
 import HomePage from './pages/HomePage';
 import AddCar from './pages/AddCar';
 import LifeStyle from './pages/LifeStyle';
