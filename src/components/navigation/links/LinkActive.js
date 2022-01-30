@@ -10,7 +10,7 @@ const LinkElem = styled(NavLink)`
   text-decoration: none;
   color: inherit;
   &:hover {
-    color: black;
+    color: ${(props) => props.color || 'black'};
   }
 `;
 
@@ -34,8 +34,8 @@ const LinkActive = (props) => {
   if (active === path) {
     return (
       <ActiveWrapper>
-        <LinkElem to={path} onClick={() => setActive(path)}>
-          Reserve a Car
+        <LinkElem to={path} color="white" onClick={() => setActive(path)}>
+          {text}
         </LinkElem>
       </ActiveWrapper>
     );
