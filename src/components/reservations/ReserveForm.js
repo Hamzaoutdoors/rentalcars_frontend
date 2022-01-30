@@ -4,6 +4,8 @@
 
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
+import { mobile } from '../../responsive';
 
 const Form = styled.form`
   padding: 0.5rem;
@@ -19,6 +21,9 @@ const Form = styled.form`
 `;
 const Wrapper = styled.div`
   display: flex;
+  ${mobile({
+    flexDirection: 'column',
+  })};
   `;
 
 const DateContainer = styled.div`
@@ -53,6 +58,7 @@ const Label = styled.label`
 
 const Filter = styled.div`
   display: flex;
+  flex: 1;
   align-items: center;
   margin-top: 1rem;
 `;
@@ -65,24 +71,23 @@ const FilterTitle = styled.span`
   text-align: left;
   padding-left: 2rem;
   width: 100%;
-  `;
+`;
 
 const SelectCity = styled.select`
-    width: 200px !important;
+    background-color: white;
+    color: grey;
     height: 40px !important;
-    padding: 1rem;
-    margin: 0.5rem;
-    height: 20px;
     border-radius: 20px;
-    color: black;
-  `;
+    background-color: white;
+    font-size: 16px;
+`;
 
 const SelectCityOption = styled.option``;
 
 const ReserveForm = () => {
   const minDate = new Date().toISOString().split('T')[0];
   const maxDate = new Date();
-  const cities = useSelector((state) => state.reservations.cities);
+  const { cities } = useSelector((state) => state.reservations);
 
   return (
     <>
@@ -94,7 +99,7 @@ const ReserveForm = () => {
               type="date"
               id="start"
               name="reserve-start"
-              value={minDate}
+              defaultValue={minDate}
               min={minDate}
               max={maxDate}
               required
@@ -106,7 +111,7 @@ const ReserveForm = () => {
               type="date"
               id="end"
               name="reserve-end"
-              value={minDate}
+              defaultValue={minDate}
               min={minDate}
               max={maxDate}
             />
@@ -119,9 +124,9 @@ const ReserveForm = () => {
               <SelectCityOption selected disabled>
                 Select City
               </SelectCityOption>
-              {cities.map((option) => (
-                <SelectCityOption key={option.name} value={option.name}>
-                  {option.name}
+              {cities.map((city) => (
+                <SelectCityOption key={uuidv4()} value={city.id}>
+                  {city.name}
                 </SelectCityOption>
               ))}
             </SelectCity>
