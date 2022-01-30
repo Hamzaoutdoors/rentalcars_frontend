@@ -29,7 +29,7 @@ const LinkActive = (props) => {
   } = props;
   const location = useLocation();
 
-  if (!active && path === location.pathname) setActive(path);
+  if (path === location.pathname) setActive(path);
 
   if (active === path) {
     return (
