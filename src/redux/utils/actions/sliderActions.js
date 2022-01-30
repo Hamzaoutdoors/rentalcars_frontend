@@ -11,4 +11,6 @@ const setSliderIndex = (index) => ({
   payload: index,
 });
 
-export { setItemSize, setSliderIndex };
+export {
+  setItemSize, setSliderIndex, SET_ITEM_SIZE, SET_SLIDER_INDEX,
+};
