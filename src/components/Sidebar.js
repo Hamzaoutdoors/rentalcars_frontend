@@ -124,14 +124,14 @@ const Sidebar = () => (
               LIFESTYLE
             </SidebarItem>
           </LinkElem>
-          <LinkElem exact to="/" activeClassName="activeClicked">
+          <LinkElem exact to="/myreservations" activeClassName="activeClicked">
             <SidebarItem icon="shopping-cart">
-              shop
+              My Reservations
             </SidebarItem>
           </LinkElem>
-          <LinkElem exact to="/dashboard" activeClassName="activeClicked">
+          <LinkElem exact to="/cars/new" activeClassName="activeClicked">
             <SidebarItem icon="car">
-              test drive
+              Add Your Car
             </SidebarItem>
           </LinkElem>
         </CDBSidebarMenu>
