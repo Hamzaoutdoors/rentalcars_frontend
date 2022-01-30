@@ -48,8 +48,9 @@ const Arrow = styled.div`
 
 const Wrapper = styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    padding: 0 5%;
     width: 100%;
     transition: all 1.5s ease-in-out;
 `;
@@ -60,7 +61,7 @@ const Slider = () => {
   const cars = useSelector((state) => state.cars.data);
 
   const handleResize = () => {
-    if (window.innerWidth > 1000) {
+    if (window.innerWidth > 1350) {
       setSize(3);
     } else if (window.innerWidth > 700) {
       setSize(2);
