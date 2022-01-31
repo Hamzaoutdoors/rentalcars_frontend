@@ -4,7 +4,7 @@ import CityOption from './CityOption';
 const Container = styled.form`
   display: flex;
   flex-direction: column;
-  padding: 2rem 2rem;
+  padding: 2rem 2rem 0rem 2rem;
   width: 100%;
 `;
 

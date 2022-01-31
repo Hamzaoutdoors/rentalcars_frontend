@@ -11,6 +11,9 @@ const initialState = {
   data: [...data.reservations],
   cities: [...data.cities],
   error: {},
+  utils: {
+    openModal: false,
+  },
 };
 
 export const getReservations = createAsyncThunk(
@@ -70,9 +73,15 @@ const reservationsSlicer = createSlice({
   name: 'missions',
   initialState,
   reducers: {
+    expandModal: (state, action) => {
+      const reservations = state;
+      reservations.utils.openModal = action.payload;
+      return reservations;
+    },
   },
   extraReducers: {
   },
 });
 
+export const { expandModal } = reservationsSlicer.actions;
 export default reservationsSlicer.reducer;

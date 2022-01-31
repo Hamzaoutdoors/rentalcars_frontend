@@ -133,7 +133,7 @@ const CarCard = ({ item }) => {
       <Circle bgColor={color} />
       <Image src={imageUrl} />
       <Info>
-        <NavLink to={`/${item.id}/details`}>
+        <NavLink to={`/cars/${item.id}/details`}>
           <Icon>
             <ShoppingCartOutlined />
           </Icon>

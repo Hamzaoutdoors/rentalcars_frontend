@@ -37,20 +37,18 @@ const Wrapper = styled.div`
 
 const AddCar = () => (
   <Container>
-    <Container>
-      <Wrapper>
-        <Title>
-          <p style={{ padding: '0 2.5rem', margin: 0 }}>
-            Add a Car to rent
-          </p>
-        </Title>
-        <SubTitle>
-          Let&apos;s be partners, with a 2% fee you can annouce your car on our website!
-          We are available in 10 cities!
-        </SubTitle>
-      </Wrapper>
-      <CarForm />
-    </Container>
+    <Wrapper>
+      <Title>
+        <p style={{ padding: '0 2.5rem', margin: 0 }}>
+          Add a Car to rent
+        </p>
+      </Title>
+      <SubTitle>
+        Let&apos;s be partners, with a 2% fee you can annouce your car on our website!
+        We are available in 10 cities!
+      </SubTitle>
+    </Wrapper>
+    <CarForm />
   </Container>
 );
 

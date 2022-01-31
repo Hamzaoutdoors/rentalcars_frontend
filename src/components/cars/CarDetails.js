@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import ChangeCircleOutlinedIcon from '@mui/icons-material/ChangeCircleOutlined';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-// import HowToRegOutlinedIcon from '@mui/icons-material/HowToRegOutlined';
 import ChevronRightOutlinedIcon from '@mui/icons-material/ChevronRightOutlined';
 import ReserveModal from '../reservations/ReserveModal';
 

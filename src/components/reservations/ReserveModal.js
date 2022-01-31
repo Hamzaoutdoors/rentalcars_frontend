@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -11,7 +10,10 @@ import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import { HowToRegOutlined } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
+import { useSelector } from 'react-redux';
 import ReserveForm from './ReserveForm';
+import store from '../../redux/configureStore';
+import { expandModal } from '../../redux/reservations/reservationsSlice';
 
 const ReserveBtn = styled(Button)`
   padding: 0.5rem;
@@ -120,28 +122,25 @@ BootstrapDialogTitle.propTypes = {
 };
 
 const ReserveModal = () => {
-  const [open, setOpen] = useState(false);
+  const { openModal } = useSelector((state) => state.reservations.utils);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
+  const toggleModal = () => {
+    store.dispatch(expandModal(!openModal));
   };
 
   return (
     <>
-      <ReserveBtn variant="outlined" onClick={handleClickOpen}>
+      <ReserveBtn variant="outlined" onClick={toggleModal}>
         <HowToRegOutlined />
         Reserve
       </ReserveBtn>
 
       <BootstrapDialog
-        onClose={handleClose}
+        onClose={toggleModal}
         aria-labelledby="customized-dialog-title"
-        open={open}
+        open={openModal}
       >
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={toggleModal}>
           Reserve Car
         </BootstrapDialogTitle>
         <Content dividers>
