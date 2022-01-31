@@ -7,7 +7,7 @@ const Container = styled.div`
   background-color: white;
   width: 70%;
   height: 100%;
-  z-index: 1;
+  z-index: 3;
   top: 0;
   left: 0;
 `;
