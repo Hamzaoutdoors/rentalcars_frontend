@@ -27,7 +27,7 @@ const DetailBtn = styled(Button)`
 `;
 
 const Title = styled(DialogTitle)`
-  background-color: #f6a40e; 
+  background-color: #5688ae; 
   text-align: center;
   font-size: 1.5rem;
   font-weight: bold;

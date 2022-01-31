@@ -10,7 +10,11 @@ import styled from 'styled-components';
 import Sidebar from './components/navigation/Sidebar';
 import Announcement from './components/Announcement';
 import HomePage from './pages/HomePage';
-import links from './navigation';
+import AddCar from './pages/AddCar';
+import LifeStyle from './pages/LifeStyle';
+import CarsHome from './components/cars/CarsHome';
+import MyReservations from './pages/MyReservations';
+import DetailsPage from './pages/DetailsPage';
 
 import './App.css';
 
