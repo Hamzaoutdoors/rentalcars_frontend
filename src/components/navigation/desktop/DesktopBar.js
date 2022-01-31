@@ -22,7 +22,7 @@ const linksText = [
   'Announce a Car',
   'My Reservations',
   'Lifestyle',
-  'Dashboard',
+  ['Dashboard', 'Cars', 'Reservations'],
 ];
 
 const Container = styled.div`
@@ -114,13 +114,23 @@ const DesktopBar = () => {
         <LogoImage src="https://i.ibb.co/vxkd1PT/LOGO.png" />
       </Logo>
       <Nav className="sidebar-content">
-        { paths.map((path, index) => (
-          <LinkActive
-            key={uuidv4()}
-            path={path}
-            text={linksText[index]}
-          />
-        ))}
+        { linksText.map((text, index) => {
+          let nestedLinks = [];
+          let propText = text;
+          if (typeof text === 'object') {
+            nestedLinks = text.slice(1);
+            [propText] = text;
+          }
+
+          return (
+            <LinkActive
+              key={uuidv4()}
+              path={paths[index]}
+              nestedLinks={nestedLinks}
+              text={propText}
+            />
+          );
+        })}
       </Nav>
       <Footer>
         <SocialContainer className="sidebar-btn-wrapper">
