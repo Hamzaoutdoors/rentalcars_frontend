@@ -1,7 +1,9 @@
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
-import { useState } from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 import Options from './Options';
+import store from '../../../redux/configureStore';
+import { toggleMobileModal } from '../../../redux/utils/actions/navActions';
 
 const Container = styled.div`
   position: absolute;
@@ -11,18 +13,22 @@ const Container = styled.div`
   z-index: 1;
 `;
 
-const MobileBar = () => {
-  const [options, setOptions] = useState(false);
+const toggleModal = (payload) => {
+  store.dispatch(toggleMobileModal(payload));
+};
 
-  if (options) {
+const MobileBar = () => {
+  const { expandMobile } = useSelector((state) => state.utils.navBar);
+
+  if (expandMobile) {
     return (
-      <Options closeOptions={setOptions} />
+      <Options closeOptions={toggleModal} />
     );
   }
 
   return (
     <Container>
-      <MenuOutlinedIcon sx={{ fontSize: 32 }} onClick={() => setOptions(!options)} />
+      <MenuOutlinedIcon sx={{ fontSize: 32 }} onClick={() => toggleModal(!expandMobile)} />
     </Container>
   );
 };
