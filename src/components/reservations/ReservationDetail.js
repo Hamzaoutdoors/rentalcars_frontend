@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable react/jsx-props-no-spreading */
 import { useState } from 'react';
 import PropTypes from 'prop-types';
@@ -12,6 +13,7 @@ import { styled } from '@mui/material/styles';
 import {
   DateRange,
 } from '@mui/icons-material';
+import { numOfDays } from '../../logic/date';
 
 const DetailBtn = styled(Button)`
   background-color: #5688ae !important;
@@ -21,6 +23,7 @@ const DetailBtn = styled(Button)`
   border: 1px solid #6d7993 !important;
   border-radius: 10px !important;
   padding: 0.3rem !important;
+  font-size: 0.8rem !important;
 &:hover {
   color: #6d7993 !important;
   background-color: white !important;
@@ -58,12 +61,18 @@ margin-bottom: 1rem;
 const Date = styled(Typography)`
   display: flex;
   padding-left: 1rem;
-  font-size: 1.5rem;
+  font-size: 1rem !important;
+`;
+
+const DateContent = styled(Typography)`
+    font-size: 1rem;
+    padding-left: 0.5rem;
+    border-bottom: 1px double #ccc;
 `;
 
 const AmountText = styled(Typography)`
   font-size: 1rem;
-  text-shadow: 1px 1px 1px #f6a40e;
+  text-shadow: 1px 1px 1px #5688ae;
   font-family: 'Urbanist', sans-serif;
   color: black;
   border-bottom: 1px solid #ccc;
@@ -109,7 +118,9 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-const ReservationDetail = () => {
+const ReservationDetail = ({ reservationDetail }) => {
+  const { start_date, end_date } = reservationDetail;
+
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -137,18 +148,25 @@ const ReservationDetail = () => {
           <Dates>
             <Date>
               <DateRange />
-              <Typography variant="h6">
-                2020-05-01
-              </Typography>
+              <DateContent>
+                {start_date}
+              </DateContent>
             </Date>
             <Date>
               <DateRange />
-              <Typography variant="h6">
-                2020-05-01
-              </Typography>
+              <DateContent>
+                {end_date}
+              </DateContent>
             </Date>
           </Dates>
           <Typography gutterBottom className="desc">
+            Reservation Duration :
+            {' '}
+            {numOfDays(start_date, end_date)}
+            {' '}
+            days
+          </Typography>
+          <Typography gutterBottom>
             The Total Amount of the Reservation is:
           </Typography>
           <AmountText>
@@ -164,3 +182,10 @@ const ReservationDetail = () => {
 };
 
 export default ReservationDetail;
+
+ReservationDetail.propTypes = {
+  reservationDetail: PropTypes.shape({
+    start_date: PropTypes.string.isRequired,
+    end_date: PropTypes.string.isRequired,
+  }).isRequired,
+};

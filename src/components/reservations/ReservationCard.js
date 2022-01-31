@@ -95,6 +95,7 @@ const CancelButton = styled(Button)`
   border-radius: 10px !important;
   width: 100px !important;
   margin-left: 1rem !important;
+  font-size: 0.8rem !important;
   &:hover {
     color: #c70000 !important;
     background-color: white !important;
@@ -107,7 +108,7 @@ const ReservationCard = ({ reservationDetail }) => {
   // This linters complains about the use of
   // camelCase for the variables, but in our API we use snake_case for Ruby on rails convention.
 
-  const { start_date, city } = reservationDetail;
+  const { end_date, start_date, city } = reservationDetail;
 
   return (
     <CardContainer
