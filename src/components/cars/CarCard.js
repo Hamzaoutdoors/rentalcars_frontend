@@ -3,8 +3,9 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FavoriteBorderOutlined, ShoppingCartOutlined } from '@material-ui/icons';
+import { FavoriteBorderOutlined } from '@material-ui/icons';
 import PropTypes from 'prop-types';
+import { CarRentalOutlined } from '@mui/icons-material';
 import { mobile } from '../../responsive';
 
 const Info = styled.div`
@@ -73,6 +74,8 @@ const Icon = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    text-decoration: none;
+    color: black;
     margin: 7px;
     transition: all 0.5s ease;
     cursor: pointer;
@@ -135,7 +138,7 @@ const CarCard = ({ item }) => {
       <Info>
         <NavLink to={`/cars/${item.id}/details`}>
           <Icon>
-            <ShoppingCartOutlined />
+            <CarRentalOutlined />
           </Icon>
         </NavLink>
         <Icon>

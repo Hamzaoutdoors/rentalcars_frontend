@@ -1,18 +1,18 @@
 const data = {
   reservations: [
     {
-      start_date: '10012016',
-      end_date: '22012016',
+      start_date: '2010-01-01',
+      end_date: '2010-01-02',
       city: 'New York',
     },
     {
-      start_date: '10032016',
-      end_date: '22032016',
+      start_date: '2010-01-01',
+      end_date: '2010-01-04',
       city: 'Tangier',
     },
     {
-      start_date: '10022016',
-      end_date: '22022016',
+      start_date: '2010-01-01',
+      end_date: '2010-01-03',
       city: 'Paris',
     },
   ],

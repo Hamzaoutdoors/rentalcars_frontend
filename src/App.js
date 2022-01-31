@@ -4,7 +4,6 @@ import {
   Route,
 } from 'react-router-dom';
 import styled from 'styled-components';
-import DetailsPage from './pages/DetailsPage';
 // import { getCars } from './redux/cars/carsSlice';
 // import { getCities, getReservations } from './redux/reservations/reservationsSlice';
 // import Announcement from './components/Announcement';
@@ -15,6 +14,8 @@ import AddCar from './pages/AddCar';
 import LifeStyle from './pages/LifeStyle';
 import CarsHome from './components/cars/CarsHome';
 import MyReservations from './pages/MyReservations';
+import DetailsPage from './pages/DetailsPage';
+
 import './App.css';
 
 const PageContainer = styled.div`
