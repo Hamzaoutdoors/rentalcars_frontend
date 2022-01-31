@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
 import * as React from 'react';
 import Card from '@mui/material/Card';
@@ -8,6 +9,18 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import {
+  Star, LocalGasStation, WbAuto, AcUnit, PriceCheck, EventSeat,
+} from '@mui/icons-material';
+import { mobile } from '../../responsive';
+import ReservationDetail from './ReservationDetail';
+
+const CardContainer = styled(Card)`
+   padding: 1rem;
+   ${mobile({
+    padding: '0.4rem',
+  })};
+`;
 
 const CardImage = styled(CardMedia).attrs((props) => ({
   image: props.image,
@@ -17,16 +30,62 @@ const CardImage = styled(CardMedia).attrs((props) => ({
     background-size: cover;
 `;
 
-const DetailsButton = styled(Button)`
-  background-color: #5688ae !important;
-  text-decoration: none !important;
-  text-align: center !important;
-  color: white !important;
-  border: 1px solid #6d7993 !important;
-  border-radius: 10px !important;
-&:hover {
-  color: #6d7993 !important;
-  background-color: white !important;
+const TitleContainer = styled(Typography)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #ccc;
+`;
+
+const CardTitle = styled(Typography)`
+  font-size: 1.5rem; 
+  font-weight: bold;
+  padding-bottom: 0.5rem;
+`;
+
+const Icon = styled.div`
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    margin: 7px;
+    cursor: pointer;
+    color: #5688ae;
+`;
+
+const CarDetail = styled(Typography)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+  text-align: center;
+  width: 100%;
+`;
+
+const ListIcons = styled.ul`
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  margin: 1rem 0;
+  padding: 0;
+  `;
+
+const DetailIcon = styled.li`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: gray;
+  margin: 0.1rem;
+  font-size: 0.8rem !important;
 `;
 
 const CancelButton = styled(Button)`
@@ -48,10 +107,10 @@ const ReservationCard = ({ reservationDetail }) => {
   // This linters complains about the use of
   // camelCase for the variables, but in our API we use snake_case for Ruby on rails convention.
 
-  const { start_date, end_date, city } = reservationDetail;
+  const { start_date, city } = reservationDetail;
 
   return (
-    <Card
+    <CardContainer
       sx={{
         width: {
           sx: 1.0, // 100%
@@ -67,33 +126,57 @@ const ReservationCard = ({ reservationDetail }) => {
         image="https://i.ibb.co/GPj1fBB/11.png"
       />
       <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Word of the Day
-        </Typography>
-        <Typography variant="h5" component="div">
-          be
-          {' '}
-          lent
-        </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          adjective
-          {end_date}
-          {' '}
-          and
-          {' '}
-          {city}
-        </Typography>
-        <Typography variant="body2">
-          well meaning and kindly.
-          <br />
-          {start_date}
-        </Typography>
+        {/* <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+            Reservation City:
+          </Typography> */}
+        <TitleContainer>
+          <CardTitle variant="h5" component="div">
+            {city}
+          </CardTitle>
+          <Icon>
+            <Star />
+          </Icon>
+        </TitleContainer>
+        <CarDetail variant="body2">
+          <ListIcons>
+            <DetailIcon sx={{ fontSize: 10 }}>
+              <LocalGasStation />
+              <Typography variant="body2" component="span">
+                Diesel
+              </Typography>
+            </DetailIcon>
+            <DetailIcon>
+              <WbAuto />
+              <Typography variant="body2" component="span">
+                Auto
+              </Typography>
+            </DetailIcon>
+            <DetailIcon>
+              <AcUnit />
+              <Typography variant="body2" component="span">
+                Climate
+              </Typography>
+            </DetailIcon>
+            <DetailIcon>
+              <EventSeat />
+              <Typography variant="body2" component="span">
+                Comfort
+              </Typography>
+            </DetailIcon>
+            <DetailIcon>
+              <PriceCheck />
+              <Typography variant="body2" component="span">
+                Eco
+              </Typography>
+            </DetailIcon>
+          </ListIcons>
+        </CarDetail>
       </CardContent>
       <CardActions>
-        <DetailsButton size="small">Reservation Detail</DetailsButton>
-        <CancelButton size="small" className="btn btn-danger">Cancel</CancelButton>
+        <ReservationDetail reservationDetail={reservationDetail} />
+        <CancelButton size="small">Cancel</CancelButton>
       </CardActions>
-    </Card>
+    </CardContainer>
   );
 };
 
