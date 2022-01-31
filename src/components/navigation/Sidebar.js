@@ -14,13 +14,13 @@ const setDefaultWhenUnmount = () => {
 const handleResize = () => {
   if (window.innerWidth > 1150) {
     store.dispatch(toggleMobile(false));
+  } else {
+    store.dispatch(toggleMobile(true));
   }
-
-  store.dispatch(toggleMobile(true));
 };
 
 const Sidebar = () => {
-  const { isMobile } = useSelector((state) => state.utils.navbar);
+  const { mobile } = useSelector((state) => state.utils.navBar);
 
   useEffect(() => {
     handleResize();
@@ -33,7 +33,7 @@ const Sidebar = () => {
     };
   }, []);
 
-  if (isMobile) {
+  if (mobile) {
     return (
       <>
         <MobileBar />
