@@ -6,16 +6,24 @@ import {
 import styled from 'styled-components';
 // import { getCars } from './redux/cars/carsSlice';
 // import { getCities, getReservations } from './redux/reservations/reservationsSlice';
+// import Announcement from './components/Announcement';
+import Sidebar from './components/navigation/Sidebar';
 import Announcement from './components/Announcement';
-import Sidebar from './components/Sidebar';
 import HomePage from './pages/HomePage';
 import links from './navigation';
 
 import './App.css';
 
-const Container = styled.div`
+const PageContainer = styled.div`
   display: flex;
+  justify-content: center;
   max-width: 100vw;
+`;
+
+const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
 `;
 
 const App = () =>
@@ -27,16 +35,20 @@ const App = () =>
   // eslint-disable-next-line implicit-arrow-linebreak
   (
     <Router>
-      <Announcement />
-      <Container>
-        <Sidebar />
-        <Routes>
-          <Route exact path="/" element={<HomePage />} />
-          {links.map((link) => (
-            <Route key={link.id} path={link.path} element={link.element} />
-          ))}
-        </Routes>
-      </Container>
+      <AppContainer>
+        <Announcement />
+        <PageContainer>
+          <Sidebar />
+          <Routes>
+            <Route exact path="/" element={<HomePage />} />
+            <Route path="/cars/:car_id/details" element={<DetailsPage />} />
+            <Route path="/cars/new" element={<AddCar />} />
+            <Route path="/cars" element={<CarsHome />} />
+            <Route path="/myreservations" element={<MyReservations />} />
+            <Route path="/lifestyle" element={<LifeStyle />} />
+          </Routes>
+        </PageContainer>
+      </AppContainer>
     </Router>
   );
 

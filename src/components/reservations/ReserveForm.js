@@ -1,7 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-// import { useState } from 'react';
-// import PropTypes from 'prop-types';
-
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
