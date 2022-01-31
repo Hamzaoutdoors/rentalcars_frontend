@@ -1,8 +1,11 @@
 import { SET_ITEM_SIZE, SET_SLIDER_INDEX } from './actions/sliderActions';
-import { TOGGLE_MODAL, SET_ACTIVE_LINK, SET_DASHBOARD_CHILD_LINK } from './actions/navActions';
+import {
+  TOGGLE_MODAL, SET_ACTIVE_LINK, SET_DASHBOARD_CHILD_LINK, IS_MOBILE,
+} from './actions/navActions';
 
 const initialState = {
   navBar: {
+    mobile: false,
     expandMobile: false,
     activeLink: '/',
     activeDashboardLink: 'cars',
@@ -33,12 +36,21 @@ const utilReducer = (state = initialState, action) => {
         },
       };
     }
-    case TOGGLE_MODAL: {
+    case IS_MOBILE: {
       return {
         ...state,
         navBar: {
           ...state.navBar,
           expandMobile: action.payload,
+        },
+      };
+    }
+    case TOGGLE_MODAL: {
+      return {
+        ...state,
+        navBar: {
+          ...state.navBar,
+          mobile: action.payload,
         },
       };
     }
