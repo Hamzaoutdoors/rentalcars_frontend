@@ -1,8 +1,5 @@
-/* eslint-disable max-len */
-import { React, useState, useEffect } from 'react';
-
-// import { NavLink } from 'react-router-dom';
-// import styled from 'styled-components';
+import { React, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import DesktopBar from './desktop/DesktopBar';
 import MobileBar from './mobile/MobileBar';
 
@@ -15,7 +12,7 @@ const handleResize = () => {
 };
 
 const Sidebar = () => {
-  const [mobile, setMobile] = useState(false);
+  const { isMobile } = useSelector((state) => state.utils.navbar);
 
   useEffect(() => {
     setMobile(handleResize());
@@ -24,7 +21,15 @@ const Sidebar = () => {
     });
   }, []);
 
-  if (mobile) {
+  // useEffect(() => {
+  //   first;
+
+  //   return () => {
+  //     second;
+  //   };
+  // }, [third]);
+
+  if (isMobile) {
     return (
       <>
         <MobileBar />
