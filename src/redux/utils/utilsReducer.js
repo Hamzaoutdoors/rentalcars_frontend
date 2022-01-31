@@ -8,7 +8,7 @@ const initialState = {
     mobile: false,
     expandMobile: false,
     activeLink: '/',
-    activeDashboardLink: 'cars',
+    activeDashboardLink: 'Cars',
   },
   slider: {
     slideIndex: 0,
