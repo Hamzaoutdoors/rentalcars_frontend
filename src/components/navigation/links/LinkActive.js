@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
@@ -35,9 +35,6 @@ const LinkActive = (props) => {
   const {
     path, text,
   } = props;
-  const location = useLocation();
-
-  if (path === location.pathname) dispatchAction(setActiveLink, path);
 
   if (activeLink === path) {
     return (
