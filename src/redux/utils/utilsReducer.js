@@ -41,7 +41,7 @@ const utilReducer = (state = initialState, action) => {
         ...state,
         navBar: {
           ...state.navBar,
-          expandMobile: action.payload,
+          mobile: action.payload,
         },
       };
     }
@@ -50,7 +50,7 @@ const utilReducer = (state = initialState, action) => {
         ...state,
         navBar: {
           ...state.navBar,
-          mobile: action.payload,
+          expandMobile: action.payload,
         },
       };
     }
