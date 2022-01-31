@@ -1,9 +1,29 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import {
   Facebook, Instagram, Pinterest, Twitter,
 } from '@material-ui/icons';
 import styled from 'styled-components';
+import { v4 as uuidv4 } from 'uuid';
+import { useEffect } from 'react';
 import LinkActive from '../links/LinkActive';
+import store from '../../../redux/configureStore';
+import { setActiveLink } from '../../../redux/utils/actions/navActions';
+
+const paths = [
+  '/',
+  '/cars/new',
+  '/myreservations',
+  '/lifestyle',
+  '/dashboard',
+];
+
+const linksText = [
+  'Reserve a Car',
+  'Announce a Car',
+  'My Reservations',
+  'Lifestyle',
+  'Dashboard',
+];
 
 const Container = styled.div`
   display: flex;
@@ -73,53 +93,56 @@ const Footer = styled.footer`
   padding: 1rem;
 `;
 
-const DesktopBar = () => (
-  <Container>
-    <Logo to="/">
-      <LogoImage src="https://i.ibb.co/vxkd1PT/LOGO.png" />
-    </Logo>
-    <Nav className="sidebar-content">
-      <LinkActive
-        path="/"
-        text="Reserve a Car"
-      />
-      <LinkActive
-        path="/cars/new"
-        text="Announce a Car"
-      />
-      <LinkActive
-        path="/myreservations"
-        text="My Reservations"
-      />
-      <LinkActive
-        path="/lifestyle"
-        text="Lifestyle"
-      />
-      <LinkActive
-        path="/dashboard"
-        text="Dashboard"
-      />
-    </Nav>
-    <Footer>
-      <SocialContainer className="sidebar-btn-wrapper">
-        <SocialIcon color="3b5999">
-          <Facebook />
-        </SocialIcon>
-        <SocialIcon color="e4405f">
-          <Instagram />
-        </SocialIcon>
-        <SocialIcon color="55acee">
-          <Twitter />
-        </SocialIcon>
-        <SocialIcon color="e60023">
-          <Pinterest />
-        </SocialIcon>
-      </SocialContainer>
-      <Signature>
-        2022 © MIT license
-      </Signature>
-    </Footer>
-  </Container>
-);
+const activeLink = (payload) => {
+  store.dispatch(setActiveLink(payload));
+};
+
+const DesktopBar = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (paths.includes(location.pathname)) {
+      activeLink(location.pathname);
+    } else {
+      activeLink('/');
+    }
+  }, []);
+
+  return (
+    <Container>
+      <Logo to="/">
+        <LogoImage src="https://i.ibb.co/vxkd1PT/LOGO.png" />
+      </Logo>
+      <Nav className="sidebar-content">
+        { paths.map((path, index) => (
+          <LinkActive
+            key={uuidv4()}
+            path={path}
+            text={linksText[index]}
+          />
+        ))}
+      </Nav>
+      <Footer>
+        <SocialContainer className="sidebar-btn-wrapper">
+          <SocialIcon color="3b5999">
+            <Facebook />
+          </SocialIcon>
+          <SocialIcon color="e4405f">
+            <Instagram />
+          </SocialIcon>
+          <SocialIcon color="55acee">
+            <Twitter />
+          </SocialIcon>
+          <SocialIcon color="e60023">
+            <Pinterest />
+          </SocialIcon>
+        </SocialContainer>
+        <Signature>
+          2022 © MIT license
+        </Signature>
+      </Footer>
+    </Container>
+  );
+};
 
 export default DesktopBar;
