@@ -1,6 +1,9 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+import { setActiveLink } from '../../../redux/utils/actions/navActions';
+import store from '../../../redux/configureStore';
 
 const LinkElem = styled(NavLink)`
   font-size: 16px;
@@ -23,18 +26,23 @@ const ActiveWrapper = styled.div`
   color: white;
 `;
 
+const dispatchAction = (action, payload) => {
+  store.dispatch(action(payload));
+};
+
 const LinkActive = (props) => {
+  const { activeLink } = useSelector((state) => state.utils.navBar);
   const {
     path, text,
   } = props;
   const location = useLocation();
 
-  if (path === location.pathname) setActive(path);
+  if (path === location.pathname) dispatchAction(setActiveLink, path);
 
-  if (active === path) {
+  if (activeLink === path) {
     return (
       <ActiveWrapper>
-        <LinkElem to={path} color="white" onClick={() => setActive(path)}>
+        <LinkElem to={path} color="white" onClick={() => dispatchAction(setActiveLink, path)}>
           {text}
         </LinkElem>
       </ActiveWrapper>
@@ -42,7 +50,7 @@ const LinkActive = (props) => {
   }
 
   return (
-    <LinkElem to={path} onClick={() => setActive(path)}>
+    <LinkElem to={path} onClick={() => dispatchAction(setActiveLink, path)}>
       {text}
     </LinkElem>
   );
