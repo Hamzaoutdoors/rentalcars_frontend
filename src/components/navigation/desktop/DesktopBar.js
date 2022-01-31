@@ -1,29 +1,7 @@
-import { NavLink, useLocation } from 'react-router-dom';
-import {
-  Facebook, Instagram, Pinterest, Twitter,
-} from '@material-ui/icons';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { v4 as uuidv4 } from 'uuid';
-import { useEffect } from 'react';
-import LinkActive from '../links/LinkActive';
-import store from '../../../redux/configureStore';
-import { setActiveLink } from '../../../redux/utils/actions/navActions';
-
-const paths = [
-  '/',
-  '/cars/new',
-  '/myreservations',
-  '/lifestyle',
-  '/dashboard',
-];
-
-const linksText = [
-  'Reserve a Car',
-  'Announce a Car',
-  'My Reservations',
-  'Lifestyle',
-  ['Dashboard', 'Cars', 'Reservations'],
-];
+import Footer from '../footer/Footer';
+import NavLinks from '../links/NavLinks';
 
 const Container = styled.div`
   display: flex;
@@ -49,110 +27,14 @@ const LogoImage = styled.img`
   height: 100%;
 `;
 
-const Nav = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 1rem 0 1rem 1rem;
-  width: 100%;
-  margin: 0px;
-  margin-bottom: auto;
-`;
-
-const SocialContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: '20px 5px';
-    margin-bottom: 1rem;
-    text-align: center;
-`;
-
-const SocialIcon = styled.div`
-   width: 25px;
-   height: 25px;
-   border-radius: 50%;
-   color: #fff;
-   background-color : #${(props) => props.color};
-   cursor: pointer;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   margin-right: 20px;
-`;
-
-const Signature = styled.span`
-    font-size: 12px;
-    font-weight: 400;
-    text-align: center;
-`;
-
-const Footer = styled.footer`
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-`;
-
-const activeLink = (payload) => {
-  store.dispatch(setActiveLink(payload));
-};
-
-const DesktopBar = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    if (paths.includes(location.pathname)) {
-      activeLink(location.pathname);
-    } else {
-      activeLink('/');
-    }
-  }, []);
-
-  return (
-    <Container>
-      <Logo to="/">
-        <LogoImage src="https://i.ibb.co/vxkd1PT/LOGO.png" />
-      </Logo>
-      <Nav className="sidebar-content">
-        { linksText.map((text, index) => {
-          let nestedLinks = [];
-          let propText = text;
-          if (typeof text === 'object') {
-            nestedLinks = text.slice(1);
-            [propText] = text;
-          }
-
-          return (
-            <LinkActive
-              key={uuidv4()}
-              path={paths[index]}
-              nestedLinks={nestedLinks}
-              text={propText}
-            />
-          );
-        })}
-      </Nav>
-      <Footer>
-        <SocialContainer className="sidebar-btn-wrapper">
-          <SocialIcon color="3b5999">
-            <Facebook />
-          </SocialIcon>
-          <SocialIcon color="e4405f">
-            <Instagram />
-          </SocialIcon>
-          <SocialIcon color="55acee">
-            <Twitter />
-          </SocialIcon>
-          <SocialIcon color="e60023">
-            <Pinterest />
-          </SocialIcon>
-        </SocialContainer>
-        <Signature>
-          2022 © MIT license
-        </Signature>
-      </Footer>
-    </Container>
-  );
-};
+const DesktopBar = () => (
+  <Container>
+    <Logo to="/">
+      <LogoImage src="https://i.ibb.co/vxkd1PT/LOGO.png" />
+    </Logo>
+    <NavLinks />
+    <Footer />
+  </Container>
+);
 
 export default DesktopBar;
