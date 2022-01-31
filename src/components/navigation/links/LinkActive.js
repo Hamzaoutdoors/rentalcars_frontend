@@ -25,7 +25,7 @@ const ActiveWrapper = styled.div`
 
 const LinkActive = (props) => {
   const {
-    path, text, active, setActive,
+    path, text,
   } = props;
   const location = useLocation();
 
@@ -51,8 +51,6 @@ const LinkActive = (props) => {
 LinkActive.propTypes = {
   path: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-  active: PropTypes.string.isRequired,
-  setActive: PropTypes.func.isRequired,
 };
 
 export default LinkActive;
