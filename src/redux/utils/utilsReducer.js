@@ -1,4 +1,5 @@
 import { SET_ITEM_SIZE, SET_SLIDER_INDEX } from './actions/sliderActions';
+import { TOGGLE_MODAL, SET_ACTIVE_LINK, SET_DASHBOARD_CHILD_LINK } from './actions/navActions';
 
 const initialState = {
   navBar: {
@@ -29,6 +30,33 @@ const utilReducer = (state = initialState, action) => {
         slider: {
           ...state.slider,
           slideIndex: action.payload,
+        },
+      };
+    }
+    case TOGGLE_MODAL: {
+      return {
+        ...state,
+        navBar: {
+          ...state.navBar,
+          expandMobile: action.payload,
+        },
+      };
+    }
+    case SET_ACTIVE_LINK: {
+      return {
+        ...state,
+        navBar: {
+          ...state.navBar,
+          activeLink: action.payload,
+        },
+      };
+    }
+    case SET_DASHBOARD_CHILD_LINK: {
+      return {
+        ...state,
+        navBar: {
+          ...state.navBar,
+          activeDashboardLink: action.payload,
         },
       };
     }
