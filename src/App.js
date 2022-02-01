@@ -15,8 +15,8 @@ import LifeStyle from './pages/LifeStyle';
 import CarsHome from './components/cars/CarsHome';
 import MyReservations from './pages/MyReservations';
 import DetailsPage from './pages/DetailsPage';
-
-import './App.css';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 const PageContainer = styled.div`
   display: flex;
@@ -45,6 +45,8 @@ const App = () =>
           <Sidebar />
           <Routes>
             <Route exact path="/" element={<HomePage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/sign_up" element={<Register />} />
             <Route path="/cars/:car_id/details" element={<DetailsPage />} />
             <Route path="/cars/new" element={<AddCar />} />
             <Route path="/cars" element={<CarsHome />} />
