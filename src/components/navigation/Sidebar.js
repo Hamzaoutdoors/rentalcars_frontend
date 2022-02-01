@@ -3,12 +3,11 @@ import { useSelector } from 'react-redux';
 import DesktopBar from './desktop/DesktopBar';
 import MobileBar from './mobile/MobileBar';
 import store from '../../redux/configureStore';
-import { setActiveDashLink, toggleMobile, toggleMobileModal } from '../../redux/utils/actions/navActions';
+import { toggleMobile, toggleMobileModal } from '../../redux/utils/actions/navActions';
 
 const setDefaultWhenUnmount = () => {
   store.dispatch(toggleMobile(false));
   store.dispatch(toggleMobileModal(false));
-  store.dispatch(setActiveDashLink('cars'));
 };
 
 const handleResize = () => {
