@@ -14,11 +14,12 @@ const Container = styled.div`
 const Title = styled.div`
   display: flex;
   justify-content: center;
-  border-bottom: 2px solid black;
+  border-bottom: 2px dotted gray;
+  margin-top: 3rem;
   margin-bottom: 1rem;
   font-size: 36px;
   font-weight: 700;
-  font-family: 'Bebas Neue', 'Arial', cursive !important;
+  font-family: 'Urbanist', 'Arial', cursive !important;
   color: black;
 `;
 
@@ -26,8 +27,8 @@ const SubTitle = styled.div`
   font-size: 20px;
   font-weight: 500;
   padding: 0 2.5rem;
-  font-family: 'Bebas Neue', 'Arial', cursive !important;
-  color: black;
+  font-family: 'Urbanist', 'Arial', cursive !important;
+  color: gray;
 `;
 const Wrapper = styled.div`
   display: flex;
