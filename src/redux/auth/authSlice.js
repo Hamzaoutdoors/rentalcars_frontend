@@ -59,6 +59,10 @@ const authSLice = createSlice({
       user: null,
       error: {},
     }),
+    authenticateToken: (state) => ({
+      ...state,
+      isAuthenticated: true,
+    }),
   },
   extraReducers: {
     [authenticateUser.pending.type]: (state) => ({
@@ -79,5 +83,5 @@ const authSLice = createSlice({
   },
 });
 
-export const { logOutUser } = authSLice.actions;
+export const { logOutUser, authenticateToken } = authSLice.actions;
 export default authSLice.reducer;
