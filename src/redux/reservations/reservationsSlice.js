@@ -48,7 +48,7 @@ const deleteOptions = {
   },
 };
 
-export const removeReservation = createAsyncThunk(
+export const cancelReservation = createAsyncThunk(
   'redux/cars/removeReservation.js',
   async (id) => {
     const response = await axios
@@ -58,7 +58,7 @@ export const removeReservation = createAsyncThunk(
   },
 );
 
-export const updateReservation = createAsyncThunk(
+export const editReservation = createAsyncThunk(
   'redux/cars/updateReservation.js',
   async (id) => {
     // should be .put(url, update_options)
@@ -70,7 +70,7 @@ export const updateReservation = createAsyncThunk(
 );
 
 const reservationsSlicer = createSlice({
-  name: 'missions',
+  name: 'reservations',
   initialState,
   reducers: {
     expandModal: (state, action) => {
