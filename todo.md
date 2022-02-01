@@ -17,7 +17,9 @@
   - [ ] 3 - Mobile Version, when user opens modal, window.overflowY should be hidden;
 
 ## 5 - Redux Slices
-
+- Login: 
+  - [ ] Make Sure the User can Login;
+  - [ ] Make Sure the User can SignOut;
 - Cars:
   - [ ] 1 - Add Extra-Reducers to connect with the Api;
   - [ ] 2 - Check logic of all redux thunks to ensure that the correct data is being fetched/posted from/to the api;
