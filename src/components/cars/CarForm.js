@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import { mobile } from '../../responsive';
 import CityOption from './CityOption';
 
 const Container = styled.form`
   display: flex;
   flex-direction: column;
-  padding: 2rem 2rem 0rem 2rem;
+  padding: 0rem 2rem;
   width: 100%;
 `;
 
@@ -12,6 +13,9 @@ const FormRow = styled.div`
   display: flex;
   width: 100%;
   margin-bottom: 1.5rem;
+  ${mobile({
+    'flex-direction': 'column',
+  })};
 `;
 
 const CityInputWrapper = styled.div`
@@ -19,6 +23,9 @@ const CityInputWrapper = styled.div`
   flex-direction: column;
   flex-grow: 1;
   padding: 1rem;
+  ${mobile({
+    order: -1,
+  })};
 `;
 
 const InputWrapper = styled.div`
@@ -29,9 +36,9 @@ const InputWrapper = styled.div`
 `;
 
 const InputLabel = styled.div`
-  font-family: 'Bebas Neue', 'Arial', cursive;
+  font-family: 'Urbanist', 'Arial', cursive;
   font-size: 22px;
-  font-weight: 400;
+  font-weight: 600;
   color: black;
   margin-bottom: 1rem;
 `;
