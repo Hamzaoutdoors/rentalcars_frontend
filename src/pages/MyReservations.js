@@ -10,6 +10,7 @@ const GridContainer = styled(Grid)`
   padding: 2rem;
   min-height: 100vh;
   width: 100%;
+  max-width: 1320px;
   margin: 0 !important;
 `;
 

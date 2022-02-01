@@ -8,6 +8,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   padding: 1rem;
+  max-width: 1320px;
   min-heigth: 100vh;
   width: 100%;
 `;

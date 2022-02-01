@@ -5,6 +5,7 @@ import { mobile } from '../responsive';
 const Container = styled.div`
   display: flex;
   width: 100vw;
+  max-width: 1320px;
   height: 100vh;
   background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("https://images.unsplash.com/photo-1557825631-19082bca3803?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Y2FyJTIwcmVudGFsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60") center;
   background-size: cover;
