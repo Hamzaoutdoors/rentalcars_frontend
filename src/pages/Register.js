@@ -1,5 +1,7 @@
 import styled from 'styled-components';
+import { authenticateUser, SIGNUP_ENDPOINT } from '../redux/auth/authSlice';
 import { mobile } from '../responsive';
+import store from '../redux/configureStore';
 
 const Container = styled.div`
   display: flex;
@@ -14,11 +16,12 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
   padding: 20px;
-  width: 30%;
+  width: 50%;
+  text-align: center;
   background: white;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  ${mobile({ width: '75%' })};
+  ${mobile({ width: '60vw' })};
 
 `;
 
@@ -59,28 +62,32 @@ const Aggrement = styled.p`
 const Button = styled.button`
   padding: 12px 22px;
   width: 40%;
-  background-color: teal;
+  background-color: #f6a40e;
   cursor: pointer;
   border: none;
   color: white;
   font-size: 1rem;
   font-weight: 500;
   &:hover {
-    background-color: #00CCCC;
+    background-color: #FFD580
+    border: 2px solid #f6a40e;
   }
 `;
+
+const authenticate = (e) => {
+  e.preventDefault();
+
+  store.dispatch(authenticateUser({ form: e.target, url: SIGNUP_ENDPOINT }));
+};
 
 const Register = () => (
   <Container>
     <Wrapper>
       <Title>CREATE AN ACCOUNT</Title>
-      <Form>
-        <Input placeholder="First Name" />
-        <Input placeholder="Last Name" />
-        <Input placeholder="Username" />
-        <Input placeholder="E-mail" />
-        <Input placeholder="Password" />
-        <Input placeholder="Confirm password" />
+      <Form onSubmit={(e) => authenticate(e)}>
+        <Input type="text" name="username" placeholder="Username" defaultValue="" />
+        <Input type="email" name="email" placeholder="E-mail" defaultValue="" />
+        <Input type="password" name="password" placeholder="Password" defaultValue="" />
         <Aggrement>
           By clicking
           {' '}
@@ -93,7 +100,7 @@ const Register = () => (
           {' '}
           to stop.
         </Aggrement>
-        <Button>Register</Button>
+        <Button type="submit">Sign Up</Button>
       </Form>
     </Wrapper>
   </Container>
