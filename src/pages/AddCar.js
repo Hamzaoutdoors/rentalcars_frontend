@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import CarForm from '../components/cars/CarForm';
+import { mobile, tablet } from '../responsive';
 
 const Container = styled.div`
   display: flex;
@@ -7,6 +8,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   padding: 1rem;
+  max-width: 1320px;
   min-heigth: 100vh;
   width: 100%;
 `;
@@ -14,21 +16,34 @@ const Container = styled.div`
 const Title = styled.div`
   display: flex;
   justify-content: center;
-  border-bottom: 2px solid black;
-  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+  margin-bottom: 0.5rem;
   font-size: 36px;
-  font-weight: 700;
-  font-family: 'Bebas Neue', 'Arial', cursive !important;
+  font-weight: 600;
+  font-family: 'Urbanist', 'Arial', cursive !important;
   color: black;
+  ${mobile({
+    'font-size': '26px',
+  })};
+  ${tablet({
+    'font-size': '32px',
+  })};
 `;
 
 const SubTitle = styled.div`
   font-size: 20px;
   font-weight: 500;
   padding: 0 2.5rem;
-  font-family: 'Bebas Neue', 'Arial', cursive !important;
-  color: black;
+  font-family: 'Urbanist', 'Arial', cursive !important;
+  color: gray;
+  ${mobile({
+    'font-size': '12px',
+  })};
+  ${tablet({
+    'font-size': '14px',
+  })};
 `;
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;

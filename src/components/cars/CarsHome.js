@@ -11,6 +11,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100vw;
+  max-width: 1320px;
   height: 100vh;
   color: black;
   justify-content: center;

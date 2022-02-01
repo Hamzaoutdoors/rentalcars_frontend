@@ -9,6 +9,7 @@ const Container = styled.div`
     align-items: center;
     height: 100vh;
     width: 100%;
+    max-width: 1320px;
     overflow-x: hidden;
     background-image: url("https://i.ibb.co/H7p4vLV/Car-Showroom-Promotion-Facebook-Post-2.png");
     background-repeat: no-repeat;

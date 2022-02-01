@@ -4,18 +4,11 @@ import { useSelector } from 'react-redux';
 import { setActiveDashLink } from '../../../redux/utils/actions/navActions';
 import store from '../../../redux/configureStore';
 
-const Border = styled.span`
-  height: 2px;
-  padding: 0 2.5rem;
-  background-color: black;
-  margin-left: 2.5rem;
-`;
-
 const LinkElem = styled.p`
   font-size: 16px;
-  font-weight: 400;
-  font-weight: bold;
-  padding: 0.5rem 0 0.5rem 2.5rem;
+  font-family: 'Urbanist', 'Roboto', cursive;
+  font-weight: ${(props) => props.weight || '500'};
+  padding: 0.5rem 0 0.2rem 2.5rem;
   margin: 0;
   color: inherit;
 `;
@@ -39,10 +32,9 @@ const NestedLink = (props) => {
   if (activeDashboardLink === text) {
     return (
       <ActiveWrapper>
-        <LinkElem color="white" onClick={() => dispatchAction(setActiveDashLink, text)}>
+        <LinkElem color="white" weight="700" onClick={() => dispatchAction(setActiveDashLink, text)}>
           {text}
         </LinkElem>
-        <Border />
       </ActiveWrapper>
     );
   }

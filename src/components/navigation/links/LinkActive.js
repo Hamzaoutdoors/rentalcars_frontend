@@ -15,8 +15,8 @@ const Container = styled.div`
 
 const LinkElem = styled(NavLink)`
   font-size: 16px;
-  font-weight: 400;
-  font-weight: bold;
+  font-family: 'Urbanist', 'Roboto', cursive;
+  font-weight: ${(props) => props.weight || '700'};
   padding: 0.5rem 0 0.5rem 1rem;
   text-decoration: none;
   color: inherit;
@@ -48,7 +48,12 @@ const LinkActive = (props) => {
     return (
       <Container>
         <ActiveWrapper>
-          <LinkElem to={path} color="white" onClick={() => dispatchAction(setActiveLink, path)}>
+          <LinkElem
+            to={path}
+            color="white"
+            weight="900"
+            onClick={() => dispatchAction(setActiveLink, path)}
+          >
             {text}
           </LinkElem>
 
