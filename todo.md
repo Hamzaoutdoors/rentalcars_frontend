@@ -1,9 +1,9 @@
 ## 1 - Add a Car: 
 
-  [] 1 - Add breakpoints to make this page responsive on mobile devices;
+  - [x] 1 - Add breakpoints to make this page responsive on mobile devices;
  
 ## 2 - Details Page:
-  - [ ] 1 - Add path to the reserve button => leading to the add a reservation form, with some params that will make a preselection of some data, depending on wich car the user clicked for reservation.
+  - [x] 1 - Add path to the reserve button => leading to the add a reservation form, with some params that will make a preselection of some data, depending on wich car the user clicked for reservation.
 
 ## 3 - Add Item Page:
 
@@ -12,8 +12,9 @@
 
 ## 4 - Sidebar;
 
-  - [ ] 1 - Make props to change style of the logout option;
-  - [ ] 2 - Check font-styles for links;
+  - [ ] 1 - Make props to change style of the logout option || make the logout button in another component
+  - [x] 2 - Check font-styles for links;
+  - [ ] 3 - Mobile Version, when user opens modal, window.overflowY should be hidden;
 
 ## 5 - Redux Slices
 
