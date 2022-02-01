@@ -26,3 +26,7 @@
 
 ## 6 - Details Page:
   - [ ] 1 - Connect Api/Redux to get the description of the car;
+
+## 7 - Add a Car: 
+
+  [] 1 - Connect Api/Redux to Annouce a car;
