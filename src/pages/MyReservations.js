@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { Grid } from '@mui/material';
@@ -17,16 +16,12 @@ const GridContainer = styled(Grid)`
 const MyReservations = () => {
   const reservations = useSelector((state) => state.reservations.data);
 
-  useEffect(() => {
-    console.log(reservations);
-  }, []);
-
   return (
     <GridContainer
       container
       spacing={{ xs: 1, md: 3 }}
       columns={{
-        xs: 1, sm: 6, md: 8, lg: 12,
+        xs: 1, sm: 8, md: 8, lg: 12,
       }}
     >
       {reservations.map((reservationDetail) => (

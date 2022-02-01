@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
-import { useLocation } from 'react-router-dom';
+import { useLocation, NavLink } from 'react-router-dom';
 import { useEffect } from 'react';
+import { Logout } from '@mui/icons-material';
 import { setActiveLink } from '../../../redux/utils/actions/navActions';
 import store from '../../../redux/configureStore';
 import LinkActive from './LinkActive';
@@ -12,7 +13,6 @@ const paths = [
   '/myreservations',
   '/lifestyle',
   '/dashboard',
-  '/logout',
 ];
 
 const linksText = [
@@ -21,7 +21,6 @@ const linksText = [
   'My Reservations',
   'Lifestyle',
   ['Dashboard', 'Cars', 'Reservations'],
-  'Log out',
 ];
 
 const Container = styled.div`
@@ -36,6 +35,25 @@ const Nav = styled.div`
   padding: 1rem 0 1rem 1rem;
   width: 100%;
   margin: 0px;
+`;
+
+const LogOut = styled(NavLink)`
+  display: flex;
+  position: absolute;
+  bottom: 100px;
+  left: 20px;
+  justify-content: space-between;
+  width: 150px;
+  padding: 0.6rem 1rem;
+  background-color: #C70000;
+  color: white;
+  border-radius: 25px;
+  text-decoration: none;
+  &:hover {
+    color: #c70000;
+    background-color: white;
+    border: 1px solid #c70000;
+  }
 `;
 
 const activeLink = (payload) => {
@@ -73,6 +91,10 @@ const NavLinks = () => {
           );
         })}
       </Nav>
+      <LogOut to="/logout">
+        Log out
+        <Logout />
+      </LogOut>
     </Container>
   );
 };

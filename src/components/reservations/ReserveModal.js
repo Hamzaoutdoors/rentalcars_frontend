@@ -4,7 +4,6 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
@@ -29,22 +28,6 @@ const ReserveBtn = styled(Button)`
     color: white !important;
     background-color: #9fcf01 !important;
   } 
-`;
-
-const ActionButton = styled(Button)`
-  padding: 0.5rem;
-  border-radius: 20px;
-  width: 150px;
-  background-color: #f6a40e !important;
-  text-decoration: none;
-  text-align: center !important;
-  color: white !important;
-  transition: all 0.5s ease-in-out;
-  &:hover {
-    color: black !important;
-    background-color: #ffefd5 !important;
-    border: 1px solid #f6a40e !important;
-  }
 `;
 
 const Title = styled(DialogTitle)`
@@ -147,7 +130,7 @@ const ReserveModal = () => {
           <Typography gutterBottom className="desc">
             Reserve this car for a period of time.
           </Typography>
-          <DateContainer>
+          <DateContainer variant="div">
             <ReserveForm />
           </DateContainer>
           <AmountText>
@@ -157,11 +140,6 @@ const ReserveModal = () => {
             <span>0</span>
           </AmountText>
         </Content>
-        <DialogActions>
-          <ActionButton autoFocus onClick={() => console.log('I was clicked')}>
-            Reserve
-          </ActionButton>
-        </DialogActions>
       </BootstrapDialog>
     </>
   );
