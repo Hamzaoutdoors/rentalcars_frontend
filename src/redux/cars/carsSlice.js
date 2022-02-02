@@ -1,21 +1,31 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-import data from './helpers/data';
-
-const CAR_API_ENDPOINT = 'https://something/api/v1/:user_id/cars';
+const CAR_API_ENDPOINT = 'http://127.0.0.1:4000/api/v1/cars';
 
 const initialState = {
   isFetching: false,
-  data: [...data],
+  data: [],
   error: {},
 };
 
+// eslint-disable-next-line no-unused-vars
+const jsonTypeConfig = () => ({
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
 export const getCars = createAsyncThunk(
   'redux/cars/getCars.js',
-  async () => {
-    const response = await axios.get(CAR_API_ENDPOINT).catch((error) => error);
-    return response.data;
+  async ({ rejectWithValue }) => {
+    try {
+      const response = await axios
+        .get(CAR_API_ENDPOINT);
+      return response.data;
+    } catch (err) {
+      return rejectWithValue({ ...err.response.data });
+    }
   },
 );
 
@@ -51,13 +61,14 @@ const carsSlicer = createSlice({
   reducers: {
   },
   extraReducers: {
-    // [getCars.pending.type]: (state) => ({ ...state, isFetching: true, error: {} }),
-    // [getCars.fulfilled.type]: (state, action) => (
-    //   {
-    //     ...state, isFetching: false, data: action.payload, error: {},
-    //   }),
-    // eslint-disable-next-line max-len
-    // [getCars.rejected.type]: (state, action) => ({ ...state, isFetching: false, error: { ...action.payload } }),
+    [getCars.pending.type]: (state) => ({ ...state, isFetching: true, error: {} }),
+    [getCars.fulfilled.type]: (state, action) => (
+      {
+        ...state, isFetching: false, data: action.payload, error: {},
+      }),
+    [getCars.rejected.type]: (state, action) => (
+      { ...state, isFetching: false, error: action.payload }
+    ),
     // [addCar.pending.type]: (state) => ({ ...state, isFetching: true, error: {} }),
     // eslint-disable-next-line max-len
     // [addCar.fulfilled.type]: (state, action) => ({ ...state, isFetching: false, data: [ ...state.data, action.payload ] }),
