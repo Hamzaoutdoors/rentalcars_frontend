@@ -22,6 +22,7 @@ import DetailsPage from './pages/DetailsPage';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import { authenticateToken } from './redux/auth/authSlice';
+import { getCars } from './redux/cars/carsSlice';
 
 const loggedRoutes = Object.entries({
   '/login': <Login />,
@@ -66,6 +67,9 @@ const App = () => {
 
   useEffect(() => {
     handleTokenAuthentication(dispatch);
+    dispatch(getCars());
+
+    return dispatch(getCars());
   }, []);
 
   return (
