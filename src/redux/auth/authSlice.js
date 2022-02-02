@@ -53,12 +53,16 @@ const authSLice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    logOutUser: () => ({
-      isFetching: false,
-      isAuthenticated: false,
-      user: null,
-      error: {},
-    }),
+    logOutUser: () => {
+      localStorage.removeItem('rcars_jwt');
+
+      return {
+        isFetching: false,
+        isAuthenticated: false,
+        user: null,
+        error: {},
+      };
+    },
     authenticateToken: (state) => ({
       ...state,
       isAuthenticated: true,
