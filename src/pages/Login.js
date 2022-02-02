@@ -90,7 +90,6 @@ const Login = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      console.log('here');
       navigate('/', { replace: true });
     }
   }, [isAuthenticated]);
