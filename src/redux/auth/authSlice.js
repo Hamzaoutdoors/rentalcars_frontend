@@ -36,16 +36,16 @@ const authenticateBodyConfig = () => ({
 
 export const authenticateUser = createAsyncThunk(
   'redux/cars/login',
-  async (payload) => {
+  async (payload, { rejectWithValue }) => {
     const data = authenticateBodyOptions(payload.form);
     const config = authenticateBodyConfig();
-
-    const response = await axios
-      .post(payload.url, data, config)
-      .catch((error) => error);
-
-    localStorage.setItem('rcars_jwt', JSON.stringify(response.data.token));
-    return response.data;
+    try {
+      const response = await axios
+        .post(payload.url, data, config);
+      return response.data;
+    } catch (err) {
+      return rejectWithValue({ ...err.response.data });
+    }
   },
 );
 
@@ -80,10 +80,9 @@ const authSLice = createSlice({
         user: { ...action.payload.user },
         error: {},
       }),
-    [authenticateUser.rejected.type]: (state, action) => (
-      {
-        ...state, isFetching: false, isAuthenticated: false, error: { ...action.payload },
-      }),
+    [authenticateUser.rejected.type]: (state, action) => ({
+      ...state, isFetching: false, isAuthenticated: false, error: { ...action.payload },
+    }),
   },
 });
 

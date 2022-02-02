@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import { mobile } from '../responsive';
 import { authenticateUser, LOGIN_ENDPOINT } from '../redux/auth/authSlice';
 
@@ -79,13 +80,20 @@ const Link = styled.a`
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { isAuthenticated } = useSelector((state) => state.auth);
 
   const authenticate = (e) => {
     e.preventDefault();
 
     dispatch(authenticateUser({ form: e.target, url: LOGIN_ENDPOINT }));
-    navigate('/', { replace: true });
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      console.log('here');
+      navigate('/', { replace: true });
+    }
+  }, [isAuthenticated]);
 
   return (
     <Container>

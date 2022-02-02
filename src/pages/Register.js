@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import { authenticateUser, SIGNUP_ENDPOINT } from '../redux/auth/authSlice';
 import { mobile } from '../responsive';
 import store from '../redux/configureStore';
@@ -77,13 +79,18 @@ const Button = styled.button`
 
 const Register = () => {
   const navigate = useNavigate();
-
+  const { isAuthenticated } = useSelector((state) => state.auth);
   const authenticate = (e) => {
     e.preventDefault();
 
     store.dispatch(authenticateUser({ form: e.target, url: SIGNUP_ENDPOINT }));
-    navigate('/', { replace: true });
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/', { replace: true });
+    }
+  }, [isAuthenticated]);
 
   return (
     <Container>
