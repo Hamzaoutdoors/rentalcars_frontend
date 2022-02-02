@@ -34,6 +34,9 @@ const loggedRoutes = Object.entries({
 
 const unLoggedRoutes = Object.entries({
   '/sign_up': <Register />,
+  '/lifestyle': <LifeStyle />,
+  '/cars/:car_id/details': <DetailsPage />,
+  '/cars': <CarsHome />,
 });
 
 const PageContainer = styled.div`
