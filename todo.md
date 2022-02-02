@@ -13,8 +13,10 @@
 ## 4 - Sidebar;
 
   - [ ] 1 - Make props to change style of the logout option || make the logout button in another component
-  - [x] 2 - Check font-styles for links;
-  - [ ] 3 - Mobile Version, when user opens modal, window.overflowY should be hidden;
+  - [ ] 2 - Log out should not be visible if the user is not logged in
+  - [x] 3 - Check font-styles for links;
+  - [ ] 4 - Mobile Version, when user opens modal, window.overflowY should be hidden;
+  - [ ] 5 - Give the navbar z-index of 100;
 
 ## 5 - Redux Slices
 - Login: 
