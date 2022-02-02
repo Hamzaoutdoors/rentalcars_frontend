@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FavoriteBorderOutlined } from '@material-ui/icons';
 import PropTypes from 'prop-types';
-import { CarRentalOutlined } from '@mui/icons-material';
+import { CarRentalOutlined, DeleteOutlined } from '@mui/icons-material';
 import { mobile } from '../../responsive';
 
 const Info = styled.div`
@@ -35,7 +35,7 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: transparent;
     position: relative;
     &:hover ${Info}{
         opacity: 1;
@@ -80,7 +80,7 @@ const Icon = styled.div`
     transition: all 0.5s ease;
     cursor: pointer;
     &:hover {
-        background-color: #e9f5f5;
+        background-color: #${(props) => props.bg};
         transform: scale(1.1);
     }
 `;
@@ -137,16 +137,16 @@ const CarCard = ({ item }) => {
       <Image src={imageUrl} />
       <Info>
         <NavLink to={`/cars/${item.id}/details`}>
-          <Icon>
+          <Icon bg="e9f5f5">
             <CarRentalOutlined />
           </Icon>
         </NavLink>
-        <Icon>
+        <Icon bg="d86a77">
           <FavoriteBorderOutlined />
         </Icon>
-        {/* <Icon>
+        <Icon bg="d11a2a">
           <DeleteOutlined />
-        </Icon> */}
+        </Icon>
       </Info>
       <Detail>
         <h3>{name}</h3>
