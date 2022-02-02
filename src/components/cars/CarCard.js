@@ -1,5 +1,3 @@
-/* eslint-disable react/forbid-prop-types */
-
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -111,10 +109,13 @@ const Detail = styled.div`
     }
 `;
 
-const CarCard = ({ item }) => {
+const CarCard = (props) => {
+  const { item } = props;
   const {
-    imageUrl, name, brand, color,
+    imgUrl, name, brand, id,
   } = item;
+  const { color } = item.description;
+
   return (
     <Container
       as={motion.div}
@@ -134,9 +135,9 @@ const CarCard = ({ item }) => {
       style={{ maxWidth: '300px' }}
     >
       <Circle bgColor={color} />
-      <Image src={imageUrl} />
+      <Image src={imgUrl} />
       <Info>
-        <NavLink to={`/cars/${item.id}/details`}>
+        <NavLink to={`/cars/${id}/details`}>
           <Icon bg="e9f5f5">
             <CarRentalOutlined />
           </Icon>
@@ -161,9 +162,5 @@ const CarCard = ({ item }) => {
 export default CarCard;
 
 CarCard.propTypes = {
-  imageUrl: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  brand: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
-  item: PropTypes.object.isRequired,
+  item: PropTypes.instanceOf(Object).isRequired,
 };

@@ -13,6 +13,7 @@ import { useSelector } from 'react-redux';
 import ReserveForm from './ReserveForm';
 import store from '../../redux/configureStore';
 import { expandModal } from '../../redux/reservations/reservationsSlice';
+import { mobile } from '../../responsive';
 
 const ReserveBtn = styled(Button)`
   padding: 0.5rem;
@@ -27,7 +28,10 @@ const ReserveBtn = styled(Button)`
   &:hover {
     color: white !important;
     background-color: #9fcf01 !important;
-  } 
+  }
+  ${mobile({
+    margin: '0 1rem 2rem 0',
+  })}
 `;
 
 const Title = styled(DialogTitle)`
