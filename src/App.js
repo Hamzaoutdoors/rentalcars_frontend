@@ -17,6 +17,7 @@ import AddCar from './pages/AddCar';
 import LifeStyle from './pages/LifeStyle';
 import CarsHome from './components/cars/CarsHome';
 import MyReservations from './pages/MyReservations';
+import MyCars from './pages/MyCars';
 import DetailsPage from './pages/DetailsPage';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -37,6 +38,7 @@ const unLoggedRoutes = Object.entries({
   '/lifestyle': <LifeStyle />,
   '/cars/:car_id/details': <DetailsPage />,
   '/cars': <CarsHome />,
+  '/mycars': <MyCars />,
 });
 
 const PageContainer = styled.div`
