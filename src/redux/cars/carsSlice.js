@@ -10,18 +10,20 @@ const initialState = {
 };
 
 // eslint-disable-next-line no-unused-vars
-const jsonTypeConfig = () => ({
+const jsonTypeConfig = (token) => ({
   headers: {
     'Content-Type': 'application/json',
+    Authorization: token,
   },
 });
 
 export const getCars = createAsyncThunk(
   'redux/cars/getCars.js',
-  async ({ rejectWithValue }) => {
+  async (payload, { rejectWithValue }) => {
+    const token = localStorage.getItem('rcars_jwt');
     try {
       const response = await axios
-        .get(CAR_API_ENDPOINT);
+        .get(CAR_API_ENDPOINT, jsonTypeConfig(token));
       return response.data;
     } catch (err) {
       return rejectWithValue({ ...err.response.data });
