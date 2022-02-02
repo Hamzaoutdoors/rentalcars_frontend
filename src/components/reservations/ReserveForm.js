@@ -1,7 +1,12 @@
+/* eslint-disable camelcase */
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { mobile } from '../../responsive';
+import { addReservation } from '../../redux/reservations/reservationsSlice';
+// import { numOfDays } from '../../logic/date';
 
 const Form = styled.form`
   padding: 0.5rem;
@@ -78,26 +83,73 @@ const SelectCity = styled.select`
     font-size: 16px;
 `;
 
+const SubmitButton = styled.button.attrs((props) => ({
+  type: props.type,
+}))`
+  margin: 1rem 0 0.5rem 0;
+  align-self: center;
+  padding: 0.5rem;
+  border-radius: 20px;
+  width: 150px;
+  background-color: #f6a40e;
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    color: black;
+    background-color: #ffefd5;
+    border: 1px solid #f6a40e;
+  }
+`;
+
 const SelectCityOption = styled.option``;
 
 const ReserveForm = () => {
   const minDate = new Date().toISOString().split('T')[0];
   const maxDate = new Date();
+
+  const dispatch = useDispatch();
+
+  const initialData = {
+    start_date: minDate,
+    end_date: minDate,
+    city: '',
+  };
+
   const { cities } = useSelector((state) => state.reservations);
+  const [selectedData, setSelectedDates] = useState(initialData);
+
+  const redirect = useNavigate();
+
+  const handleInput = (e) => {
+    e.preventDefault();
+    setSelectedDates({
+      ...selectedData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(addReservation(selectedData));
+    redirect('/myreservations');
+  };
 
   return (
     <>
-      <Form>
+      <Form onSubmit={(e) => handleSubmit(e)}>
         <Wrapper>
           <DateContainer>
             <Label htmlFor="start">Start Date :</Label>
             <Input
               type="date"
               id="start"
-              name="reserve-start"
+              name="start_date"
               defaultValue={minDate}
               min={minDate}
               max={maxDate}
+              onChange={(e) => handleInput(e)}
               required
             />
           </DateContainer>
@@ -106,28 +158,33 @@ const ReserveForm = () => {
             <Input
               type="date"
               id="end"
-              name="reserve-end"
+              name="end_date"
               defaultValue={minDate}
               min={minDate}
               max={maxDate}
+              onChange={(e) => handleInput(e)}
+              required
             />
           </DateContainer>
         </Wrapper>
         <Wrapper>
           <Filter>
             <FilterTitle>City</FilterTitle>
-            <SelectCity className="form-select">
+            <SelectCity className="form-select" name="city" onChange={handleInput}>
               <SelectCityOption selected disabled>
                 Select City
               </SelectCityOption>
               {cities.map((city) => (
-                <SelectCityOption key={uuidv4()} value={city.id}>
+                <SelectCityOption key={uuidv4()} value={city.name}>
                   {city.name}
                 </SelectCityOption>
               ))}
             </SelectCity>
           </Filter>
         </Wrapper>
+        <SubmitButton type="submit">
+          Reserve
+        </SubmitButton>
       </Form>
     </>
   );

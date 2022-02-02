@@ -30,7 +30,7 @@ const CardImage = styled(CardMedia).attrs((props) => ({
     background-size: cover;
 `;
 
-const TitleContainer = styled(Typography)`
+const TitleContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -38,7 +38,7 @@ const TitleContainer = styled(Typography)`
   border-bottom: 1px solid #ccc;
 `;
 
-const CardTitle = styled(Typography)`
+const CardTitle = styled.div`
   font-size: 1.5rem; 
   font-weight: bold;
   padding-bottom: 0.5rem;
@@ -59,7 +59,7 @@ const Icon = styled.div`
     color: #5688ae;
 `;
 
-const CarDetail = styled(Typography)`
+const CarDetail = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -138,35 +138,35 @@ const ReservationCard = ({ reservationDetail }) => {
             <Star />
           </Icon>
         </TitleContainer>
-        <CarDetail variant="body2">
+        <CarDetail>
           <ListIcons>
             <DetailIcon sx={{ fontSize: 10 }}>
               <LocalGasStation />
-              <Typography variant="body2" component="span">
+              <Typography component="span">
                 Diesel
               </Typography>
             </DetailIcon>
             <DetailIcon>
               <WbAuto />
-              <Typography variant="body2" component="span">
+              <Typography component="span">
                 Auto
               </Typography>
             </DetailIcon>
             <DetailIcon>
               <AcUnit />
-              <Typography variant="body2" component="span">
+              <Typography component="span">
                 Climate
               </Typography>
             </DetailIcon>
             <DetailIcon>
               <EventSeat />
-              <Typography variant="body2" component="span">
+              <Typography component="span">
                 Comfort
               </Typography>
             </DetailIcon>
             <DetailIcon>
               <PriceCheck />
-              <Typography variant="body2" component="span">
+              <Typography component="span">
                 Eco
               </Typography>
             </DetailIcon>
