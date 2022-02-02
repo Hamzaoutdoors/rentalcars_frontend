@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { mobile } from '../responsive';
-import store from '../redux/configureStore';
 import { authenticateUser, LOGIN_ENDPOINT } from '../redux/auth/authSlice';
 
 const Container = styled.div`
@@ -75,24 +76,30 @@ const Link = styled.a`
   text-decoration: underline;
 `;
 
-const authenticate = (e) => {
-  e.preventDefault();
+const Login = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  store.dispatch(authenticateUser({ form: e.target, url: LOGIN_ENDPOINT }));
+  const authenticate = (e) => {
+    e.preventDefault();
+
+    dispatch(authenticateUser({ form: e.target, url: LOGIN_ENDPOINT }));
+    navigate('/', { replace: true });
+  };
+
+  return (
+    <Container>
+      <Wrapper>
+        <Title>SIGN IN</Title>
+        <Form onSubmit={(event) => authenticate(event)}>
+          <Input type="email" name="email" placeholder="Email" defaultValue="" />
+          <Input type="password" name="password" placeholder="Password" defaultValue="" />
+          <Button type="submit">LOG IN</Button>
+          <Link>SIGN UP</Link>
+        </Form>
+      </Wrapper>
+    </Container>
+  );
 };
-
-const Login = () => (
-  <Container>
-    <Wrapper>
-      <Title>SIGN IN</Title>
-      <Form onSubmit={(event) => authenticate(event)}>
-        <Input type="email" name="email" placeholder="Email" defaultValue="" />
-        <Input type="text" name="password" placeholder="Password" defaultValue="" />
-        <Button type="submit">LOG IN</Button>
-        <Link>SIGN UP</Link>
-      </Form>
-    </Wrapper>
-  </Container>
-);
 
 export default Login;
