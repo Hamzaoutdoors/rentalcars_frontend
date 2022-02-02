@@ -42,7 +42,7 @@ export const authenticateUser = createAsyncThunk(
     try {
       const response = await axios
         .post(payload.url, data, config);
-      localStorage.setItem('rcars_jwt', JSON.stringify(`Bearer ${response.data.token}`));
+      localStorage.setItem('rcars_jwt', JSON.stringify(response.data.token));
       return response.data;
     } catch (err) {
       return rejectWithValue({ ...err.response.data });
