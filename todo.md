@@ -19,8 +19,9 @@
 ## 5 - Redux Slices
 - Login: 
   - [x] Make Sure the User can Login/SignUp;
-  - [ ] Make Sure the User can SignOut;
+  - [x] Make Sure the User can SignOut;
   - [ ] Display the Error messages that you get from API;
+  - [x] User will see only available pages when not logged_in;
 - Cars:
   - [ ] 1 - Add Extra-Reducers to connect with the Api;
   - [ ] 2 - Check logic of all redux thunks to ensure that the correct data is being fetched/posted from/to the api;
