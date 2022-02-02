@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { mobile } from '../../responsive';
-import CityOption from './CityOption';
 
 const Container = styled.form`
   display: flex;
@@ -15,16 +14,6 @@ const FormRow = styled.div`
   margin-bottom: 1.5rem;
   ${mobile({
     'flex-direction': 'column',
-  })};
-`;
-
-const CityInputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  padding: 1rem;
-  ${mobile({
-    order: -1,
   })};
 `;
 
@@ -93,12 +82,6 @@ const CarForm = () => (
         <Input placeholder="Brand" id="car-brand" />
         <Input placeholder="Image Url" id="car-image" />
       </InputWrapper>
-      <CityInputWrapper>
-        <InputLabel>
-          City
-        </InputLabel>
-        <CityOption />
-      </CityInputWrapper>
     </FormRow>
     <FormRow>
       <InputWrapper>
