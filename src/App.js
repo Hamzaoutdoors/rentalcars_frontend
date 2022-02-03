@@ -4,9 +4,6 @@ import {
   Route,
 } from 'react-router-dom';
 import styled from 'styled-components';
-// import { getCars } from './redux/cars/carsSlice';
-// import { getCities, getReservations } from './redux/reservations/reservationsSlice';
-// import Announcement from './components/Announcement';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
@@ -23,6 +20,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import { authenticateToken } from './redux/auth/authSlice';
 import { getCars } from './redux/cars/carsSlice';
+import { getCities, getReservations } from './redux/reservations/reservationsSlice';
 
 const loggedRoutes = Object.entries({
   '/login': <Login />,
@@ -68,6 +66,8 @@ const App = () => {
   useEffect(() => {
     handleTokenAuthentication(dispatch);
     dispatch(getCars());
+    dispatch(getReservations());
+    dispatch(getCities());
   }, []);
 
   return (
