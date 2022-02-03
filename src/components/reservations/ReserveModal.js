@@ -54,14 +54,6 @@ const Content = styled(DialogContent)`
     font-family: 'Urbanist', sans-serif;
   }`;
 
-const AmountText = styled(Typography)`
-  font-size: 1rem;
-  font-weight: bold;
-  text-shadow: 1px 1px 1px #f6a40e;
-  font-family: 'Urbanist', sans-serif;
-  color: black;
-`;
-
 const DateContainer = styled(Typography)`
   display: flex;
   font-size: 16px;
@@ -137,12 +129,6 @@ const ReserveModal = () => {
           <DateContainer variant="div">
             <ReserveForm />
           </DateContainer>
-          <AmountText>
-            Total Amount:
-            {' '}
-            <span>$</span>
-            <span>0</span>
-          </AmountText>
         </Content>
       </BootstrapDialog>
     </>

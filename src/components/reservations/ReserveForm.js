@@ -7,8 +7,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { mobile } from '../../responsive';
 import { addReservation } from '../../redux/reservations/reservationsSlice';
 
-// import { numOfDays } from '../../logic/date';
-
 const Form = styled.form`
   padding: 0.5rem;
   border-radius: 20px 0 20px 0;

@@ -1,11 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 import Slider from '../Slider';
-// import Categories from '../components/Categories';
-// import Products from '../components/Products';
-// import Newsletter from '../components/Newsletter';
-// import Footer from '../components/Footer';
-// import { desktop, mobile } from '../responsive';
 
 const Container = styled.div`
   display: flex;
@@ -20,9 +16,11 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 2.2em;
+  font-size: 3em;
   text-align: center;
   font-weight: bold;
+  text-shadow: 2px 2px #000;
+  padding: 1rem;
 `;
 
 const SubTitle = styled.h2`
@@ -36,12 +34,29 @@ const SubTitle = styled.h2`
 
 `;
 
-const HomePage = () => (
-  <Container>
-    <Title> LATEST MODELS</Title>
-    <SubTitle>Please select your car</SubTitle>
-    <Slider />
-  </Container>
-);
+const HomePage = () => {
+  const { isAuthenticated } = useSelector((state) => state.auth);
+
+  return (
+    <Container>
+      {
+        isAuthenticated
+          ? (
+            <>
+              <Title> LATEST MODELS</Title>
+              <SubTitle>Please select your car</SubTitle>
+              <Slider />
+            </>
+          ) : (
+            <>
+              <Title>Welcome Car Rental App</Title>
+              <SubTitle>Please sign in to continue</SubTitle>
+            </>
+          )
+      }
+
+    </Container>
+  );
+};
 
 export default HomePage;
