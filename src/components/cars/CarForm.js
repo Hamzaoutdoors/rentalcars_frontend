@@ -1,7 +1,9 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { mobile } from '../../responsive';
 import { addCar } from '../../redux/cars/carsSlice';
+import { setSliderIndex } from '../../redux/utils/actions/sliderActions';
 
 const Container = styled.form`
   display: flex;
@@ -83,10 +85,15 @@ const AnnounceButton = styled.button`
 `;
 
 const CarForm = () => {
+  const { data } = useSelector((state) => state.cars);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const submitCar = (event) => {
     event.preventDefault();
+    dispatch(setSliderIndex(data.length));
     dispatch(addCar(event.target));
+    navigate('/cars', { replace: true });
   };
 
   return (
