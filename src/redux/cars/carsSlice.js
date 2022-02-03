@@ -43,6 +43,8 @@ const bodyOptions = (formElem) => {
   return body;
 };
 
+const filterDeleted = (data, id) => data.filter((carObj) => carObj.id !== parseInt(id, 10));
+
 export const getCars = createAsyncThunk(
   'redux/cars/getCars.js',
   async (payload, { rejectWithValue }) => {
@@ -74,19 +76,19 @@ export const addCar = createAsyncThunk(
   },
 );
 
-const deleteOptions = {
-  headers: {
-    something: '',
-  },
-};
-
 export const removeCar = createAsyncThunk(
   'redux/cars/removeCar.js',
-  async (id) => {
-    const response = await axios
-      .delete(`${CAR_API_ENDPOINT}/${id}`, deleteOptions)
-      .catch((error) => error);
-    return response.data;
+  async (payload, { rejectWithValue }) => {
+    const token = localStorage.getItem('rcars_jwt');
+    const config = jsonTypeConfig(token);
+
+    try {
+      const response = await axios
+        .delete(`${CAR_API_ENDPOINT}/${payload}`, config);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue({ ...error.response.data });
+    }
   },
 );
 
@@ -113,12 +115,19 @@ const carsSlicer = createSlice({
     [addCar.rejected.type]: (state, action) => (
       { ...state, isFetching: false, error: { ...action.payload } }
     ),
-    // [removeCar.pending.type]: (state) => ({ ...state, isFetching: true, error: {} }),
-    // [removeCar.fulfilled.type]: (state, action) => ({ ...state, isFetching: false,
-    //   data: state.data.filter((car) => car.id !== action.payload.data.id)
-    // }),
-    // eslint-disable-next-line max-len
-    // [removeCar.rejected.type]: (state, action) => ({ ...state, isFetching: false, error: { ...action.payload } }),
+    [removeCar.pending.type]: (state) => (
+      { ...state, isFetching: true, error: {} }
+    ),
+    [removeCar.fulfilled.type]: (state, action) => (
+      {
+        ...state,
+        isFetching: false,
+        data: filterDeleted(state.data, action.payload.id),
+      }
+    ),
+    [removeCar.rejected.type]: (state, action) => (
+      { ...state, isFetching: false, error: { ...action.payload } }
+    ),
   },
 });
 
