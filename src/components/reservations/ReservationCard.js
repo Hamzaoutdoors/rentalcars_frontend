@@ -27,9 +27,10 @@ const CardContainer = styled(Card)`
 const CardImage = styled(CardMedia).attrs((props) => ({
   image: props.image,
   component: 'img',
-  height: props.height,
 }))`
     background-size: cover;
+    height: 30%;
+    object-fit: cover;
 `;
 
 const TitleContainer = styled.div`
@@ -130,7 +131,6 @@ const ReservationCard = ({ reservationDetail }) => {
       <CardImage
         component="img"
         alt="green iguana"
-        height="140"
         image={imgUrl}
       />
       <CardContent>

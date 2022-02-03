@@ -30,7 +30,7 @@ const ReserveBtn = styled(Button)`
     background-color: #9fcf01 !important;
   }
   ${mobile({
-    padding: '0 1rem 2rem 0',
+    margin: '0 1rem 2rem 0',
   })}
 `;
 
