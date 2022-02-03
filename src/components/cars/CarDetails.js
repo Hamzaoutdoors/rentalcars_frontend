@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import ChangeCircleOutlinedIcon from '@mui/icons-material/ChangeCircleOutlined';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
@@ -39,9 +39,7 @@ const CarImg = styled.img.attrs((props) => ({
   width: 80%;
 `;
 
-const ReturnButton = styled.a.attrs((props) => ({
-  href: props.href,
-}))`
+const ReturnButton = styled.div`
   display: flex;
   justify-content: end;
   padding-right: 0.5rem;
@@ -160,6 +158,7 @@ const CarDetails = () => {
   const cars = useSelector((state) => state.cars.data);
   const { car_id } = useParams();
   const car = findCarById(car_id, cars);
+  const navigate = useNavigate();
 
   if (car) {
     return (
@@ -168,7 +167,7 @@ const CarDetails = () => {
           <FirstColumn className="col-12 col-lg-8" style={{ padding: 0 }}>
             <CarImg src={car.imgUrl} />
             <div className="d-flex p-relative align-items-end w-100">
-              <ReturnButton href="/cars">
+              <ReturnButton onClick={() => navigate('/cars', { replace: true })}>
                 <ArrowBackIosIcon />
               </ReturnButton>
               <div className="mx-auto text-center">
