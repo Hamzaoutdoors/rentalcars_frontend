@@ -20,23 +20,28 @@
   - [ ] Display the Error messages that you get from API;
   - [x] User will see only available pages when not logged_in;
 - Cars:
-  - [ ] 1 - Add Extra-Reducers to connect with the Api;
-  - [ ] 2 - Check logic of all redux thunks to ensure that the correct data is being fetched/posted from/to the api;
+  - [x] 1 - Add Extra-Reducers to connect with the Api;
+  - [x] 2 - Check logic of all redux thunks to ensure that the correct data is being fetched/posted from/to the api;
 - Reservations:
   - [ ] 1 - Add Extra-Reducers to connect with the Api;
   - [ ] 2 - Check logic of all redux thunks to ensure that the correct data is being fetched/posted from/to the api;
 
 ## 5 - Details Page:
-  - [ ] 1 - Connect Api/Redux to get the description of the car;
+  - [x] 1 - Connect Api/Redux to get the description of the car;
 
 ## 6 - Add a Car: 
 
-  - [ ] 1 - Connect Api/Redux to Annouce a car;
+  - [x] 1 - Connect Api/Redux to Annouce a car;
 
 ## 7 - Reserve a Car;
 
   - [ ] 1 - Connecto Api/Redux to reserve a car;
 
+## 8 - Remove a Car;
+  - [x] 1 - Connecto Api/Redux to remove a car;
+
+## 9 - When unlogged; 
+  - [ ] 1- Hide changes all buttons that need authentication;
 ## 8 - Tests;
 
   - [ ] 1- make tests
