@@ -1,9 +1,9 @@
 ## 1 - Details Page:
-  - [ ] 1 - Add path to the reserve button => leading to the add a reservation form, with some params that will make a preselection of some data, depending on wich car the user clicked for reservation.
+  - [x] 1 - Add path to the reserve button => leading to the add a reservation form, with some params that will make a preselection of some data, depending on wich car the user clicked for reservation.
 
 ## 2 - Add Item Page [Optional]:
 
-  - [ ] 1 - Make a custom select Option using a Js file, 
+  - [x] 1 - Make a custom select Option using a Js file, 
   where we'll hide the original select/option and create our own list of items;
 
 ## 3 - Sidebar;

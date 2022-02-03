@@ -10,12 +10,22 @@ const initialState = {
 };
 
 // eslint-disable-next-line no-unused-vars
-const jsonTypeConfig = (token) => ({
-  headers: {
-    'Content-Type': 'application/json',
-    Authorization: token,
-  },
-});
+const jsonTypeConfig = (token) => {
+  if (token) {
+    return {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: token,
+      },
+    };
+  }
+
+  return {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+};
 
 const bodyOptions = (formElem) => {
   const data = new FormData(formElem);
@@ -48,10 +58,9 @@ const filterDeleted = (data, id) => data.filter((carObj) => carObj.id !== parseI
 export const getCars = createAsyncThunk(
   'redux/cars/getCars.js',
   async (payload, { rejectWithValue }) => {
-    const token = localStorage.getItem('rcars_jwt');
     try {
       const response = await axios
-        .get(CAR_API_ENDPOINT, jsonTypeConfig(token));
+        .get(CAR_API_ENDPOINT, jsonTypeConfig(false));
       return response.data;
     } catch (err) {
       return rejectWithValue({ ...err.response.data });
