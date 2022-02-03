@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 /* eslint-disable camelcase */
 import * as React from 'react';
 import Card from '@mui/material/Card';
@@ -12,8 +12,10 @@ import PropTypes from 'prop-types';
 import {
   Star, LocalGasStation, WbAuto, AcUnit, PriceCheck, EventSeat,
 } from '@mui/icons-material';
+import { useDispatch } from 'react-redux';
 import { mobile } from '../../responsive';
 import ReservationDetail from './ReservationDetail';
+import { cancelReservation } from '../../redux/reservations/reservationsSlice';
 
 const CardContainer = styled(Card)`
    padding: 1rem;
@@ -108,7 +110,12 @@ const ReservationCard = ({ reservationDetail }) => {
   // This linters complains about the use of
   // camelCase for the variables, but in our API we use snake_case for Ruby on rails convention.
 
-  const { end_date, start_date, city } = reservationDetail;
+  const {
+    car, id,
+  } = reservationDetail;
+  const { imgUrl } = car;
+  const carName = car.name;
+  const dispatch = useDispatch();
 
   return (
     <CardContainer
@@ -124,7 +131,7 @@ const ReservationCard = ({ reservationDetail }) => {
         component="img"
         alt="green iguana"
         height="140"
-        image="https://i.ibb.co/GPj1fBB/11.png"
+        image={imgUrl}
       />
       <CardContent>
         {/* <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -132,7 +139,7 @@ const ReservationCard = ({ reservationDetail }) => {
           </Typography> */}
         <TitleContainer>
           <CardTitle variant="h5" component="div">
-            {city}
+            {carName}
           </CardTitle>
           <Icon>
             <Star />
@@ -175,7 +182,7 @@ const ReservationCard = ({ reservationDetail }) => {
       </CardContent>
       <CardActions>
         <ReservationDetail reservationDetail={reservationDetail} />
-        <CancelButton size="small">Cancel</CancelButton>
+        <CancelButton onClick={() => dispatch(cancelReservation(id))} size="small">Cancel</CancelButton>
       </CardActions>
     </CardContainer>
   );
@@ -187,6 +194,6 @@ ReservationCard.propTypes = {
   reservationDetail: PropTypes.shape({
     start_date: PropTypes.string.isRequired,
     end_date: PropTypes.string.isRequired,
-    city: PropTypes.string.isRequired,
+    city_id: PropTypes.string.isRequired,
   }).isRequired,
 };
