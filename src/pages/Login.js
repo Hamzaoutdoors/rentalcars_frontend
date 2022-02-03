@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { mobile } from '../responsive';
@@ -69,7 +69,7 @@ const Button = styled.button.attrs((props) => ({
   }
 `;
 
-const Link = styled.a`
+const Link = styled(NavLink)`
   cursor: pointer;
   margin: 5px 0;
   font-size: 12px;
@@ -102,7 +102,7 @@ const Login = () => {
           <Input type="email" name="email" placeholder="Email" defaultValue="" />
           <Input type="password" name="password" placeholder="Password" defaultValue="" />
           <Button type="submit">LOG IN</Button>
-          <Link>SIGN UP</Link>
+          <Link to="/sign_up">SIGN UP</Link>
         </Form>
       </Wrapper>
     </Container>
