@@ -3,9 +3,10 @@ import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { mobile } from '../../responsive';
 import { addReservation } from '../../redux/reservations/reservationsSlice';
+
 // import { numOfDays } from '../../logic/date';
 
 const Form = styled.form`
@@ -110,6 +111,8 @@ const ReserveForm = () => {
   const maxDate = new Date();
 
   const dispatch = useDispatch();
+  const redirect = useNavigate();
+  const { id } = useParams();
 
   const initialData = {
     start_date: minDate,
@@ -120,10 +123,9 @@ const ReserveForm = () => {
   const { cities } = useSelector((state) => state.reservations);
   const [selectedData, setSelectedDates] = useState(initialData);
 
-  const redirect = useNavigate();
-
   const handleInput = (e) => {
     e.preventDefault();
+    console.log(id);
     setSelectedDates({
       ...selectedData,
       [e.target.name]: e.target.value,
@@ -133,6 +135,7 @@ const ReserveForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addReservation(selectedData));
+    console.log(selectedData);
     redirect('/myreservations');
   };
 
