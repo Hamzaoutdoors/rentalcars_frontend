@@ -68,8 +68,6 @@ const App = () => {
   useEffect(() => {
     handleTokenAuthentication(dispatch);
     dispatch(getCars());
-
-    return dispatch(getCars());
   }, []);
 
   return (
