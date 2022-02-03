@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render the Home page correctly 1`] = `
+<div
+  className="sc-bdvvtL gFuYZJ"
+>
+  <a
+    className="sc-gsDKAQ lbFdcj"
+    href="/cars"
+    onClick={[Function]}
+  >
+    Start your journey
+  </a>
+</div>
+`;

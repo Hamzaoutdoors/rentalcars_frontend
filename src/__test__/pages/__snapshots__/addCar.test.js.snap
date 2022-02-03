@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render the Add Car page correctly 1`] = `
+<div
+  className="sc-iCfMLu dfaXPl"
+>
+  <div
+    className="sc-jrQzAO jHbGCH"
+  >
+    <div
+      className="sc-furwcr dgcOZg"
+    >
+      <p
+        style={
+          Object {
+            "margin": 0,
+            "padding": "0 2.5rem",
+          }
+        }
+      >
+        Add a Car to rent
+      </p>
+    </div>
+    <div
+      className="sc-pVTFL jvwajp"
+    >
+      Let's be partners, with a 2% fee you can annouce your car on our website! We are available in 10 cities!
+    </div>
+  </div>
+  <form
+    className="sc-bdvvtL ljALzO"
+    onSubmit={[Function]}
+  >
+    <div
+      className="sc-gsDKAQ cHUBvv"
+    >
+      <div
+        className="sc-dkPtRN hzTcze"
+      >
+        <div
+          className="sc-hKwDye dUcxzm"
+        >
+          Car Info
+        </div>
+        <input
+          className="sc-jRQBWg bQZufB"
+          defaultValue=""
+          id="car-model"
+          name="name"
+          placeholder="Model"
+          type="text"
+        />
+        <input
+          className="sc-jRQBWg bQZufB"
+          defaultValue=""
+          id="car-brand"
+          name="brand"
+          placeholder="Brand"
+          type="text"
+        />
+        <input
+          className="sc-jRQBWg bQZufB"
+          defaultValue=""
+          id="car-image"
+          name="imgUrl"
+          placeholder="Image Url"
+          type="text"
+        />
+      </div>
+    </div>
+    <div
+      className="sc-gsDKAQ cHUBvv"
+    >
+      <div
+        className="sc-dkPtRN hzTcze"
+      >
+        <div
+          className="sc-hKwDye dUcxzm"
+        >
+          Car Details
+        </div>
+        <input
+          className="sc-jRQBWg bQZufB"
+          defaultValue=""
+          id="price-daily"
+          name="price_daily"
+          placeholder="Price Daily"
+          step="0.01"
+          type="number"
+        />
+        <input
+          className="sc-jRQBWg bQZufB"
+          defaultValue=""
+          id="price-monthly"
+          name="price_monthly"
+          placeholder="Price Monthly"
+          step="0.01"
+          type="number"
+        />
+        <div
+          style={
+            Object {
+              "alignItems": "center",
+              "display": "flex",
+            }
+          }
+        >
+          <div
+            className="sc-eCImPb jFUiIc"
+          >
+            Color:
+          </div>
+          <input
+            className="sc-jRQBWg bQZufB"
+            defaultValue=""
+            id="car-color"
+            name="color"
+            placeholder="Main color (hex value)"
+            style={
+              Object {
+                "height": "35px",
+                "width": "100px",
+              }
+            }
+            type="color"
+          />
+        </div>
+      </div>
+      <div
+        className="sc-dkPtRN hzTcze"
+      >
+        <button
+          className="sc-gKclnd KxBTB"
+          type="submit"
+        >
+          Announce
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+`;

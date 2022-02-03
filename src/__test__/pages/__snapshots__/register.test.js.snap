@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render the registration page correctly 1`] = `
+<div
+  className="sc-bdvvtL hgLkDy"
+>
+  <div
+    className="sc-gsDKAQ ggTrYE"
+  >
+    <h1
+      className="sc-dkPtRN iqAxTj"
+    >
+      CREATE AN ACCOUNT
+    </h1>
+    <form
+      className="sc-hKwDye hHEMTg"
+      onSubmit={[Function]}
+    >
+      <input
+        className="sc-eCImPb kcYXOr"
+        defaultValue=""
+        name="username"
+        placeholder="Username"
+        type="text"
+      />
+      <input
+        className="sc-eCImPb kcYXOr"
+        defaultValue=""
+        name="email"
+        placeholder="E-mail"
+        type="email"
+      />
+      <input
+        className="sc-eCImPb kcYXOr"
+        defaultValue=""
+        name="password"
+        placeholder="Password"
+        type="password"
+      />
+      <p
+        className="sc-jRQBWg iuDMQA"
+      >
+        By clicking
+         
+        <b>
+          Register
+        </b>
+        , you agree to our Terms, Data Policy and Cookie Policy. You may receive SMS notifications from us and/or our partners. Text
+         
+        STOP
+         
+        to stop.
+      </p>
+      <button
+        className="sc-gKclnd cOWsRp"
+        type="submit"
+      >
+        Sign Up
+      </button>
+    </form>
+  </div>
+</div>
+`;
