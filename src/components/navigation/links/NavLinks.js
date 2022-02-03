@@ -114,15 +114,19 @@ const NavLinks = () => {
             );
           })}
       </Nav>
-      <LogOut onClick={() => {
-        dispatch(logOutUser());
-        navigate('/login', { replace: true });
-        document.location.reload(true);
-      }}
-      >
-        Log out
-        <Logout />
-      </LogOut>
+      {
+        isAuthenticated && (
+        <LogOut onClick={() => {
+          dispatch(logOutUser());
+          navigate('/login', { replace: true });
+          document.location.reload(true);
+        }}
+        >
+          Log out
+          <Logout />
+        </LogOut>
+        )
+      }
     </Container>
   );
 };
