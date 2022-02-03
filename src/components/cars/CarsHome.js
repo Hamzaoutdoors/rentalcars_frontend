@@ -49,7 +49,7 @@ const HomePage = () => {
             </>
           ) : (
             <>
-              <Title>Welcome Car Rental App</Title>
+              <Title>Welcome to Car Rental App</Title>
               <SubTitle>Please sign in to continue</SubTitle>
             </>
           )
