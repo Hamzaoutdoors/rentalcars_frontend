@@ -4,7 +4,10 @@ import { motion } from 'framer-motion';
 import { FavoriteBorderOutlined } from '@material-ui/icons';
 import PropTypes from 'prop-types';
 import { CarRentalOutlined, DeleteOutlined } from '@mui/icons-material';
+import { useDispatch, useSelector } from 'react-redux';
 import { mobile } from '../../responsive';
+import { removeCar } from '../../redux/cars/carsSlice';
+import { setSliderIndex } from '../../redux/utils/actions/sliderActions';
 
 const Info = styled.div`
    opacity: 0;
@@ -109,12 +112,22 @@ const Detail = styled.div`
     }
 `;
 
+const handleSlideIndex = (slideIndex, dispatch, action) => {
+  if (slideIndex - 1 < 0) {
+    dispatch(action(0));
+  } else {
+    dispatch(action(slideIndex - 1));
+  }
+};
+
 const CarCard = (props) => {
   const { item } = props;
   const {
     imgUrl, name, brand, id,
   } = item;
   const { color } = item.description;
+  const dispatch = useDispatch();
+  const { slideIndex } = useSelector((state) => state.utils.slider);
 
   return (
     <Container
@@ -146,7 +159,11 @@ const CarCard = (props) => {
           <FavoriteBorderOutlined />
         </Icon>
         <Icon bg="d11a2a">
-          <DeleteOutlined />
+          <DeleteOutlined onClick={() => {
+            dispatch(removeCar(id));
+            handleSlideIndex(slideIndex, dispatch, setSliderIndex);
+          }}
+          />
         </Icon>
       </Info>
       <Detail>
