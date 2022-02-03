@@ -68,7 +68,7 @@ const App = () => {
     dispatch(getCars());
     dispatch(getReservations());
     dispatch(getCities());
-  }, []);
+  }, [isAuthenticated]);
 
   return (
     <Router>
