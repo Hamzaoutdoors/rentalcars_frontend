@@ -28,7 +28,13 @@
 
 ## Live Demo
 
-### Click [here]() to view the project.
+### Click [here](https://hanjelscars.netlify.app/) to view the project.
+
+#### You can login using the following credentials:
+```
+email : foo1@foo.com
+password: admin123
+```
 ## Built With
 
  - React & Redux
