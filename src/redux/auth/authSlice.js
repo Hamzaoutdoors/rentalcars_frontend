@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const LOGIN_ENDPOINT = 'http://localhost:4000/login';
-export const SIGNUP_ENDPOINT = 'http://localhost:4000/signup';
+export const LOGIN_ENDPOINT = 'https://hanjelscars.herokuapp.com/login';
+export const SIGNUP_ENDPOINT = 'https://hanjelscars.herokuapp.com/signup';
 
 const initialState = {
   isFetching: false,

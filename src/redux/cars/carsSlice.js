@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const CAR_API_ENDPOINT = 'http://127.0.0.1:4000/api/v1/cars';
+const CAR_API_ENDPOINT = 'https://hanjelscars.herokuapp.com/api/v1/cars';
 
 const initialState = {
   isFetching: false,

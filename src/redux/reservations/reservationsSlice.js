@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const RESERVATIONS_API_ENDPOINT = 'http://127.0.0.1:4000/api/v1/reservations';
-const CITIES_API_ENDPOINT = 'http://127.0.0.1:4000/cities';
+const RESERVATIONS_API_ENDPOINT = 'https://hanjelscars.herokuapp.com/api/v1/reservations';
+const CITIES_API_ENDPOINT = 'https://hanjelscars.herokuapp.com/cities';
 
 const initialState = {
   isFetching: false,
