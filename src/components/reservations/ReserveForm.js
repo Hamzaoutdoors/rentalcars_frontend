@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { useNavigate, useParams } from 'react-router-dom';
 import { mobile } from '../../responsive';
 import { addReservation } from '../../redux/reservations/reservationsSlice';
+import { useState } from 'react';
 
 const Form = styled.form`
   padding: 0.5rem;
@@ -104,8 +105,9 @@ const SubmitButton = styled.button.attrs((props) => ({
 const SelectCityOption = styled.option``;
 
 const ReserveForm = () => {
-  const minDate = new Date().toISOString().split('T')[0];
-  const maxDate = new Date();
+  const { minDate, setMinDate } = useState(new Date().toISOString().split('T')[0]);
+  const startDate = new Date().toISOString().split('T')[0];
+
   const dispatch = useDispatch();
   const redirect = useNavigate();
   const { car_id } = useParams();
@@ -138,8 +140,8 @@ const ReserveForm = () => {
               id="start"
               name="start_date"
               defaultValue={minDate}
-              min={minDate}
-              max={maxDate}
+              min={startDate}
+              onChange={(e) => setMinDate(e.target.value)}
               required
             />
           </DateContainer>
@@ -151,7 +153,6 @@ const ReserveForm = () => {
               name="end_date"
               defaultValue={minDate}
               min={minDate}
-              max={maxDate}
               required
             />
           </DateContainer>
