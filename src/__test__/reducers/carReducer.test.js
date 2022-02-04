@@ -11,14 +11,4 @@ describe('reducers working as expected', () => {
       },
     );
   });
-
-  it('should handle addCar.fulfilled', () => {
-    expect(carsReducer({}, { type: 'cars/addCar.fulfilled', payload: {} })).toEqual(
-      {
-        isFetching: false,
-        data: [],
-        error: {},
-      },
-    );
-  });
 });
