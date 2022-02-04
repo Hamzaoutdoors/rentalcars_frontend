@@ -1,6 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import logger from 'redux-logger';
 import carsReducer from './cars/carsSlice';
 import reservationsReducer from './reservations/reservationsSlice';
 import utilReducer from './utils/utilsReducer';
@@ -16,7 +15,7 @@ const reducer = combineReducers({
 
 const store = createStore(
   reducer,
-  applyMiddleware(thunk, logger),
+  applyMiddleware(thunk),
 );
 
 export default store;
