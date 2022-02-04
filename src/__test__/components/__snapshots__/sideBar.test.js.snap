@@ -37,29 +37,17 @@ exports[`Sidebar component renders correctly 1`] = `
       </a>
       <a
         className="sc-iCfMLu cXqcxp"
-        href="/Login"
+        href="/login"
         onClick={[Function]}
       >
-        <a
-          className="sc-iCfMLu cXqcxp"
-          href="/login"
-          onClick={[Function]}
-        >
-          Log In
-        </a>
+        Log In
       </a>
       <a
         className="sc-iCfMLu cXqcxp"
-        href="/Register"
+        href="/sign_up"
         onClick={[Function]}
       >
-        <a
-          className="sc-iCfMLu cXqcxp"
-          href="/sign_up"
-          onClick={[Function]}
-        >
-          Register
-        </a>
+        Register
       </a>
     </div>
   </div>
