@@ -24,9 +24,7 @@
 
 - Make sure the API is ready to serve your front end app! Go to https://github.com/Hamzaoutdoors/rentalcars_backend and start the back end by following the instructions.
 
-- Navigate to the `greetings page` using the links in the website and click on the `Be greeted!` button to generate a new greet.
-
-- Finally, run `code .` to see the files in your default code editor.
+- To run tests : `npm test` in your terminal
 
 ## Live Demo
 
