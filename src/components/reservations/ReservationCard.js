@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable camelcase */
 import * as React from 'react';
+import { motion } from 'framer-motion';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -121,6 +122,20 @@ const ReservationCard = ({ reservationDetail }) => {
 
   return (
     <CardContainer
+      as={motion.div}
+      initial={{
+        opacity: 0,
+        translateY: 50,
+      }}
+      animate={{
+        opacity: 1,
+        translateX: 0,
+        translateY: 0,
+      }}
+      transition={{
+        duration: 0.2,
+        delay: 0.2,
+      }}
       sx={{
         width: {
           sx: 1.0, // 100%
