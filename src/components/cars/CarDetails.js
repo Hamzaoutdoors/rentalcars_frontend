@@ -162,7 +162,7 @@ const CarDetails = () => {
 
   if (car) {
     return (
-      <div className="container" style={{ margin: 0, paddingBottom: '1rem' }}>
+      <div className="container" style={{ margin: 0, padding: '1rem 0' }}>
         <div className="row">
           <FirstColumn className="col-12 col-lg-8" style={{ padding: 0 }}>
             <CarImg src={car.imgUrl} />
