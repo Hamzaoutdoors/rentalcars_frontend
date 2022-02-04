@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render the Login page correctly 1`] = `
+<div
+  className="sc-bdvvtL hLrzLZ"
+>
+  <div
+    className="sc-gsDKAQ hImMvM"
+  >
+    <h1
+      className="sc-dkPtRN fnVSBc"
+    >
+      SIGN IN
+    </h1>
+    <form
+      className="sc-hKwDye kdkmaI"
+      onSubmit={[Function]}
+    >
+      <input
+        className="sc-eCImPb dXmzYC"
+        defaultValue=""
+        name="email"
+        placeholder="Email"
+        type="email"
+      />
+      <input
+        className="sc-eCImPb dXmzYC"
+        defaultValue=""
+        name="password"
+        placeholder="Password"
+        type="password"
+      />
+      <button
+        className="sc-jRQBWg dpNmhC"
+        type="submit"
+      >
+        LOG IN
+      </button>
+      <a
+        className="sc-gKclnd jJhgGm"
+        href="/sign_up"
+        onClick={[Function]}
+      >
+        SIGN UP
+      </a>
+    </form>
+  </div>
+</div>
+`;
