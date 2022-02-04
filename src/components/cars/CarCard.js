@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -123,11 +124,12 @@ const handleSlideIndex = (slideIndex, dispatch, action) => {
 const CarCard = (props) => {
   const { item } = props;
   const {
-    imgUrl, name, brand, id,
+    imgUrl, name, brand, id, user_id,
   } = item;
   const { color } = item.description;
   const dispatch = useDispatch();
   const { slideIndex } = useSelector((state) => state.utils.slider);
+  const { user } = useSelector((state) => state.auth);
 
   return (
     <Container
@@ -158,13 +160,21 @@ const CarCard = (props) => {
         <Icon bg="d86a77">
           <FavoriteBorderOutlined />
         </Icon>
-        <Icon bg="d11a2a">
-          <DeleteOutlined onClick={() => {
-            dispatch(removeCar(id));
-            handleSlideIndex(slideIndex, dispatch, setSliderIndex);
-          }}
-          />
-        </Icon>
+        {
+          (
+            user && user.id === user_id
+          ) && (
+          <Icon
+            bg="d11a2a"
+            onClick={() => {
+              dispatch(removeCar(id));
+              handleSlideIndex(slideIndex, dispatch, setSliderIndex);
+            }}
+          >
+            <DeleteOutlined />
+          </Icon>
+          )
+        }
       </Info>
       <Detail>
         <h3>{name}</h3>
