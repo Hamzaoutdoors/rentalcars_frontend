@@ -7,7 +7,12 @@ export const SIGNUP_ENDPOINT = 'https://hanjelscars.herokuapp.com/signup';
 const initialState = {
   isFetching: false,
   isAuthenticated: false,
-  user: null,
+  user: {
+    payload: {
+      user: null,
+      token: null,
+    },
+  },
   error: {},
 };
 
