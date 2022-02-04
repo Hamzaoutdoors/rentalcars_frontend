@@ -105,7 +105,8 @@ const SubmitButton = styled.button.attrs((props) => ({
 const SelectCityOption = styled.option``;
 
 const ReserveForm = () => {
-  const { minDate, setMinDate } = useState(new Date().toISOString().split('T')[0]);
+  const [minDate, setMinDate] = useState(new Date().toISOString().split('T')[0]);
+  const [maxDate, setMaxDate] = useState(new Date());
   const startDate = new Date().toISOString().split('T')[0];
 
   const dispatch = useDispatch();
@@ -139,9 +140,15 @@ const ReserveForm = () => {
               type="date"
               id="start"
               name="start_date"
-              defaultValue={minDate}
+              defaultValue={startDate}
               min={startDate}
-              onChange={(e) => setMinDate(e.target.value)}
+              max={maxDate}
+              onChange={(e) => {
+                const parseDate = new Date(e.target.value);
+                parseDate.setDate(parseDate.getDate() + 1);
+                const date = parseDate.toISOString().split('T')[0];
+                setMinDate(date);
+              }}
               required
             />
           </DateContainer>
@@ -153,6 +160,12 @@ const ReserveForm = () => {
               name="end_date"
               defaultValue={minDate}
               min={minDate}
+              onChange={(e) => {
+                const parseDate = new Date(e.target.value);
+                parseDate.setDate(parseDate.getDate() - 1);
+                const date = parseDate.toISOString().split('T')[0];
+                setMaxDate(date);
+              }}
               required
             />
           </DateContainer>
@@ -161,9 +174,6 @@ const ReserveForm = () => {
           <Filter>
             <FilterTitle>City</FilterTitle>
             <SelectCity className="form-select" name="city_id" defaultValue={1}>
-              <SelectCityOption selected disabled>
-                Select City
-              </SelectCityOption>
               {cities.map((city) => (
                 <SelectCityOption
                   key={uuidv4()}
