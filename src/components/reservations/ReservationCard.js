@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 import {
   Star, LocalGasStation, WbAuto, AcUnit, PriceCheck, EventSeat,
 } from '@mui/icons-material';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { mobile } from '../../responsive';
 import ReservationDetail from './ReservationDetail';
 import { cancelReservation } from '../../redux/reservations/reservationsSlice';
@@ -117,6 +117,7 @@ const ReservationCard = ({ reservationDetail }) => {
   const { imgUrl } = car;
   const carName = car.name;
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
 
   return (
     <CardContainer
@@ -182,7 +183,14 @@ const ReservationCard = ({ reservationDetail }) => {
       </CardContent>
       <CardActions>
         <ReservationDetail reservationDetail={reservationDetail} />
-        <CancelButton onClick={() => dispatch(cancelReservation(id))} size="small">Cancel</CancelButton>
+        {user.id === reservationDetail.user_id && (
+          <CancelButton
+            onClick={() => dispatch(cancelReservation(id))}
+            size="small"
+          >
+            Cancel
+          </CancelButton>
+        )}
       </CardActions>
     </CardContainer>
   );
