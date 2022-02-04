@@ -1,5 +1,10 @@
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { authenticateUser, SIGNUP_ENDPOINT } from '../redux/auth/authSlice';
 import { mobile } from '../responsive';
+import store from '../redux/configureStore';
 
 const Container = styled.div`
   display: flex;
@@ -72,30 +77,46 @@ const Button = styled.button`
   }
 `;
 
-const Register = () => (
-  <Container>
-    <Wrapper>
-      <Title>CREATE AN ACCOUNT</Title>
-      <Form>
-        <Input placeholder="Username" />
-        <Input placeholder="E-mail" />
-        <Input placeholder="Password" />
-        <Aggrement>
-          By clicking
-          {' '}
-          <b>Register</b>
-          , you agree to our Terms, Data Policy and Cookie
-          Policy. You may receive SMS notifications from us and/or our
-          partners. Text
-          {' '}
-          STOP
-          {' '}
-          to stop.
-        </Aggrement>
-        <Button>Register</Button>
-      </Form>
-    </Wrapper>
-  </Container>
-);
+const Register = () => {
+  const navigate = useNavigate();
+  const { isAuthenticated } = useSelector((state) => state.auth);
+  const authenticate = (e) => {
+    e.preventDefault();
+
+    store.dispatch(authenticateUser({ form: e.target, url: SIGNUP_ENDPOINT }));
+  };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/', { replace: true });
+    }
+  }, [isAuthenticated]);
+
+  return (
+    <Container>
+      <Wrapper>
+        <Title>CREATE AN ACCOUNT</Title>
+        <Form onSubmit={(e) => authenticate(e)}>
+          <Input type="text" name="username" placeholder="Username" defaultValue="" />
+          <Input type="email" name="email" placeholder="E-mail" defaultValue="" />
+          <Input type="password" name="password" placeholder="Password" defaultValue="" />
+          <Aggrement>
+            By clicking
+            {' '}
+            <b>Register</b>
+            , you agree to our Terms, Data Policy and Cookie
+            Policy. You may receive SMS notifications from us and/or our
+            partners. Text
+            {' '}
+            STOP
+            {' '}
+            to stop.
+          </Aggrement>
+          <Button type="submit">Sign Up</Button>
+        </Form>
+      </Wrapper>
+    </Container>
+  );
+};
 
 export default Register;

@@ -1,12 +1,14 @@
-/* eslint-disable react/forbid-prop-types */
-
+/* eslint-disable camelcase */
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FavoriteBorderOutlined } from '@material-ui/icons';
 import PropTypes from 'prop-types';
-import { CarRentalOutlined } from '@mui/icons-material';
+import { CarRentalOutlined, DeleteOutlined } from '@mui/icons-material';
+import { useDispatch, useSelector } from 'react-redux';
 import { mobile } from '../../responsive';
+import { removeCar } from '../../redux/cars/carsSlice';
+import { setSliderIndex } from '../../redux/utils/actions/sliderActions';
 
 const Info = styled.div`
    opacity: 0;
@@ -35,7 +37,7 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: transparent;
     position: relative;
     &:hover ${Info}{
         opacity: 1;
@@ -80,7 +82,7 @@ const Icon = styled.div`
     transition: all 0.5s ease;
     cursor: pointer;
     &:hover {
-        background-color: #e9f5f5;
+        background-color: #${(props) => props.bg};
         transform: scale(1.1);
     }
 `;
@@ -111,10 +113,24 @@ const Detail = styled.div`
     }
 `;
 
-const CarCard = ({ item }) => {
+const handleSlideIndex = (slideIndex, dispatch, action) => {
+  if (slideIndex - 1 < 0) {
+    dispatch(action(0));
+  } else {
+    dispatch(action(slideIndex - 1));
+  }
+};
+
+const CarCard = (props) => {
+  const { item } = props;
   const {
-    imageUrl, name, brand, color,
+    imgUrl, name, brand, id, user_id,
   } = item;
+  const { color } = item.description;
+  const dispatch = useDispatch();
+  const { slideIndex } = useSelector((state) => state.utils.slider);
+  const { user } = useSelector((state) => state.auth);
+
   return (
     <Container
       as={motion.div}
@@ -134,19 +150,31 @@ const CarCard = ({ item }) => {
       style={{ maxWidth: '300px' }}
     >
       <Circle bgColor={color} />
-      <Image src={imageUrl} />
+      <Image src={imgUrl} />
       <Info>
-        <NavLink to={`/cars/${item.id}/details`}>
-          <Icon>
+        <NavLink to={`/cars/${id}/details`}>
+          <Icon bg="e9f5f5">
             <CarRentalOutlined />
           </Icon>
         </NavLink>
-        <Icon>
+        <Icon bg="d86a77">
           <FavoriteBorderOutlined />
         </Icon>
-        {/* <Icon>
-          <DeleteOutlined />
-        </Icon> */}
+        {
+          (
+            user && user.id === user_id
+          ) && (
+          <Icon
+            bg="d11a2a"
+            onClick={() => {
+              dispatch(removeCar(id));
+              handleSlideIndex(slideIndex, dispatch, setSliderIndex);
+            }}
+          >
+            <DeleteOutlined />
+          </Icon>
+          )
+        }
       </Info>
       <Detail>
         <h3>{name}</h3>
@@ -161,9 +189,5 @@ const CarCard = ({ item }) => {
 export default CarCard;
 
 CarCard.propTypes = {
-  imageUrl: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  brand: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
-  item: PropTypes.object.isRequired,
+  item: PropTypes.instanceOf(Object).isRequired,
 };

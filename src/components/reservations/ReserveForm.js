@@ -3,10 +3,9 @@ import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { mobile } from '../../responsive';
 import { addReservation } from '../../redux/reservations/reservationsSlice';
-// import { numOfDays } from '../../logic/date';
 
 const Form = styled.form`
   padding: 0.5rem;
@@ -110,23 +109,25 @@ const ReserveForm = () => {
   const maxDate = new Date();
 
   const dispatch = useDispatch();
+  const redirect = useNavigate();
+  const { car_id } = useParams();
 
   const initialData = {
     start_date: minDate,
     end_date: minDate,
-    city: '',
+    city_id: '',
+    car_id: '',
   };
 
   const { cities } = useSelector((state) => state.reservations);
-  const [selectedData, setSelectedDates] = useState(initialData);
-
-  const redirect = useNavigate();
+  const [selectedData, setSelectedData] = useState(initialData);
 
   const handleInput = (e) => {
     e.preventDefault();
-    setSelectedDates({
+    setSelectedData({
       ...selectedData,
       [e.target.name]: e.target.value,
+      car_id,
     });
   };
 
@@ -170,12 +171,12 @@ const ReserveForm = () => {
         <Wrapper>
           <Filter>
             <FilterTitle>City</FilterTitle>
-            <SelectCity className="form-select" name="city" onChange={handleInput}>
+            <SelectCity className="form-select" name="city_id" onChange={(e) => handleInput(e)}>
               <SelectCityOption selected disabled>
                 Select City
               </SelectCityOption>
               {cities.map((city) => (
-                <SelectCityOption key={uuidv4()} value={city.name}>
+                <SelectCityOption key={uuidv4()} value={city.id}>
                   {city.name}
                 </SelectCityOption>
               ))}

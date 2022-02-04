@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { React, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import DesktopBar from './desktop/DesktopBar';
@@ -20,9 +21,11 @@ const handleResize = () => {
 
 const Sidebar = () => {
   const { mobile } = useSelector((state) => state.utils.navBar);
+  const { isAuthenticated } = useSelector((state) => state.auth);
 
   useEffect(() => {
     handleResize();
+
     window.addEventListener('resize', () => {
       handleResize();
     });

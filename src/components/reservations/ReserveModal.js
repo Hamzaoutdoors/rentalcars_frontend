@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
+import { motion } from 'framer-motion';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
@@ -13,6 +14,7 @@ import { useSelector } from 'react-redux';
 import ReserveForm from './ReserveForm';
 import store from '../../redux/configureStore';
 import { expandModal } from '../../redux/reservations/reservationsSlice';
+import { mobile } from '../../responsive';
 
 const ReserveBtn = styled(Button)`
   padding: 0.5rem;
@@ -27,7 +29,10 @@ const ReserveBtn = styled(Button)`
   &:hover {
     color: white !important;
     background-color: #9fcf01 !important;
-  } 
+  }
+  ${mobile({
+    margin: '0 1rem 2rem 0',
+  })}
 `;
 
 const Title = styled(DialogTitle)`
@@ -49,14 +54,6 @@ const Content = styled(DialogContent)`
     font-weight: bold;
     font-family: 'Urbanist', sans-serif;
   }`;
-
-const AmountText = styled(Typography)`
-  font-size: 1rem;
-  font-weight: bold;
-  text-shadow: 1px 1px 1px #f6a40e;
-  font-family: 'Urbanist', sans-serif;
-  color: black;
-`;
 
 const DateContainer = styled(Typography)`
   display: flex;
@@ -119,6 +116,24 @@ const ReserveModal = () => {
       </ReserveBtn>
 
       <BootstrapDialog
+        as={motion.div}
+        initial={{
+          opacity: 0,
+          translateY: 50,
+        }}
+        animate={{
+          opacity: 1,
+          translateX: 0,
+          translateY: 0,
+        }}
+        transition={{
+          duration: 0.2,
+          delay: 0.2,
+        }}
+        exit={{
+          opacity: 0,
+          translateY: -50,
+        }}
         onClose={toggleModal}
         aria-labelledby="customized-dialog-title"
         open={openModal}
@@ -133,12 +148,6 @@ const ReserveModal = () => {
           <DateContainer variant="div">
             <ReserveForm />
           </DateContainer>
-          <AmountText>
-            Total Amount:
-            {' '}
-            <span>$</span>
-            <span>0</span>
-          </AmountText>
         </Content>
       </BootstrapDialog>
     </>

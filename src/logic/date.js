@@ -8,6 +8,7 @@ export const numOfDays = (date1, date2) => {
 };
 
 export const totalAmount = (Price, date1, date2) => {
-  const numOfDays = numOfDays(date1, date2);
-  return Price * numOfDays;
+  const num = numOfDays(date1, date2);
+  const priceInt = parseInt(Price, 10);
+  return priceInt * num;
 };

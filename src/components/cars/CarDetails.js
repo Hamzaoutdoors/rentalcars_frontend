@@ -1,12 +1,37 @@
 /* eslint-disable camelcase */
-
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import ChangeCircleOutlinedIcon from '@mui/icons-material/ChangeCircleOutlined';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ChevronRightOutlinedIcon from '@mui/icons-material/ChevronRightOutlined';
 import ReserveModal from '../reservations/ReserveModal';
+import { mobile } from '../../responsive';
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  max-width: 1320px;
+  height: 100vh;
+  color: black;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+`;
+
+const FirstColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const SecondColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+`;
 
 const CarImg = styled.img.attrs((props) => ({
   src: props.src,
@@ -14,9 +39,7 @@ const CarImg = styled.img.attrs((props) => ({
   width: 80%;
 `;
 
-const ReturnButton = styled.a.attrs((props) => ({
-  href: props.href,
-}))`
+const ReturnButton = styled.div`
   display: flex;
   justify-content: end;
   padding-right: 0.5rem;
@@ -31,7 +54,7 @@ const ReturnButton = styled.a.attrs((props) => ({
   color: white;
   &:hover {
     color: white;
-  } 
+  }
 `;
 
 const DetailsTable = styled.div`
@@ -79,6 +102,9 @@ const DiscoverMore = styled.p`
   font-family: 'Urbanist', 'Arial', sans-serif;
   font-size: 12px;
   font-weight: 700;
+  ${mobile({
+    margin: '0 1rem 2rem 0',
+  })}
 `;
 
 const ColorWheel = styled.div`
@@ -115,104 +141,117 @@ const ColorWheel = styled.div`
     height: 50%;
     transform: translate(-50%, -50%);
   }
+  ${mobile({
+    margin: '0 1rem 2rem 0',
+  })}
 `;
 
-const findCarById = (id, state) => {
+const findCarById = (id, cars) => {
   let car = null;
-  state.forEach((currCar) => {
+  cars.forEach((currCar) => {
     if (currCar.id === parseInt(id, 10)) car = currCar;
   });
   return car;
 };
 
 const CarDetails = () => {
-  const state = useSelector((state) => state.cars.data);
+  const cars = useSelector((state) => state.cars.data);
   const { car_id } = useParams();
-  const car = findCarById(car_id, state);
+  const car = findCarById(car_id, cars);
+  const navigate = useNavigate();
 
-  return (
-    <div className="container" style={{ margin: 0 }}>
-      <div className="row">
-        <div className="d-flex flex-column align-items-center col-12 col-md-8" style={{ padding: 0 }}>
-          <CarImg src={car.imageUrl} />
-          <div className="d-flex p-relative align-items-end w-100">
-            <ReturnButton href="/">
-              <ArrowBackIosIcon />
-            </ReturnButton>
-            <div className="mx-auto text-center">
-              <ChangeCircleOutlinedIcon sx={{ fontSize: '40px', marginBottom: '0.5rem' }} />
-              <h2 style={{ fontSize: '14px', margin: '0' }}>
-                Rotate
-              </h2>
-              <p style={{ fontSize: '14px', margin: '0' }}>
-                Vehicle
-              </p>
+  if (car) {
+    return (
+      <div className="container" style={{ margin: 0 }}>
+        <div className="row">
+          <FirstColumn className="col-12 col-lg-8" style={{ padding: 0 }}>
+            <CarImg src={car.imgUrl} />
+            <div className="d-flex p-relative align-items-end w-100">
+              <ReturnButton onClick={() => navigate('/cars', { replace: true })}>
+                <ArrowBackIosIcon />
+              </ReturnButton>
+              <div className="mx-auto text-center">
+                <ChangeCircleOutlinedIcon sx={{ fontSize: '40px', marginBottom: '0.5rem' }} />
+                <h2 style={{ fontSize: '14px', margin: '0' }}>
+                  Rotate
+                </h2>
+                <p style={{ fontSize: '14px', margin: '0' }}>
+                  Vehicle
+                </p>
+              </div>
             </div>
-          </div>
 
-        </div>
-        <div className="d-flex flex-column justify-content-center align-items-end col-12 col-md-4" style={{ maxHeight: '90%', padding: '0 2.3rem' }}>
-          <div className="text-end">
-            <CarTitle>
-              { car.name.charAt(0).toUpperCase()
-              + car.name.slice(1) }
-            </CarTitle>
-            <SubTitle>
-              Rent this car for a week and receive 1 extra day!
-            </SubTitle>
-          </div>
+          </FirstColumn>
+          <SecondColumn className="col-12 col-lg-4" style={{ maxHeight: '90%', padding: '0 2.3rem' }}>
+            <div className="text-end">
+              <CarTitle>
+                { car.name.charAt(0).toUpperCase()
+                + car.name.slice(1) }
+              </CarTitle>
+              <SubTitle>
+                Rent this car for a week and receive 1 extra day!
+              </SubTitle>
+            </div>
 
-          <DetailsTable>
-            <DetailsTableRow>
-              <p>
-                Daily Rent:
-              </p>
-              <p>
-                $12
-              </p>
-            </DetailsTableRow>
-            <DetailsTableRow>
-              <p>
-                Weekly Rent:
-              </p>
-              <p>
-                $81
-              </p>
-            </DetailsTableRow>
-            <DetailsTableRow>
-              <p>
-                Monthly Rent:
-              </p>
-              <p>
-                $252
-              </p>
-            </DetailsTableRow>
-            <DetailsTableRow>
-              <p>
-                Insurance Fee:
-              </p>
-              <p>
-                $2/day
-              </p>
-            </DetailsTableRow>
-          </DetailsTable>
-          <PromoHeader>
-            <strong>30% Discount</strong>
-            {' '}
-            on Monthly plan!
-          </PromoHeader>
-          <div>
-            <DiscoverMore>
-              DISCOVER MORE MODELS
+            <DetailsTable>
+              <DetailsTableRow>
+                <p>
+                  Daily Rent:
+                </p>
+                <p>
+                  $
+                  {car.description.price_daily}
+                </p>
+              </DetailsTableRow>
+              <DetailsTableRow>
+                <p>
+                  Weekly Rent:
+                </p>
+                <p>
+                  $
+                  {car.description.price_daily * 7 }
+                </p>
+              </DetailsTableRow>
+              <DetailsTableRow>
+                <p>
+                  Monthly Rent:
+                </p>
+                <p>
+                  $
+                  {car.description.price_monthly * 0.7}
+                </p>
+              </DetailsTableRow>
+              <DetailsTableRow>
+                <p>
+                  Insurance Fee:
+                </p>
+                <p>
+                  %
+                  {car.description.insurance_fee}
+                </p>
+              </DetailsTableRow>
+            </DetailsTable>
+            <PromoHeader>
+              <strong>30% Discount</strong>
               {' '}
-              <ChevronRightOutlinedIcon />
-            </DiscoverMore>
-          </div>
-          <ColorWheel />
-          <ReserveModal />
+              on Monthly plan!
+            </PromoHeader>
+            <div>
+              <DiscoverMore>
+                DISCOVER MORE MODELS
+                {' '}
+                <ChevronRightOutlinedIcon />
+              </DiscoverMore>
+            </div>
+            <ColorWheel />
+            <ReserveModal />
+          </SecondColumn>
         </div>
       </div>
-    </div>
+    );
+  }
+  return (
+    <Container />
   );
 };
 

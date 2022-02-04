@@ -1,6 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import styled from 'styled-components';
+import { useNavigate, NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import { mobile } from '../responsive';
+import { authenticateUser, LOGIN_ENDPOINT } from '../redux/auth/authSlice';
 
 const Container = styled.div`
   display: flex;
@@ -48,7 +52,9 @@ const Input = styled.input`
   font-weight: 300;
 `;
 
-const Button = styled.button`
+const Button = styled.button.attrs((props) => ({
+  type: props.type,
+}))`
   padding: 12px 18px;
   width: 50%;
   background-color: teal;
@@ -63,7 +69,7 @@ const Button = styled.button`
   }
 `;
 
-const Link = styled.a`
+const Link = styled(NavLink)`
   cursor: pointer;
   margin: 5px 0;
   font-size: 12px;
@@ -71,19 +77,36 @@ const Link = styled.a`
   text-decoration: underline;
 `;
 
-const Login = () => (
-  <Container>
-    <Wrapper>
-      <Title>SIGN IN</Title>
-      <Form>
-        <Input placeholder="Username" />
-        <Input placeholder="Password" />
-        <Button>LOG IN</Button>
-        <Link>DO NOT REMEMBER YOUR PASSWORD</Link>
-        <Link>CREATE A NEW ACCOUNT</Link>
-      </Form>
-    </Wrapper>
-  </Container>
-);
+const Login = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { isAuthenticated } = useSelector((state) => state.auth);
+
+  const authenticate = (e) => {
+    e.preventDefault();
+
+    dispatch(authenticateUser({ form: e.target, url: LOGIN_ENDPOINT }));
+  };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/', { replace: true });
+    }
+  }, [isAuthenticated]);
+
+  return (
+    <Container>
+      <Wrapper>
+        <Title>SIGN IN</Title>
+        <Form onSubmit={(event) => authenticate(event)}>
+          <Input type="email" name="email" placeholder="Email" defaultValue="" />
+          <Input type="password" name="password" placeholder="Password" defaultValue="" />
+          <Button type="submit">LOG IN</Button>
+          <Link to="/sign_up">SIGN UP</Link>
+        </Form>
+      </Wrapper>
+    </Container>
+  );
+};
 
 export default Login;

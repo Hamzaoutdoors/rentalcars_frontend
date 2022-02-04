@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable camelcase */
 /* eslint-disable react/jsx-props-no-spreading */
 import { useState } from 'react';
@@ -13,7 +14,7 @@ import { styled } from '@mui/material/styles';
 import {
   DateRange,
 } from '@mui/icons-material';
-import { numOfDays } from '../../logic/date';
+import { numOfDays, totalAmount } from '../../logic/date';
 
 const DetailBtn = styled(Button)`
   background-color: #5688ae !important;
@@ -119,7 +120,8 @@ BootstrapDialogTitle.propTypes = {
 };
 
 const ReservationDetail = ({ reservationDetail }) => {
-  const { start_date, end_date } = reservationDetail;
+  const { start_date, end_date, car } = reservationDetail;
+  const dailyPrice = car.description.price_daily;
 
   const [open, setOpen] = useState(false);
 
@@ -173,7 +175,7 @@ const ReservationDetail = ({ reservationDetail }) => {
             Total Amount:
             {' '}
             <span>$</span>
-            <span>0</span>
+            <span>{totalAmount(dailyPrice, start_date, end_date)}</span>
           </AmountText>
         </Content>
       </BootstrapDialog>
