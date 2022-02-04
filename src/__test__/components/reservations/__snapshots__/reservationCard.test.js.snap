@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CarCard component renders correctly 1`] = `
+exports[`reservation Card component renders correctly 1`] = `
 <div
   className="sc-jrQzAO gURVnT"
 />
