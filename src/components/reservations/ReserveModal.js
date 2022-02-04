@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
-import { motion } from 'framer-motion';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
@@ -116,24 +115,6 @@ const ReserveModal = () => {
       </ReserveBtn>
 
       <BootstrapDialog
-        as={motion.div}
-        initial={{
-          opacity: 0,
-          translateY: 50,
-        }}
-        animate={{
-          opacity: 1,
-          translateX: 0,
-          translateY: 0,
-        }}
-        transition={{
-          duration: 0.2,
-          delay: 0.2,
-        }}
-        exit={{
-          opacity: 0,
-          translateY: -50,
-        }}
         onClose={toggleModal}
         aria-labelledby="customized-dialog-title"
         open={openModal}
