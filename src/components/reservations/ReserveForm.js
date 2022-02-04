@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useState } from 'react';
 import { mobile } from '../../responsive';
 import { addReservation } from '../../redux/reservations/reservationsSlice';
-import { useState } from 'react';
 
 const Form = styled.form`
   padding: 0.5rem;
