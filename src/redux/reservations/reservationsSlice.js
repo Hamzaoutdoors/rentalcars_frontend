@@ -45,7 +45,8 @@ const bodyCreator = (formElem) => {
 export const getReservations = createAsyncThunk(
   'redux/cars/getReservations.js',
   async (payload, { rejectWithValue }) => {
-    const token = localStorage.getItem('rcars_jwt');
+    const rcarsJwt = JSON.parse(localStorage.getItem('rcars_jwt'));
+    const token = (rcarsJwt) ? rcarsJwt.token : null;
     const config = jsonTypeConfig(token);
     try {
       const res = await axios.get(RESERVATIONS_API_ENDPOINT, config);
@@ -59,7 +60,8 @@ export const getReservations = createAsyncThunk(
 export const getCities = createAsyncThunk(
   'redux/cars/getCities.js',
   async (payload, { rejectWithValue }) => {
-    const token = localStorage.getItem('rcars_jwt');
+    const rcarsJwt = JSON.parse(localStorage.getItem('rcars_jwt'));
+    const token = (rcarsJwt) ? rcarsJwt.token : null;
     const config = jsonTypeConfig(token);
     try {
       const res = await axios.get(CITIES_API_ENDPOINT, config);
@@ -73,7 +75,8 @@ export const getCities = createAsyncThunk(
 export const addReservation = createAsyncThunk(
   'redux/cars/addReservation.js',
   async (payload, { rejectWithValue }) => {
-    const token = localStorage.getItem('rcars_jwt');
+    const rcarsJwt = JSON.parse(localStorage.getItem('rcars_jwt'));
+    const token = (rcarsJwt) ? rcarsJwt.token : null;
     const config = jsonTypeConfig(token);
     const body = bodyCreator(payload);
     try {
@@ -92,7 +95,7 @@ const filterDeleted = (data, id) => data.filter(
 export const cancelReservation = createAsyncThunk(
   'redux/cars/removeReservation.js',
   async (payload, { rejectWithValue }) => {
-    const token = localStorage.getItem('rcars_jwt');
+    const { token } = JSON.parse(localStorage.getItem('rcars_jwt'));
     const config = jsonTypeConfig(token);
     try {
       const res = await axios.delete(`${RESERVATIONS_API_ENDPOINT}/${payload}`, config);

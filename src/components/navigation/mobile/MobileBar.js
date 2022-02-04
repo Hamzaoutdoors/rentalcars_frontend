@@ -10,7 +10,7 @@ const Container = styled.div`
   color: black;
   top: 2rem;
   left: 1rem;
-  z-index: 1;
+  z-index: 10;
 `;
 
 const toggleModal = (payload) => {

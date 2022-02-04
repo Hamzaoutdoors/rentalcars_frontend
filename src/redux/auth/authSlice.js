@@ -42,7 +42,7 @@ export const authenticateUser = createAsyncThunk(
     try {
       const response = await axios
         .post(payload.url, data, config);
-      localStorage.setItem('rcars_jwt', JSON.stringify(response.data.token));
+      localStorage.setItem('rcars_jwt', JSON.stringify(response.data));
       return response.data;
     } catch (err) {
       return rejectWithValue({ ...err.response.data });
@@ -64,9 +64,10 @@ const authSLice = createSlice({
         error: {},
       };
     },
-    authenticateToken: (state) => ({
+    authenticateToken: (state, payload) => ({
       ...state,
       isAuthenticated: true,
+      user: payload,
     }),
   },
   extraReducers: {
@@ -78,7 +79,7 @@ const authSLice = createSlice({
         ...state,
         isFetching: false,
         isAuthenticated: true,
-        user: { ...action.payload.user },
+        user: action.payload.user,
         error: {},
       }),
     [authenticateUser.rejected.type]: (state, action) => ({

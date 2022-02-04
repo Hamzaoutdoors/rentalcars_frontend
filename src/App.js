@@ -53,9 +53,11 @@ const AppContainer = styled.div`
 `;
 
 const handleTokenAuthentication = (dispatch) => {
-  const token = localStorage.getItem('rcars_jwt');
+  const rcarsJwt = JSON.parse(localStorage.getItem('rcars_jwt'));
+  const token = (rcarsJwt) ? rcarsJwt.token : null;
+
   if (token) {
-    dispatch(authenticateToken());
+    dispatch(authenticateToken(rcarsJwt));
   }
 };
 
