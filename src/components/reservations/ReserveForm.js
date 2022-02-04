@@ -2,7 +2,6 @@
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { mobile } from '../../responsive';
 import { addReservation } from '../../redux/reservations/reservationsSlice';
@@ -107,33 +106,24 @@ const SelectCityOption = styled.option``;
 const ReserveForm = () => {
   const minDate = new Date().toISOString().split('T')[0];
   const maxDate = new Date();
-
   const dispatch = useDispatch();
   const redirect = useNavigate();
   const { car_id } = useParams();
 
-  const initialData = {
-    start_date: minDate,
-    end_date: minDate,
-    city_id: '',
-    car_id: '',
-  };
-
   const { cities } = useSelector((state) => state.reservations);
-  const [selectedData, setSelectedData] = useState(initialData);
-
-  const handleInput = (e) => {
-    e.preventDefault();
-    setSelectedData({
-      ...selectedData,
-      [e.target.name]: e.target.value,
-      car_id,
-    });
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addReservation(selectedData));
+    const select = document.querySelector('select').value;
+    const start_date = document.querySelector('#start').value;
+    const end_date = document.querySelector('#end').value;
+    const data = {
+      start_date,
+      end_date,
+      city_id: select,
+      car_id,
+    };
+    dispatch(addReservation(data));
     redirect('/myreservations');
   };
 
@@ -150,7 +140,6 @@ const ReserveForm = () => {
               defaultValue={minDate}
               min={minDate}
               max={maxDate}
-              onChange={(e) => handleInput(e)}
               required
             />
           </DateContainer>
@@ -163,7 +152,6 @@ const ReserveForm = () => {
               defaultValue={minDate}
               min={minDate}
               max={maxDate}
-              onChange={(e) => handleInput(e)}
               required
             />
           </DateContainer>
@@ -171,12 +159,15 @@ const ReserveForm = () => {
         <Wrapper>
           <Filter>
             <FilterTitle>City</FilterTitle>
-            <SelectCity className="form-select" name="city_id" onChange={(e) => handleInput(e)}>
+            <SelectCity className="form-select" name="city_id" defaultValue={1}>
               <SelectCityOption selected disabled>
                 Select City
               </SelectCityOption>
               {cities.map((city) => (
-                <SelectCityOption key={uuidv4()} value={city.id}>
+                <SelectCityOption
+                  key={uuidv4()}
+                  value={city.id}
+                >
                   {city.name}
                 </SelectCityOption>
               ))}

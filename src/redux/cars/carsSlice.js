@@ -71,7 +71,8 @@ export const getCars = createAsyncThunk(
 export const addCar = createAsyncThunk(
   'redux/cars/addCar.js',
   async (payload, { rejectWithValue }) => {
-    const token = localStorage.getItem('rcars_jwt');
+    const rcarsJwt = JSON.parse(localStorage.getItem('rcars_jwt'));
+    const token = (rcarsJwt) ? rcarsJwt.token : null;
     const data = bodyOptions(payload);
     const config = jsonTypeConfig(token);
 
@@ -88,7 +89,8 @@ export const addCar = createAsyncThunk(
 export const removeCar = createAsyncThunk(
   'redux/cars/removeCar.js',
   async (payload, { rejectWithValue }) => {
-    const token = localStorage.getItem('rcars_jwt');
+    const rcarsJwt = JSON.parse(localStorage.getItem('rcars_jwt'));
+    const token = (rcarsJwt) ? rcarsJwt.token : null;
     const config = jsonTypeConfig(token);
 
     try {

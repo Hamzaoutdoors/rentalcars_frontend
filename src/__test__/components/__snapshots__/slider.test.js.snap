@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Slider component renders correctly 1`] = `
+<div
+  className="sc-gKclnd hCiNti"
+>
+  <div
+    className="sc-iCfMLu Xfhrl"
+    direction="left"
+    onClick={[Function]}
+    size={3}
+  >
+    <svg
+      aria-hidden={true}
+      className="MuiSvgIcon-root"
+      focusable="false"
+      style={
+        Object {
+          "color": "#e6e6e6",
+          "fontSize": "3rem",
+        }
+      }
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M14 7l-5 5 5 5V7z"
+      />
+    </svg>
+  </div>
+  <div
+    className="sc-furwcr kpeYjR"
+  />
+  <div
+    className="sc-iCfMLu glyfKO"
+    direction="right"
+    onClick={[Function]}
+    size={3}
+  >
+    <svg
+      aria-hidden={true}
+      className="MuiSvgIcon-root"
+      focusable="false"
+      style={
+        Object {
+          "color": "#e6e6e6",
+          "fontSize": "3rem",
+        }
+      }
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M10 17l5-5-5-5v10z"
+      />
+    </svg>
+  </div>
+</div>
+`;

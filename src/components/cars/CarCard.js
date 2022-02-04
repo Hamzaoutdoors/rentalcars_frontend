@@ -129,7 +129,7 @@ const CarCard = (props) => {
   const { color } = item.description;
   const dispatch = useDispatch();
   const { slideIndex } = useSelector((state) => state.utils.slider);
-  const { user } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth.user.payload);
 
   return (
     <Container

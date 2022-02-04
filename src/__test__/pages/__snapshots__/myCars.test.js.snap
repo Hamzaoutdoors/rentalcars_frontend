@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render the cars list page correctly 1`] = `
+<div
+  className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1 MuiGrid-spacing-md-3 sc-gKclnd fHBPrn css-1ibwkvh-MuiGrid-root"
+/>
+`;

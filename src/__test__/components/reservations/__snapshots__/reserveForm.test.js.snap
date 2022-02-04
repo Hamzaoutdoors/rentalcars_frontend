@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReserveForm component renders correctly 1`] = `
+<form
+  className="sc-bdvvtL dMxZsP"
+  onSubmit={[Function]}
+>
+  <div
+    className="sc-gsDKAQ liHQzd"
+  >
+    <div
+      className="sc-dkPtRN eIXwke"
+    >
+      <label
+        className="sc-eCImPb bpNqRg"
+        htmlFor="start"
+      >
+        Start Date :
+      </label>
+      <input
+        className="sc-hKwDye AkwGr"
+        defaultValue="2022-02-04"
+        id="start"
+        max={2022-02-04T16:36:37.059Z}
+        min="2022-02-04"
+        name="start_date"
+        required={true}
+        type="date"
+      />
+    </div>
+    <div
+      className="sc-dkPtRN eIXwke"
+    >
+      <label
+        className="sc-eCImPb bpNqRg"
+        htmlFor="start"
+      >
+        End Date :
+      </label>
+      <input
+        className="sc-hKwDye AkwGr"
+        defaultValue="2022-02-04"
+        id="end"
+        max={2022-02-04T16:36:37.059Z}
+        min="2022-02-04"
+        name="end_date"
+        required={true}
+        type="date"
+      />
+    </div>
+  </div>
+  <div
+    className="sc-gsDKAQ liHQzd"
+  >
+    <div
+      className="sc-jRQBWg iBsNzv"
+    >
+      <span
+        className="sc-gKclnd kPEL"
+      >
+        City
+      </span>
+      <select
+        className="sc-iCfMLu cJFkvK form-select"
+        defaultValue={1}
+        name="city_id"
+      >
+        <option
+          className="sc-pVTFL"
+          disabled={true}
+          selected={true}
+        >
+          Select City
+        </option>
+      </select>
+    </div>
+  </div>
+  <button
+    className="sc-furwcr bqnpVl"
+    type="submit"
+  >
+    Reserve
+  </button>
+</form>
+`;

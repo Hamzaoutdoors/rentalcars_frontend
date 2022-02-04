@@ -19,8 +19,8 @@ const loggedLinks = {
 const unLoggedLinks = {
   '/cars': 'Reserve a Car',
   '/lifestyle': 'LifeStyle',
-  Login: <LinkActive path="/login" text="Log In" />,
-  Register: <LinkActive path="/sign_up" text="Register" />,
+  '/login': 'Log In',
+  '/sign_up': 'Register',
 };
 
 const loggedLinksKeys = Object.keys(loggedLinks);

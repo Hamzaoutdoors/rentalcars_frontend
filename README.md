@@ -28,6 +28,9 @@
 
 - Finally, run `code .` to see the files in your default code editor.
 
+## Live Demo
+
+### Click [here]() to view the project.
 ## Built With
 
  - React & Redux
