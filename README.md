@@ -5,7 +5,15 @@
 
 # Rental Cars App 
 
- the Final Capstone Project is based on an app to book an appointment to try a fancy car, to resrve a car.
+ > the Final Capstone Project is based on an app to book an appointment to try a fancy car, to resrve a car, and to create your own car.
+
+**Screenshots**
+
+</br>
+ <div align="center">
+    <img alt="erd_diagram" src="https://user-images.githubusercontent.com/80895497/152528759-e442c8ee-4a3e-4c83-91e5-66eb6e0aab4f.png">
+</div>
+
 ## Getting Started
 
 - Clone this repository by running git clone https://github.com/Hamzaoutdoors/rentalcars_frontend.git in your command line.
@@ -27,11 +35,10 @@
  
 ## Authors
 
-👤 **Laylo Khodjeiva**
+👤 **Laylo Khodjaeva**
 
-- GitHub: []()
-- LinkedIn : []()
-- Twitter: []()
+- GitHub: [Laylo Khodjaeva](https://github.com/Laylo309)
+- LinkedIn : [Laylo Khodjaeva]()
 
 👤 **Ellaouzi Hamza**
 
@@ -41,15 +48,15 @@
 
 👤 **Nelsino Francisco**
 
-- GitHub: []()
-- LinkedIn : []()
-- Twitter: []()
+- GitHub: [Nelsino Francisco](https://github.com/nelsinofrancisco)
+- LinkedIn : [Nelsino Francisco]()
+- Twitter: [Nelsino_Francisco]()
 
 👤 **Juan Luis Gonzalez**
 
-- GitHub: []()
-- LinkedIn : []()
-- Twitter: []()
+- GitHub: [Juan Luis G](https://github.com/JbirdL86)
+- LinkedIn : [Juan Luis]()
+- Twitter: [Juan Luis]()
 
 ## 🤝 Contributing
 
@@ -62,6 +69,7 @@ Feel free to check the [issues page](https://github.com/Hamzaoutdoors/rentalcars
 Give a ⭐️ if you like this project!
 
 ## Acknowledgments
+- Hats off of [Murat Korkmaz ](https://www.behance.net/muratk) for designing a beautiful, efficient, and accessible user interface.
 - Inspiration 💘
 - Microverse program ⚡
 - My standup team 😍
@@ -70,5 +78,5 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is [MIT](https://github.com/Hamzaoutdoors/hello-rails-front-end/blob/dev/LICENSE.md) licensed.
+This project is [MIT](https://github.com/Hamzaoutdoors/rentalcars_frontend/blob/dev/LICENSE.md) licensed.
 
