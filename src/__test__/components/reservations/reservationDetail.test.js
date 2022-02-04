@@ -3,14 +3,14 @@ import renderer from 'react-test-renderer';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from '../../../redux/ConfigureStore';
-import ReservationDetail from '../../../components/reservations/ReservationDetail';
+import CarDetails from '../../../components/cars/CarDetails';
 
-it('ReservationDetail component renders correctly', () => {
+it('CarDetails component renders correctly', () => {
   const tree = renderer
     .create(
       <Provider store={store}>
         <Router>
-          <ReservationDetail />
+          <CarDetails />
         </Router>
       </Provider>,
     )

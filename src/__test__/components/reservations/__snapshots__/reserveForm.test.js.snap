@@ -19,10 +19,10 @@ exports[`ReserveForm component renders correctly 1`] = `
       </label>
       <input
         className="sc-hKwDye AkwGr"
-        defaultValue="2022-02-03"
+        defaultValue="2022-02-04"
         id="start"
-        max={2022-02-03T23:08:20.645Z}
-        min="2022-02-03"
+        max={2022-02-04T15:25:09.833Z}
+        min="2022-02-04"
         name="start_date"
         onChange={[Function]}
         required={true}
@@ -40,10 +40,10 @@ exports[`ReserveForm component renders correctly 1`] = `
       </label>
       <input
         className="sc-hKwDye AkwGr"
-        defaultValue="2022-02-03"
+        defaultValue="2022-02-04"
         id="end"
-        max={2022-02-03T23:08:20.645Z}
-        min="2022-02-03"
+        max={2022-02-04T15:25:09.833Z}
+        min="2022-02-04"
         name="end_date"
         onChange={[Function]}
         required={true}
