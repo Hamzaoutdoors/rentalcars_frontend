@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable camelcase */
 import * as React from 'react';
+import { motion } from 'framer-motion';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -8,11 +9,11 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import {
   Star, LocalGasStation, WbAuto, AcUnit, PriceCheck, EventSeat,
 } from '@mui/icons-material';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { mobile } from '../../responsive';
 import ReservationDetail from './ReservationDetail';
 import { cancelReservation } from '../../redux/reservations/reservationsSlice';
@@ -114,12 +115,27 @@ const ReservationCard = ({ reservationDetail }) => {
   const {
     car, id,
   } = reservationDetail;
-  const { imgUrl } = car;
   const carName = car.name;
+  const image = car.imgUrl;
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
 
   return (
     <CardContainer
+      as={motion.div}
+      initial={{
+        opacity: 0,
+        translateY: 50,
+      }}
+      animate={{
+        opacity: 1,
+        translateX: 0,
+        translateY: 0,
+      }}
+      transition={{
+        duration: 0.2,
+        delay: 0.2,
+      }}
       sx={{
         width: {
           sx: 1.0, // 100%
@@ -131,7 +147,7 @@ const ReservationCard = ({ reservationDetail }) => {
       <CardImage
         component="img"
         alt="green iguana"
-        image={imgUrl}
+        image={image}
       />
       <CardContent>
         {/* <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -182,18 +198,17 @@ const ReservationCard = ({ reservationDetail }) => {
       </CardContent>
       <CardActions>
         <ReservationDetail reservationDetail={reservationDetail} />
-        <CancelButton onClick={() => dispatch(cancelReservation(id))} size="small">Cancel</CancelButton>
+        {user.id === reservationDetail.user_id && (
+          <CancelButton
+            onClick={() => dispatch(cancelReservation(id))}
+            size="small"
+          >
+            Cancel
+          </CancelButton>
+        )}
       </CardActions>
     </CardContainer>
   );
 };
 
 export default ReservationCard;
-
-ReservationCard.propTypes = {
-  reservationDetail: PropTypes.shape({
-    start_date: PropTypes.string.isRequired,
-    end_date: PropTypes.string.isRequired,
-    city_id: PropTypes.string.isRequired,
-  }).isRequired,
-};

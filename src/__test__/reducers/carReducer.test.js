@@ -1,4 +1,5 @@
 import carsReducer from '../../redux/cars/carsSlice';
+// import car from './carMock';
 
 describe('reducers working as expected', () => {
   it('should return the initial state', () => {
@@ -7,6 +8,16 @@ describe('reducers working as expected', () => {
         data: [],
         error: {},
         isFetching: false,
+      },
+    );
+  });
+
+  it('should handle addCar.fulfilled', () => {
+    expect(carsReducer({}, { type: 'cars/addCar.fulfilled', payload: {} })).toEqual(
+      {
+        isFetching: false,
+        data: [],
+        error: {},
       },
     );
   });

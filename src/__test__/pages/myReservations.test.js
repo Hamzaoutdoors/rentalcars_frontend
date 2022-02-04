@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import MyReservations from '../../pages/MyReservations';
-import store from '../../redux/ConfigureStore';
+import store from '../../redux/configureStore';
 
 it('render my reservations page correctly', () => {
   const tree = renderer

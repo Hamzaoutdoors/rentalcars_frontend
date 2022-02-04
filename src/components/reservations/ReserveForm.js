@@ -107,7 +107,6 @@ const SelectCityOption = styled.option``;
 const ReserveForm = () => {
   const minDate = new Date().toISOString().split('T')[0];
   const maxDate = new Date();
-
   const dispatch = useDispatch();
   const redirect = useNavigate();
   const { car_id } = useParams();
@@ -121,6 +120,11 @@ const ReserveForm = () => {
 
   const { cities } = useSelector((state) => state.reservations);
   const [selectedData, setSelectedData] = useState(initialData);
+  let selected = cities[0].name;
+
+  const handleSelected = (id) => {
+    selected = id;
+  };
 
   const handleInput = (e) => {
     e.preventDefault();
@@ -171,12 +175,16 @@ const ReserveForm = () => {
         <Wrapper>
           <Filter>
             <FilterTitle>City</FilterTitle>
-            <SelectCity className="form-select" name="city_id" onChange={(e) => handleInput(e)}>
+            <SelectCity className="form-select" name="city_id" defaultValue={selected}>
               <SelectCityOption selected disabled>
                 Select City
               </SelectCityOption>
               {cities.map((city) => (
-                <SelectCityOption key={uuidv4()} value={city.id}>
+                <SelectCityOption
+                  key={uuidv4()}
+                  value={city.id}
+                  selected={handleSelected(city.id)}
+                >
                   {city.name}
                 </SelectCityOption>
               ))}
