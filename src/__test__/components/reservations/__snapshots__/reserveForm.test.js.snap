@@ -21,10 +21,9 @@ exports[`ReserveForm component renders correctly 1`] = `
         className="sc-hKwDye AkwGr"
         defaultValue="2022-02-04"
         id="start"
-        max={2022-02-04T15:25:09.833Z}
+        max={2022-02-04T15:55:32.172Z}
         min="2022-02-04"
         name="start_date"
-        onChange={[Function]}
         required={true}
         type="date"
       />
@@ -42,10 +41,9 @@ exports[`ReserveForm component renders correctly 1`] = `
         className="sc-hKwDye AkwGr"
         defaultValue="2022-02-04"
         id="end"
-        max={2022-02-04T15:25:09.833Z}
+        max={2022-02-04T15:55:32.172Z}
         min="2022-02-04"
         name="end_date"
-        onChange={[Function]}
         required={true}
         type="date"
       />
@@ -64,8 +62,8 @@ exports[`ReserveForm component renders correctly 1`] = `
       </span>
       <select
         className="sc-iCfMLu cJFkvK form-select"
+        defaultValue={1}
         name="city_id"
-        onChange={[Function]}
       >
         <option
           className="sc-pVTFL"
